@@ -1,8 +1,9 @@
 {
     "name": "soitpl/laravel-seeder",
     "type": "library",
-    "description": "Library for seed data for Laravel framework",
+    "description": "Library for seed data form files",
     "homepage": "https://github.com/soitpl/LaravelSeeder",
+    "license": "MIT",
     "keywords": [
         "seeder",
         "laravel"
@@ -14,10 +15,9 @@
             "homepage": "http://soit.pl"
         }
     ],
-    "license": "MIT",
     "require": {
         "php": "^7.2",
-        "laravel/framework": "^5.6"
+        "illuminate/support": "~5.5.0|~5.6.0|~5.7.0|~5.8.0"
     },
     "require-dev": {
         "mikey179/vfsstream": "^2.0@dev",
