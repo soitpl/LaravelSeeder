@@ -70,6 +70,9 @@ class TableSeeder extends SeederAbstract
     private function _isTableExists(string $table):bool
     {
         switch (DB::connection()->getDriverName()) {
+            case 'pgsql':
+                $tables = array_map('current', DB::select("SELECT table_name FROM information_schema.tables WHERE table_schema='public' AND table_type='BASE TABLE'"));
+            break;
             case 'sqlite':
                 $tables = array_map('current', DB::select("SELECT name FROM sqlite_master WHERE type='table' ORDER BY name;"));
             break;
