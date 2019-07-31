@@ -20,6 +20,11 @@ abstract class ExecutorAbstract implements ExecutorInterface
     protected $data;
 
     /**
+     * @var string
+     */
+    protected $oneCol;
+
+    /**
      * @var SeederInterface Target object Model or Table
      */
     protected $seeder;
@@ -41,6 +46,7 @@ abstract class ExecutorAbstract implements ExecutorInterface
         array_push($this->sources, $source);
         return $this;
     }
+
     /**
      * Execute data items
      *
@@ -50,10 +56,12 @@ abstract class ExecutorAbstract implements ExecutorInterface
      */
     public function execute(DataContainer $data): bool
     {
+        if ($this->oneCol) {
+            $data = $this->packStringToDataContainer($data);
+        }
+
         foreach ($data as $item) {
-            if (!$this->_executeTarget($item)) {
-                return false;
-            }
+            !$this->_executeTarget($item);
         }
         return true;
     }
@@ -107,6 +115,18 @@ abstract class ExecutorAbstract implements ExecutorInterface
     }
 
     /**
+     * Set work with only one column in source file.
+     *
+     * @param string $columnName Define where source data should be add
+     */
+    public function oneCol(string $columnName): ExecutorAbstract
+    {
+        $this->oneCol = $columnName;
+
+        return $this;
+    }
+
+    /**
      * Make data seed
      */
     public function seed(): bool
@@ -140,5 +160,19 @@ abstract class ExecutorAbstract implements ExecutorInterface
     protected function _executeTarget(DataContainer $item)
     {
         return $this->seeder->setData($item)->save();
+    }
+
+    /**
+     * Create DataContainer for OneCol mode
+     *
+     * @param string $value
+     *
+     * @return DataContainer
+     */
+    protected function packStringToDataContainer(DataContainer $data) : DataContainer {
+        foreach($data as $k=>$item) {
+            $data[$k] = new DataContainer([$this->oneCol => $item]);
+        }
+        return $data;
     }
 }
