@@ -7,7 +7,6 @@
 namespace soIT\LaravelSeeders\Transformations;
 
 use soIT\LaravelSeeders\Containers\TransformationsContainer;
-use soIT\LaravelSeeders\Seeders\ModelSeeder;
 use soIT\LaravelSeeders\Seeders\RelationModelSeeder;
 
 class ModelTransformation implements TransformationsInterface
@@ -38,6 +37,11 @@ class ModelTransformation implements TransformationsInterface
             ->setData($propertyValue);
     }
 
+    /**
+     * @param string $property
+     *
+     * @return TransformationsInterface
+     */
     public function setPropertyName(string $property): TransformationsInterface
     {
         $this->propertyName = $property;

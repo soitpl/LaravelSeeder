@@ -55,7 +55,7 @@ class TransformationsContainer implements \Iterator, \ArrayAccess, \Countable
      */
     public function getTransformation(string $property): ?TransformationsInterface
     {
-        if ($transformation = $this->_getByPropertyName($property)) {
+        if ($transformation = $this->getByPropertyName($property)) {
             return $transformation[0] ?? null;
         }
 
@@ -72,7 +72,7 @@ class TransformationsContainer implements \Iterator, \ArrayAccess, \Countable
      */
     public function getValue(string $property, $value)
     {
-        $items = $this->_getByPropertyName($property);
+        $items = $this->getByPropertyName($property);
 
         if (is_null($items) || !isset($items[0])) {
             return $value;
@@ -83,7 +83,7 @@ class TransformationsContainer implements \Iterator, \ArrayAccess, \Countable
 
         return $transform
             ->setPropertyName($property)
-            ->transform($value, (new TransformationsContainer())->_assignArray($items));
+            ->transform($value, (new TransformationsContainer())->assignArray($items));
     }
 
     /**
@@ -103,7 +103,7 @@ class TransformationsContainer implements \Iterator, \ArrayAccess, \Countable
      *
      * @return TransformationsContainer
      */
-    private function _assignArray(?array $array): self
+    private function assignArray(?array $array): self
     {
         $this->items = $array;
 
@@ -117,7 +117,7 @@ class TransformationsContainer implements \Iterator, \ArrayAccess, \Countable
      *
      * @return array
      */
-    private function _getByPropertyName(string $property)
+    private function getByPropertyName(string $property)
     {
         return $this->items[$property] ?? null;
     }

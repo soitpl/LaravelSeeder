@@ -9,7 +9,6 @@ namespace soIT\LaravelSeeders\Containers;
 use Illuminate\Database\Eloquent\Model;
 use soIT\LaravelSeeders\Exceptions\NoPropertySetException;
 use soIT\LaravelSeeders\Seeders\SeederInterface;
-use soIT\LaravelSeeders\Containers\TransformationsContainer;
 
 class ModelContainer
 {
@@ -69,7 +68,7 @@ class ModelContainer
     }
 
     /**
-     * @return SeederInterface[] Array of defined seeders
+     * @return ModelContainer[] Array of defined seeders
      */
     public function getSeeders(): array
     {
@@ -86,8 +85,8 @@ class ModelContainer
             throw new NoPropertySetException("Data must be set for proceeding model container");
         }
 
-        $this->model = $this->_initModel();
-        $this->_proceedData();
+        $this->model = $this->initModel();
+        $this->proceedData();
 
         return $this;
     }
@@ -159,7 +158,7 @@ class ModelContainer
     /**
      * Init model instance
      */
-    protected function _initModel(): Model
+    protected function initModel(): Model
     {
         return new $this->modelName();
     }
@@ -167,11 +166,11 @@ class ModelContainer
     /**
      * Proceed data assigned to model
      */
-    protected function _proceedData()
+    protected function proceedData()
     {
         foreach ($this->data as $property => $value) {
-            $propertyValue = $this->_getTargetTransformation($property, $value);
-            $propertyName = $this->_getTargetProperty($property);
+            $propertyValue = $this->getTargetTransformation($property, $value);
+            $propertyName = $this->getTargetProperty($property);
 
             if ($propertyValue instanceof SeederInterface) {
                 $this->setSeeder($propertyValue);
@@ -188,7 +187,7 @@ class ModelContainer
      *
      * @return string
      */
-    private function _getTargetProperty(string $property): string
+    private function getTargetProperty(string $property): string
     {
         if (is_null($this->translations)) {
             return $property;
@@ -206,7 +205,7 @@ class ModelContainer
      *
      * @return string
      */
-    private function _getTargetTransformation(string $property, $value)
+    private function getTargetTransformation(string $property, $value)
     {
         if (is_null($this->transformations)) {
             return $value;
