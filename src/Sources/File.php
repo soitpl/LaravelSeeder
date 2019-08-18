@@ -3,7 +3,6 @@
  * @author Rafał Tadaszak <r.tadaszak@soit.pl>
  * @copyright soIT 2019
  */
-
 namespace soIT\LaravelSeeders\Sources;
 
 use Illuminate\Support\Facades\Storage;
@@ -15,28 +14,21 @@ class File implements SourceInterface
 {
     const DEFAULT_DIRECTORY = 'seeders';
     /**
-     * @var string Seeder data file directory
-     */
-    protected $directory;
-    /**
      * @var string Seeder data File name
      */
-    protected $fileName;
+    protected $filePath;
 
     /**
      * File constructor.
      *
      * @param string $fileName If file is locate in default seeder source directory file name should be getModelName without path
-     * @param string|null $dirPath If file is another location than default directory, path should be getModelName
      *
      * @throws DirectoryDontExistException
      * @throws FileDontExistException
      */
-    public function __construct(string $fileName, string $dirPath = null)
+    public function __construct(string $file)
     {
-        $dirPath !== null ? $this->setDir($dirPath) : $this->_setDefaultPath();
-
-        $this->setFile($fileName);
+        $this->setFile($file);
     }
 
     /**
@@ -52,50 +44,13 @@ class File implements SourceInterface
     }
 
     /**
-     * @return string Seeders directory path
-     */
-    public function getDir(): string
-    {
-        return $this->directory;
-    }
-
-    /**
      * Return file name
      *
      * @return string|null File name
      */
-    public function getFileName(): ?string
+    public function getFilePath(): ?string
     {
-        return $this->fileName;
-    }
-
-    /**
-     * Get full file path
-     *
-     * @return string File path
-     */
-    public function getFilePath()
-    {
-        return $this->directory . DIRECTORY_SEPARATOR . $this->fileName;
-    }
-
-    /**
-     * Setting directory with seeder data sources
-     *
-     * @param string $path Path to directory
-     *
-     * @return File Self instance
-     * @throws DirectoryDontExistException
-     */
-    public function setDir(string $path): self
-    {
-        if (!file_exists($path) || !is_dir($path)) {
-            throw new DirectoryDontExistException(sprintf("Path %s don't exist or is not valid directory", $path));
-        }
-
-        $this->directory = $path;
-
-        return $this;
+        return $this->filePath;
     }
 
     /**
@@ -108,15 +63,54 @@ class File implements SourceInterface
      */
     public function setFile(string $fileName): self
     {
-        $path = $this->directory . DIRECTORY_SEPARATOR . $fileName;
-
-        if (!file_exists($path) || !is_readable($path)) {
-            throw new FileDontExistException(sprintf("File %s was't find in %s or is not readable", $fileName, $path));
+        if (!$this->setFileWithPath($fileName) && !$this->setFileInDefaultLocation($fileName) && !$this->setFileByRootPath($fileName)) {
+            throw new FileDontExistException(sprintf("File %s was't find or is not readable", $fileName));
         }
 
-        $this->fileName = $fileName;
-
         return $this;
+    }
+
+    /**
+     * Check is file exists
+     *
+     * @param $fileName
+     *
+     * @return bool
+     */
+    private function isFileExists(string $path): bool {
+        print_r($path);
+        echo ' | ';
+        return file_exists($path) && is_readable($path);
+    }
+
+    private function setFileByRootPath(string $path): bool {
+        return $this->setFileWithPath(base_path().$path);
+    }
+
+    /**
+     * Try set file stored in default location
+     *
+     * @param string $fileName
+     *
+     * @return bool
+     * @throws DirectoryDontExistException
+     */
+    private function setFileInDefaultLocation(string $path): bool {
+        return $this->setFileWithPath($this->getDefaultPath().$path);
+    }
+
+    /**
+     * Try set file when full path is set
+     *
+     * @return bool
+     */
+    private function setFileWithPath(string $file): bool {
+        if ($this->isFileExists($file)) {
+            $this->filePath = $file;
+            return true;
+        }
+
+        return false;
     }
 
     /**
@@ -125,12 +119,12 @@ class File implements SourceInterface
      * @return File
      * @throws DirectoryDontExistException
      */
-    private function _setDefaultPath()
+    private function getDefaultPath(): string
     {
         if (!Storage::exists(self::DEFAULT_DIRECTORY)) {
             Storage::makeDirectory(self::DEFAULT_DIRECTORY);
         }
 
-        return $this->setDir(Storage::path(self::DEFAULT_DIRECTORY));
+        return Storage::path(self::DEFAULT_DIRECTORY).DIRECTORY_SEPARATOR;
     }
 }
