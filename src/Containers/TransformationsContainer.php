@@ -6,13 +6,16 @@
 
 namespace soIT\LaravelSeeders\Containers;
 
+use ArrayAccess;
+use Countable;
+use Iterator;
 use soIT\LaravelSeeders\Transformations\CallableTransformation;
 use soIT\LaravelSeeders\Transformations\TransformationsInterface;
 use soIT\LaravelSeeders\Utils\ArrayAccessTrait;
 use soIT\LaravelSeeders\Utils\Converters;
 use soIT\LaravelSeeders\Utils\IteratorTrait;
 
-class TransformationsContainer implements \Iterator, \ArrayAccess, \Countable
+class TransformationsContainer implements Iterator, ArrayAccess, Countable
 {
     use IteratorTrait, ArrayAccessTrait;
 
@@ -20,7 +23,7 @@ class TransformationsContainer implements \Iterator, \ArrayAccess, \Countable
      * Assign element to property name
      *
      * @param string $property Property name
-     * @param mixed $value Element to assign, could be model, function, static
+     * @param TransformationsInterface $value Element to assign, could be model, function, static
      */
     public function assign(string $property, TransformationsInterface $value): void
     {
@@ -65,8 +68,8 @@ class TransformationsContainer implements \Iterator, \ArrayAccess, \Countable
     /**
      * Get property seed value for getModelName property value
      *
-     * @param $property
-     * @param $value
+     * @param string $property
+     * @param mixed $value
      *
      * @return mixed
      */
@@ -117,7 +120,7 @@ class TransformationsContainer implements \Iterator, \ArrayAccess, \Countable
      *
      * @return array
      */
-    private function getByPropertyName(string $property)
+    private function getByPropertyName(string $property): ?array
     {
         return $this->items[$property] ?? null;
     }

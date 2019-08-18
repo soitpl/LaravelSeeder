@@ -17,9 +17,9 @@ class ConvertersTest extends TestCase
     {
         $object = Converters::arrayToObject($this->testArray);
         $this->assertIsObject($object);
-        $this->assertInstanceOf(DataContainer::class, $object);
+        $this->assertInstanceOf(\stdClass::class, $object);
         $this->assertNotEmpty($object->y);
-        $this->assertInstanceOf(DataContainer::class, $object->y);
+        $this->assertInstanceOf(\stdClass::class, $object->y);
         $this->assertNotEmpty($object->g);
         $this->assertEquals(23, $object->g);
         $this->expectException(\Exception::class);

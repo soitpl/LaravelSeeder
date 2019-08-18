@@ -5,11 +5,8 @@
  */
 namespace soIT\LaravelSeeders\Executors;
 
-use soIT\LaravelSeeders\Enums\Duplicated;
 use soIT\LaravelSeeders\Seeders\SeederAbstract;
 use soIT\LaravelSeeders\Sources\SourceInterface;
-use soIT\LaravelSeeders\Seeders\SeederInterface;
-use soIT\LaravelSeeders\Utils\Converters;
 use soIT\LaravelSeeders\Containers\DataContainer;
 
 abstract class ExecutorAbstract implements ExecutorInterface
@@ -20,12 +17,12 @@ abstract class ExecutorAbstract implements ExecutorInterface
     protected $data;
 
     /**
-     * @var string
+     * @var string Set if source file has only one col. This attribute contains column name
      */
     protected $oneCol;
 
     /**
-     * @var SeederInterface Target object Model or Table
+     * @var SeederAbstract Target object Model or Table
      */
     protected $seeder;
 
@@ -61,7 +58,7 @@ abstract class ExecutorAbstract implements ExecutorInterface
         }
 
         foreach ($data as $item) {
-            !$this->_executeTarget($item);
+            $this->executeTarget($item);
         }
         return true;
     }
@@ -79,7 +76,7 @@ abstract class ExecutorAbstract implements ExecutorInterface
     /**
      * Get seeder
      *
-     * @return SeederInterface
+     * @return SeederAbstract|null
      */
     public function getSeeder(): ?SeederAbstract
     {
@@ -89,7 +86,7 @@ abstract class ExecutorAbstract implements ExecutorInterface
     /**
      * Set seeder
      *
-     * @param SeederInterface $seeder Seeder class
+     * @param SeederAbstract $seeder Seeder class
      *
      * @return ExecutorAbstract
      */
@@ -118,6 +115,8 @@ abstract class ExecutorAbstract implements ExecutorInterface
      * Set work with only one column in source file.
      *
      * @param string $columnName Define where source data should be add
+     *
+     * @return ExecutorAbstract
      */
     public function oneCol(string $columnName): ExecutorAbstract
     {
@@ -131,9 +130,7 @@ abstract class ExecutorAbstract implements ExecutorInterface
      */
     public function seed(): bool
     {
-        $data = $this->proceedSources();
-
-        return $this->execute($data);
+        return $this->execute($this->proceedSources());
     }
 
     /**
@@ -143,13 +140,13 @@ abstract class ExecutorAbstract implements ExecutorInterface
      */
     public function proceedSources(): DataContainer
     {
-        $data = [];
+        $sourceData = [];
 
         foreach ($this->sources as $source) {
-            $data = array_merge($data, $source->data());
+            $sourceData = array_merge($sourceData, $source->data());
         }
 
-        return Converters::arrayToObject($data);
+        return new DataContainer($sourceData);
     }
 
     /**
@@ -157,7 +154,7 @@ abstract class ExecutorAbstract implements ExecutorInterface
      *
      * @return mixed
      */
-    protected function _executeTarget(DataContainer $item)
+    protected function executeTarget(DataContainer $item)
     {
         return $this->seeder->setData($item)->save();
     }
@@ -165,12 +162,13 @@ abstract class ExecutorAbstract implements ExecutorInterface
     /**
      * Create DataContainer for OneCol mode
      *
-     * @param string $value
+     * @param DataContainer $data
      *
      * @return DataContainer
      */
-    protected function packStringToDataContainer(DataContainer $data) : DataContainer {
-        foreach($data as $k=>$item) {
+    protected function packStringToDataContainer(DataContainer $data): DataContainer
+    {
+        foreach ($data as $k => $item) {
             $data[$k] = new DataContainer([$this->oneCol => $item]);
         }
         return $data;

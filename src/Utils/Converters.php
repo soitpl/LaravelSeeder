@@ -17,21 +17,18 @@ class Converters
      *
      * @return DataContainer
      */
-    public static function arrayToObject(array $array): DataContainer
+    public static function arrayToObject(array $array): \stdClass
     {
         $object = new \stdClass();
+
         if (count($array) > 0) {
             foreach ($array as $key => $value) {
                 $key = strtolower(trim($key));
-                if (is_array($value)) {
-                    $object->$key = self::arrayToObject($value);
-                } else {
-                    $object->$key = $value;
-                }
+                $object->$key = is_array($value) ? self::arrayToObject($value) : $value;
             }
         }
 
-        return new DataContainer($object);
+        return $object;
     }
 
     /**
