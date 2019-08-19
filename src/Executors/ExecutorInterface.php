@@ -7,7 +7,7 @@
 namespace soIT\LaravelSeeders\Executors;
 
 use soIT\LaravelSeeders\Sources\SourceInterface;
-use soIT\LaravelSeeders\Containers\TransformationsContainer;
+use soIT\LaravelSeeders\Containers\AdditionalProperiesConatiner;
 use soIT\LaravelSeeders\Containers\DataContainer;
 
 interface ExecutorInterface

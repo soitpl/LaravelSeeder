@@ -104,7 +104,7 @@ class TransformationsContainer implements Iterator, ArrayAccess, Countable
      *
      * @param array|null $array
      *
-     * @return TransformationsContainer
+     * @return AdditionalProperiesConatiner
      */
     private function assignArray(?array $array): self
     {

@@ -123,7 +123,7 @@ class ModelContainerTest extends TestCase
      */
     public function testPrepareWithTransformations()
     {
-        $transformationsMock = \Mockery::mock(TransformationsContainer::class);
+        $transformationsMock = \Mockery::mock(AdditionalProperiesConatiner::class);
         $transformationsMock->shouldReceive('getValue')->with('prop_1', 'value_1')->andReturn('value_1_t');
         $transformationsMock->shouldReceive('getValue')->with('prop_2', 'value_2')->andReturn(\Mockery::mock(SeederInterface::class));
 
@@ -169,7 +169,7 @@ class ModelContainerTest extends TestCase
 
     public function testSetTransformations()
     {
-        $transformationMock = \Mockery::mock(TransformationsContainer::class);
+        $transformationMock = \Mockery::mock(AdditionalProperiesConatiner::class);
         $container = new ModelContainer(self::MODEL_NAME);
         $retContainer = $container->setTransformations($transformationMock);
 

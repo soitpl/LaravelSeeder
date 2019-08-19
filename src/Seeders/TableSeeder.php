@@ -15,7 +15,7 @@ use soIT\LaravelSeeders\Exceptions\SeedTargetFoundException;
 
 class TableSeeder extends SeederAbstract
 {
-    use SeederTransformationsTrait, SeederTranslationsTrait;
+    use SeederTransformationsTrait, SeederTranslationsTrait, SeederAdditionalPropertiesTrait;
 
     /**
      * @var array Database table columns
@@ -117,7 +117,7 @@ class TableSeeder extends SeederAbstract
      */
     private function setUniqueColumn(string $column)
     {
-        if ($this->_isColumnExistInTable($column)) {
+        if ($this->isColumnExistInTable($column)) {
             array_push($this->uniqueColumns, $column);
         } else {
             throw new ColumnNotFoundException(sprintf("%s column was't found for seed", ucfirst($column)));
@@ -131,7 +131,7 @@ class TableSeeder extends SeederAbstract
      *
      * @return bool
      */
-    private function _isColumnExistInTable(string $property):bool
+    private function isColumnExistInTable(string $property):bool
     {
         return in_array($property, $this->columns);
     }
@@ -153,14 +153,14 @@ class TableSeeder extends SeederAbstract
      */
     public function save()
     {
-        $insertData = $this->_getInsertData();
+        $insertData = $this->getInsertData();
 
         switch ($this->duplicated) {
             case Duplicated::IGNORE:
                 return $this->saveAndIgnoreDuplicated($insertData);
             break;
             case Duplicated::UPDATE:
-                return $this->_saveOrUpdateDuplicated($insertData);
+                return $this->saveOrUpdateDuplicated($insertData);
             break;
             default:
                 return $this->create($insertData);
@@ -172,7 +172,7 @@ class TableSeeder extends SeederAbstract
      *
      * @return array
      */
-    private function _getInsertData():array
+    private function getInsertData():array
     {
         $inputData = [];
         foreach ($this->data as $property => $value) {
@@ -182,6 +182,8 @@ class TableSeeder extends SeederAbstract
                 $inputData[$targetProperty] = $this->transformations ? $this->transformations->getValue($property, $this->data[$property]) : $this->data[$property];
             }
         }
+
+        $inputData = array_merge($inputData, $this->getAdditionalPropertiesInsertData());
 
         return $inputData;
     }
@@ -193,7 +195,7 @@ class TableSeeder extends SeederAbstract
      */
     private function getTargetProperty(string $property):string
     {
-        return $this->_isColumnExistInTable($property) ? $property : $this->getTranslations()->get($property);
+        return $this->isColumnExistInTable($property) ? $property : $this->getTranslations()->get($property);
     }
 
     /**
@@ -246,7 +248,7 @@ class TableSeeder extends SeederAbstract
      *
      * @return bool
      */
-    private function _saveOrUpdateDuplicated(array $data):bool
+    private function saveOrUpdateDuplicated(array $data):bool
     {
         return $this->getRecord($data) ? $this->update($data) : $this->create($data);
     }

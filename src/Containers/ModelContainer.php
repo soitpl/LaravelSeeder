@@ -21,7 +21,7 @@ class ModelContainer
      */
     private $data;
     /**
-     * @var TransformationsContainer
+     * @var AdditionalProperiesConatiner
      */
     private $transformations;
     /**
@@ -131,13 +131,13 @@ class ModelContainer
     /**
      * Set data transformations
      *
-     * @param TransformationsContainer $transformations
+     * @param AdditionalProperiesConatiner $transformations
      *
      * @return ModelContainer
      */
-    public function setTransformations(?TransformationsContainer $transformations): self
+    public function setTransformations(?AdditionalProperiesConatiner $transformations): self
     {
-        $this->transformations = $transformations ?? new TransformationsContainer();
+        $this->transformations = $transformations ?? new AdditionalProperiesConatiner();
 
         return $this;
     }

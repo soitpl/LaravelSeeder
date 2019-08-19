@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
 use soIT\LaravelSeeders\Containers\DataContainer;
 use soIT\LaravelSeeders\Containers\ModelContainer;
+use soIT\LaravelSeeders\Exceptions\NoPropertySetException;
 
 class RelationModelSeeder extends ModelSeeder
 {
@@ -42,20 +43,23 @@ class RelationModelSeeder extends ModelSeeder
     /**
      * Create and save new model in database
      *
-     * @return object|null
+     * @return void
+     * @throws NoPropertySetException
      */
     public function save()
     {
-        $this->_prepareContainers($this->data);
-        $this->_saveContainers();
+        $this->prepareContainers($this->data);
+        $this->saveContainers();
     }
 
     /**
      * Prepare all models containers for seed
      *
      * @param DataContainer $data
+     *
+     * @throws NoPropertySetException
      */
-    private function _prepareContainers(DataContainer $data): void
+    private function prepareContainers(DataContainer $data): void
     {
         foreach ($data as $item) {
             $this->containers->push(
@@ -69,12 +73,12 @@ class RelationModelSeeder extends ModelSeeder
     /**
      * Save prepared containers
      */
-    private function _saveContainers(): void
+    private function saveContainers(): void
     {
         if (!$this->transformations->count()) {
-            $this->_saveModelsBulk();
+            $this->saveModelsBulk();
         } else {
-            $this->_saveModels();
+            $this->saveModels();
         }
     }
 
@@ -83,7 +87,7 @@ class RelationModelSeeder extends ModelSeeder
      *
      * @return Collection Collection of models
      */
-    private function _getAllModels(): Collection
+    private function getAllModels(): Collection
     {
         return $this->containers->map(function (ModelContainer $item) {
             return $item->getModel();
@@ -93,9 +97,9 @@ class RelationModelSeeder extends ModelSeeder
     /**
      * Save models in one operation with saveMany() parent model method
      */
-    private function _saveModelsBulk()
+    private function saveModelsBulk()
     {
-        $models = $this->_getAllModels();
+        $models = $this->getAllModels();
         $relationName = $this->getRelationName($models->first());
 
         $this->parentModel->$relationName()->saveMany($models);
@@ -105,7 +109,7 @@ class RelationModelSeeder extends ModelSeeder
      * Save models in sequential
      * Method should be used if models have nested models to save
      */
-    private function _saveModels()
+    private function saveModels()
     {
         foreach ($this->containers as $container) {
             $container->prepare();
@@ -127,8 +131,6 @@ class RelationModelSeeder extends ModelSeeder
      */
     private function getRelationName(Model $model): string
     {
-        $relationName = strtolower(class_basename($model)) . 's';
-
-        return $relationName;
+        return strtolower(class_basename($model)) . 's';
     }
 }

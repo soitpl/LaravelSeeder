@@ -47,6 +47,7 @@ abstract class SeederAbstract
 
         return $this;
     }
+
     /**
      * @return DataContainer
      */

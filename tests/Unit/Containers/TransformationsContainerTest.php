@@ -18,7 +18,7 @@ class TransformationsContainerTest extends TestCase
     {
         $transformationMock = \Mockery::mock(TransformationsInterface::class);
 
-        $container = new TransformationsContainer();
+        $container = new AdditionalProperiesConatiner();
         $container->assign('test', $transformationMock);
 
         $this->assertEquals($transformationMock, $container->getTransformation('test'));
@@ -28,7 +28,7 @@ class TransformationsContainerTest extends TestCase
     {
         $transformationMock = \Mockery::mock(TransformationsInterface::class);
 
-        $container = new TransformationsContainer();
+        $container = new AdditionalProperiesConatiner();
         $container->assign('test', $transformationMock);
 
         $this->assertEquals($transformationMock, $container->getTransformation('test'));
@@ -39,7 +39,7 @@ class TransformationsContainerTest extends TestCase
     {
         $testValue = Str::random(15);
         $testProperty = Str::random(15);
-        $container = new TransformationsContainer();
+        $container = new AdditionalProperiesConatiner();
 
         $transformationMock = \Mockery::mock(TransformationsInterface::class);
         $transformationMock
@@ -48,7 +48,7 @@ class TransformationsContainerTest extends TestCase
             ->andReturn($transformationMock);
         $transformationMock
             ->shouldReceive('transform')
-            ->withArgs([$testValue, TransformationsContainer::class])
+            ->withArgs([$testValue, AdditionalProperiesConatiner::class])
             ->andReturn('ok');
 
         $container->assign($testProperty, $transformationMock);
@@ -63,7 +63,7 @@ class TransformationsContainerTest extends TestCase
             return $value . '-tested';
         };
 
-        $container = new TransformationsContainer();
+        $container = new AdditionalProperiesConatiner();
         $container->assignCallback('test', $function);
 
         $this->assertInstanceOf(CallableTransformation::class, $container->getTransformation('test'));
@@ -74,7 +74,7 @@ class TransformationsContainerTest extends TestCase
     {
         $transformationMock = \Mockery::mock(TransformationsInterface::class);
 
-        $container = new TransformationsContainer();
+        $container = new AdditionalProperiesConatiner();
         $container->assign('test', $transformationMock);
         $container->assign('test-1', $transformationMock);
         $this->assertEquals(2, $container->count());

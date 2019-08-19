@@ -19,6 +19,11 @@ class CallableTransformation implements TransformationsInterface
      */
     private $propertyName;
 
+    /**
+     * CallableTransformation constructor.
+     *
+     * @param callable $callback
+     */
     public function __construct(callable $callback)
     {
         $this->callback = $callback;
@@ -28,7 +33,7 @@ class CallableTransformation implements TransformationsInterface
      * Transform param value
      *
      * @param string $propertyValue
-     * @param TransformationsContainer $transformationsContainer
+     * @param AdditionalProperiesConatiner $transformationsContainer
      *
      * @return mixed
      */

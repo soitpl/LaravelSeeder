@@ -7,13 +7,13 @@
 namespace soIT\LaravelSeeders\Seeders;
 
 use PHPUnit\Framework\TestCase;
-use soIT\LaravelSeeders\Containers\TransformationsContainer;
+use soIT\LaravelSeeders\Containers\AdditionalProperiesConatiner;
 
 class SeederTransformationsTraitTest extends TestCase
 {
     public function testGetSetTransformations()
     {
-        $transformations = new TransformationsContainer();
+        $transformations = new AdditionalProperiesConatiner();
 
         $seederMock = \Mockery::mock(SeederTransformationsTrait::class);
         $ret = $seederMock->setTransformations($transformations);

@@ -5,10 +5,11 @@
  */
 namespace soIT\LaravelSeeders\Executors;
 
+use soIT\LaravelSeeders\Containers\TransformationsContainer;
+use soIT\LaravelSeeders\Executors\Features\AdditionalPropertiesTrait;
 use soIT\LaravelSeeders\Executors\Features\TransformationPropertiesTrait;
 use soIT\LaravelSeeders\Executors\Features\TranslationPropertiesTrait;
 use soIT\LaravelSeeders\Seeders\TableSeeder;
-use soIT\LaravelSeeders\Containers\TransformationsContainer;
 use soIT\LaravelSeeders\Containers\DataContainer;
 use soIT\LaravelSeeders\Sources\SourceInterface;
 
@@ -20,13 +21,13 @@ use soIT\LaravelSeeders\Sources\SourceInterface;
  */
 class TableExecutor extends ExecutorAbstract implements TableExecutorInterface
 {
-    use TranslationPropertiesTrait, TransformationPropertiesTrait;
+    use TranslationPropertiesTrait, TransformationPropertiesTrait, AdditionalPropertiesTrait;
 
     /**
      * ModelExecutor constructor.
      *
      * @param string $table Model assigned to executor
-     * @param TransformationsContainer|null $transformations Mapping container with columns mapping info.
+     * @param AdditionalProperiesConatiner|null $transformations Mapping container with columns mapping info.
      *
      * @throws \soIT\LaravelSeeders\Exceptions\SeedTargetFoundException
      */
@@ -64,6 +65,7 @@ class TableExecutor extends ExecutorAbstract implements TableExecutorInterface
     {
         $this->seeder->setTransformations($this->getTransformations());
         $this->seeder->setTranslations($this->getTranslations());
+        $this->seeder->setProperties($this->getAdditionalProperties());
 
         return parent::execute($data);
     }

@@ -8,7 +8,7 @@ namespace soIT\LaravelSeeders\Executors;
 
 use PHPUnit\Framework\TestCase;
 use soIT\LaravelSeeders\Containers\DataContainer;
-use soIT\LaravelSeeders\Containers\TransformationsContainer;
+use soIT\LaravelSeeders\Containers\AdditionalProperiesConatiner;
 use soIT\LaravelSeeders\Seeders\SeederAbstract;
 
 
@@ -24,12 +24,12 @@ class ModelExecutorTest extends TestCase
         $this->assertInstanceOf(SeederAbstract::class, $seeder);
         $this->assertEquals(self::MODEL_NAME, $seeder->getName());
 
-        $this->assertEquals(new TransformationsContainer(), $executor->getTransformations());
+        $this->assertEquals(new AdditionalProperiesConatiner(), $executor->getTransformations());
     }
 
     public function testConstructorWithTransformations()
     {
-        $transformationsContainer = new TransformationsContainer();
+        $transformationsContainer = new AdditionalProperiesConatiner();
 
         $executor = new ModelExecutor(self::MODEL_NAME, $transformationsContainer);
         $seeder = $executor->getSeeder();

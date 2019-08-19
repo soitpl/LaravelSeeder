@@ -6,7 +6,7 @@
 
 namespace soIT\LaravelSeeders\Transformations;
 
-use soIT\LaravelSeeders\Containers\TransformationsContainer;
+use soIT\LaravelSeeders\Containers\AdditionalProperiesConatiner;
 use soIT\LaravelSeeders\Seeders\RelationModelSeeder;
 
 class ModelTransformation implements TransformationsInterface
@@ -26,11 +26,11 @@ class ModelTransformation implements TransformationsInterface
      * Make transformation for model
      *
      * @param $propertyValue
-     * @param TransformationsContainer $transformationsContainer
+     * @param AdditionalProperiesConatiner $transformationsContainer
      *
      * @return mixed
      */
-    public function transform($propertyValue, TransformationsContainer $transformationsContainer)
+    public function transform($propertyValue, AdditionalProperiesConatiner $transformationsContainer)
     {
         return (new RelationModelSeeder($this->modelName))
             ->setTransformations($transformationsContainer)
