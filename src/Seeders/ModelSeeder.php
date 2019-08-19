@@ -6,7 +6,6 @@
 namespace soIT\LaravelSeeders\Seeders;
 
 use Illuminate\Database\Eloquent\Model;
-use soIT\LaravelSeeders\Containers\DataContainer;
 use soIT\LaravelSeeders\Containers\ModelContainer;
 
 class ModelSeeder extends SeederAbstract

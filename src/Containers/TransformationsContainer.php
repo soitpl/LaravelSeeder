@@ -6,13 +6,16 @@
 
 namespace soIT\LaravelSeeders\Containers;
 
+use ArrayAccess;
+use Countable;
+use Iterator;
 use soIT\LaravelSeeders\Transformations\CallableTransformation;
 use soIT\LaravelSeeders\Transformations\TransformationsInterface;
 use soIT\LaravelSeeders\Utils\ArrayAccessTrait;
 use soIT\LaravelSeeders\Utils\Converters;
 use soIT\LaravelSeeders\Utils\IteratorTrait;
 
-class TransformationsContainer implements \Iterator, \ArrayAccess, \Countable
+class TransformationsContainer implements Iterator, ArrayAccess, Countable
 {
     use IteratorTrait, ArrayAccessTrait;
 
@@ -20,7 +23,7 @@ class TransformationsContainer implements \Iterator, \ArrayAccess, \Countable
      * Assign element to property name
      *
      * @param string $property Property name
-     * @param mixed $value Element to assign, could be model, function, static
+     * @param TransformationsInterface $value Element to assign, could be model, function, static
      */
     public function assign(string $property, TransformationsInterface $value): void
     {
@@ -55,7 +58,7 @@ class TransformationsContainer implements \Iterator, \ArrayAccess, \Countable
      */
     public function getTransformation(string $property): ?TransformationsInterface
     {
-        if ($transformation = $this->_getByPropertyName($property)) {
+        if ($transformation = $this->getByPropertyName($property)) {
             return $transformation[0] ?? null;
         }
 
@@ -65,14 +68,14 @@ class TransformationsContainer implements \Iterator, \ArrayAccess, \Countable
     /**
      * Get property seed value for getModelName property value
      *
-     * @param $property
-     * @param $value
+     * @param string $property
+     * @param mixed $value
      *
      * @return mixed
      */
     public function getValue(string $property, $value)
     {
-        $items = $this->_getByPropertyName($property);
+        $items = $this->getByPropertyName($property);
 
         if (is_null($items) || !isset($items[0])) {
             return $value;
@@ -83,7 +86,7 @@ class TransformationsContainer implements \Iterator, \ArrayAccess, \Countable
 
         return $transform
             ->setPropertyName($property)
-            ->transform($value, (new TransformationsContainer())->_assignArray($items));
+            ->transform($value, (new TransformationsContainer())->assignArray($items));
     }
 
     /**
@@ -103,7 +106,7 @@ class TransformationsContainer implements \Iterator, \ArrayAccess, \Countable
      *
      * @return TransformationsContainer
      */
-    private function _assignArray(?array $array): self
+    private function assignArray(?array $array): self
     {
         $this->items = $array;
 
@@ -117,7 +120,7 @@ class TransformationsContainer implements \Iterator, \ArrayAccess, \Countable
      *
      * @return array
      */
-    private function _getByPropertyName(string $property)
+    private function getByPropertyName(string $property): ?array
     {
         return $this->items[$property] ?? null;
     }

@@ -9,7 +9,12 @@ use Illuminate\Support\Collection;
 
 class DataContainer extends Collection
 {
-    public function __construct($items = [])
+    /**
+     * DataContainer constructor.
+     *
+     * @param array $items
+     */
+    public function __construct(array $items = [])
     {
         parent::__construct($items);
 

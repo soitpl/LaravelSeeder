@@ -16,17 +16,12 @@ use soIT\LaravelSeeders\Executors\ExecutorInterface;
  * @method Executors\TableExecutor setTable(string $string)
  * @method Executors\ModelExecutor setModel(string $string)
  */
-abstract class LaravelSeeder extends Seeder
+class LaravelSeeder extends Seeder
 {
     /**
      * @var Executors Executors class container
      */
     protected $executors = null;
-
-    /**
-     * @return mixed Abstract function called during initialize
-     */
-    abstract function setUp();
 
     /**
      * LaravelSeeder constructor.
@@ -36,7 +31,6 @@ abstract class LaravelSeeder extends Seeder
     public function __construct(Executors $executors = null)
     {
         $this->setExecutors($executors ?? new Executors());
-        $this->setUp();
     }
 
     /**
