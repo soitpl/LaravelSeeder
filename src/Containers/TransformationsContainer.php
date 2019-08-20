@@ -1,7 +1,8 @@
 <?php
 /**
  * @author Rafał Tadaszak <r.tadaszak@soit.pl>
- * @copyright (c) soIT.pl  2018-2019
+ * @copyright (c) soIT.pl (2018-2019)
+ * @url http://www.soit.pl
  */
 
 namespace soIT\LaravelSeeders\Containers;
@@ -104,7 +105,7 @@ class TransformationsContainer implements Iterator, ArrayAccess, Countable
      *
      * @param array|null $array
      *
-     * @return AdditionalProperiesConatiner
+     * @return TransformationsContainer
      */
     private function assignArray(?array $array): self
     {

@@ -1,12 +1,10 @@
 <?php
 /**
  * @author Rafał Tadaszak <r.tadaszak@soit.pl>
- * @copyright (c) soIT.pl  2018-2019
+ * @copyright (c) soIT.pl (2018-2019)
+ * @url http://www.soit.pl
  */
-
 namespace soIT\LaravelSeeders\Transformations;
-
-use soIT\LaravelSeeders\Containers\TransformationsContainer;
 
 class CallableTransformation implements TransformationsInterface
 {
@@ -33,11 +31,10 @@ class CallableTransformation implements TransformationsInterface
      * Transform param value
      *
      * @param string $propertyValue
-     * @param AdditionalProperiesConatiner $transformationsContainer
      *
      * @return mixed
      */
-    public function transform($propertyValue, TransformationsContainer $transformationsContainer)
+    public function transform($propertyValue)
     {
         return call_user_func($this->callback, $propertyValue);
     }
@@ -49,7 +46,7 @@ class CallableTransformation implements TransformationsInterface
      *
      * @return TransformationsInterface
      */
-    public function setPropertyName(string $property):TransformationsInterface
+    public function setPropertyName(string $property): TransformationsInterface
     {
         $this->propertyName = $property;
 

@@ -1,7 +1,8 @@
 <?php
 /**
  * @author Rafał Tadaszak <r.tadaszak@soit.pl>
- * @copyright soIT {$year}
+ * @copyright (c) soIT.pl (2018-2019)
+ * @url http://www.soit.pl
  */
 namespace soIT\LaravelSeeders\Seeders;
 
@@ -63,7 +64,7 @@ class RelationModelSeeder extends ModelSeeder
     {
         foreach ($data as $item) {
             $this->containers->push(
-                $this->_initModelContainer()
+                $this->initModelContainer()
                     ->setData($item)
                     ->prepare()
             );
@@ -118,7 +119,7 @@ class RelationModelSeeder extends ModelSeeder
 
             $this->parentModel->$relationName()->save($model);
 
-            $this->_executeSeeders($model, $container->getSeeders());
+            $this->executeSeeders($model, $container->getSeeders());
         }
     }
 

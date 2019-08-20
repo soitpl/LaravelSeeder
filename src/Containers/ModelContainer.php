@@ -1,9 +1,9 @@
 <?php
 /**
  * @author Rafał Tadaszak <r.tadaszak@soit.pl>
- * @copyright soIT 2019
+ * @copyright (c) soIT.pl (2018-2019)
+ * @url http://www.soit.pl
  */
-
 namespace soIT\LaravelSeeders\Containers;
 
 use Illuminate\Database\Eloquent\Model;
@@ -21,7 +21,7 @@ class ModelContainer
      */
     private $data;
     /**
-     * @var AdditionalProperiesConatiner
+     * @var TransformationsContainer
      */
     private $transformations;
     /**
@@ -131,13 +131,13 @@ class ModelContainer
     /**
      * Set data transformations
      *
-     * @param AdditionalProperiesConatiner $transformations
+     * @param TransformationsContainer|null $transformations
      *
      * @return ModelContainer
      */
-    public function setTransformations(?AdditionalProperiesConatiner $transformations): self
+    public function setTransformations(?TransformationsContainer $transformations): self
     {
-        $this->transformations = $transformations ?? new AdditionalProperiesConatiner();
+        $this->transformations = $transformations ?? new TransformationsContainer();
 
         return $this;
     }

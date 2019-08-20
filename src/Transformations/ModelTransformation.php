@@ -1,12 +1,13 @@
 <?php
 /**
  * @author Rafał Tadaszak <r.tadaszak@soit.pl>
- * @copyright (c) soIT.pl  2018-2019
+ * @copyright (c) soIT.pl (2018-2019)
+ * @url http://www.soit.pl
  */
 
 namespace soIT\LaravelSeeders\Transformations;
 
-use soIT\LaravelSeeders\Containers\AdditionalProperiesConatiner;
+use soIT\LaravelSeeders\Containers\TransformationsContainer;
 use soIT\LaravelSeeders\Seeders\RelationModelSeeder;
 
 class ModelTransformation implements TransformationsInterface
@@ -15,7 +16,15 @@ class ModelTransformation implements TransformationsInterface
      * @var string Model name
      */
     private $modelName;
+    /**
+     * @var string
+     */
     private $propertyName;
+
+    /**
+     * @var TransformationsContainer
+     */
+    private $transformationsContainer;
 
     public function __construct(string $modelName)
     {
@@ -25,16 +34,26 @@ class ModelTransformation implements TransformationsInterface
     /**
      * Make transformation for model
      *
-     * @param $propertyValue
-     * @param AdditionalProperiesConatiner $transformationsContainer
+     * @param mixed $propertyValue
      *
      * @return mixed
      */
-    public function transform($propertyValue, AdditionalProperiesConatiner $transformationsContainer)
+    public function transform($propertyValue)
     {
         return (new RelationModelSeeder($this->modelName))
-            ->setTransformations($transformationsContainer)
+            ->setTransformations($this->transformationsContainer)
             ->setData($propertyValue);
+    }
+
+    /**
+     * @param TransformationsContainer $transformationsContainer
+     *
+     * @return TransformationsInterface
+     */
+    public function setTransformationsContainer(TransformationsContainer $transformationsContainer) : TransformationsInterface {
+        $this->transformationsContainer = $transformationsContainer;
+
+        return $this;
     }
 
     /**

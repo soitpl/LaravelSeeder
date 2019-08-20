@@ -1,7 +1,8 @@
 <?php
 /**
  * @author Rafał Tadaszak <r.tadaszak@soit.pl>
- * @copyright (c) soIT.pl  2018-2019
+ * @copyright (c) soIT.pl (2018-2019)
+ * @url http://www.soit.pl
  */
 
 namespace soIT\LaravelSeeders\Executors\Features;
@@ -9,6 +10,7 @@ namespace soIT\LaravelSeeders\Executors\Features;
 use Illuminate\Support\Str;
 use PHPUnit\Framework\TestCase;
 use soIT\LaravelSeeders\Containers\TransformationContainer;
+use soIT\LaravelSeeders\Containers\TransformationsContainer;
 use soIT\LaravelSeeders\Executors\ExecutorAbstract;
 use soIT\LaravelSeeders\Containers\AdditionalProperiesConatiner;
 
@@ -20,7 +22,7 @@ class TransformationPropertiesTraitTest extends TestCase
          * @var TransformationPropertiesTrait $mock
          */
         $mock = $this->_createTraitMock();
-        $transformations = new AdditionalProperiesConatiner();
+        $transformations = new TransformationsContainer();
 
         $ret = $mock->setTransformations($transformations);
         $this->assertEquals($mock, $ret);
@@ -34,9 +36,9 @@ class TransformationPropertiesTraitTest extends TestCase
          */
         $mock = $this->_createTraitMock();
 
-        $this->assertEquals(new AdditionalProperiesConatiner(), $mock->getTransformations());
+        $this->assertEquals(new TransformationsContainer(), $mock->getTransformations());
 
-        $transformations = new AdditionalProperiesConatiner();
+        $transformations = new TransformationsContainer();
         $transformations['x'] = 'y';
 
         $ret = $mock->setTransformations($transformations);
@@ -56,7 +58,7 @@ class TransformationPropertiesTraitTest extends TestCase
          */
         $mock = $this->_createTraitMock();
 
-        $transformationContainerMock = \Mockery::mock(AdditionalProperiesConatiner::class);
+        $transformationContainerMock = \Mockery::mock(TransformationsContainer::class);
         $transformationContainerMock
             ->shouldReceive('assignCallback')
             ->withArgs([$property, $value])

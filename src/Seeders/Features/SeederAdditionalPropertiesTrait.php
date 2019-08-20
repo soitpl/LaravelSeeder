@@ -1,12 +1,14 @@
 <?php
 /**
  * @author Rafał Tadaszak <r.tadaszak@soit.pl>
- * @copyright soIT {$year}
+ * @copyright (c) soIT.pl (2018-2019)
+ * @url http://www.soit.pl
  */
 
-namespace soIT\LaravelSeeders\Seeders;
+namespace soIT\LaravelSeeders\Seeders\Features;
 
 use soIT\LaravelSeeders\Containers\AdditionalPropertiesContainer;
+use soIT\LaravelSeeders\Transformations\CallableTransformation;
 
 trait SeederAdditionalPropertiesTrait
 {
@@ -17,13 +19,17 @@ trait SeederAdditionalPropertiesTrait
 
     private function getAdditionalPropertiesInsertData(): array
     {
-        print_r($this->properties);
         $out = [];
 
         foreach ($this->properties as $key => $value) {
-            $out[$key] = $this->data[$key];
+            if ($value instanceof CallableTransformation) {
+                $out[$key] = $value->setPropertyName($key)->transform($value);
+            }
+            else {
+                $out[$key] = $value;
+            }
         }
-        print_r($out);
+
         return $out;
     }
 

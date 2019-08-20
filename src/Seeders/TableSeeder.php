@@ -1,7 +1,8 @@
 <?php
 /**
  * @author Rafał Tadaszak <r.tadaszak@soit.pl>
- * @copyright (c) soIT.pl  2018-2019
+ * @copyright (c) soIT.pl (2018-2019)
+ * @url http://www.soit.pl
  */
 
 namespace soIT\LaravelSeeders\Seeders;
@@ -12,6 +13,7 @@ use Illuminate\Support\Facades\DB;
 use soIT\LaravelSeeders\Enums\Duplicated;
 use soIT\LaravelSeeders\Exceptions\ColumnNotFoundException;
 use soIT\LaravelSeeders\Exceptions\SeedTargetFoundException;
+use soIT\LaravelSeeders\Seeders\Features\SeederAdditionalPropertiesTrait;
 
 class TableSeeder extends SeederAbstract
 {
@@ -68,9 +70,14 @@ class TableSeeder extends SeederAbstract
      *
      * @return bool
      */
-    protected function isTableExists(string $table):bool
+    protected function isTableExists(string $table): bool
     {
-        return in_array($table, DB::connection()->getDoctrineSchemaManager()->listTableNames());
+        return in_array(
+            $table,
+            DB::connection()
+                ->getDoctrineSchemaManager()
+                ->listTableNames()
+        );
     }
 
     /**
@@ -86,7 +93,7 @@ class TableSeeder extends SeederAbstract
      *
      * @return array Array with defined unique columns
      */
-    public function getUniqueColumns():array
+    public function getUniqueColumns(): array
     {
         return $this->uniqueColumns;
     }
@@ -99,7 +106,7 @@ class TableSeeder extends SeederAbstract
      * @return TableSeeder
      * @throws ColumnNotFoundException
      */
-    public function setUniqueKeys(array $keys):self
+    public function setUniqueKeys(array $keys): self
     {
         $this->uniqueColumns = [];
 
@@ -131,7 +138,7 @@ class TableSeeder extends SeederAbstract
      *
      * @return bool
      */
-    private function isColumnExistInTable(string $property):bool
+    private function isColumnExistInTable(string $property): bool
     {
         return in_array($property, $this->columns);
     }
@@ -141,7 +148,7 @@ class TableSeeder extends SeederAbstract
      *
      * @return string Table name
      */
-    public function getName():string
+    public function getName(): string
     {
         return $this->tableName;
     }
@@ -158,10 +165,10 @@ class TableSeeder extends SeederAbstract
         switch ($this->duplicated) {
             case Duplicated::IGNORE:
                 return $this->saveAndIgnoreDuplicated($insertData);
-            break;
+                break;
             case Duplicated::UPDATE:
                 return $this->saveOrUpdateDuplicated($insertData);
-            break;
+                break;
             default:
                 return $this->create($insertData);
         }
@@ -172,20 +179,20 @@ class TableSeeder extends SeederAbstract
      *
      * @return array
      */
-    private function getInsertData():array
+    private function getInsertData(): array
     {
         $inputData = [];
         foreach ($this->data as $property => $value) {
             $targetProperty = $this->getTargetProperty($property);
 
             if ($targetProperty) {
-                $inputData[$targetProperty] = $this->transformations ? $this->transformations->getValue($property, $this->data[$property]) : $this->data[$property];
+                $inputData[$targetProperty] = $this->transformations
+                    ? $this->transformations->getValue($property, $this->data[$property])
+                    : $this->data[$property];
             }
         }
 
-        $inputData = array_merge($inputData, $this->getAdditionalPropertiesInsertData());
-
-        return $inputData;
+        return array_merge($inputData, $this->getAdditionalPropertiesInsertData());
     }
 
     /**
@@ -193,7 +200,7 @@ class TableSeeder extends SeederAbstract
      *
      * @return string
      */
-    private function getTargetProperty(string $property):string
+    private function getTargetProperty(string $property): string
     {
         return $this->isColumnExistInTable($property) ? $property : $this->getTranslations()->get($property);
     }
@@ -205,7 +212,7 @@ class TableSeeder extends SeederAbstract
      *
      * @return int|null
      */
-    private function saveAndIgnoreDuplicated(array $data):?int
+    private function saveAndIgnoreDuplicated(array $data): ?int
     {
         if ($record = $this->getRecord($data)) {
             return $record->id ?? null;
@@ -231,7 +238,7 @@ class TableSeeder extends SeederAbstract
      *
      * @return array
      */
-    private function getDataForSearch(array $data):array
+    private function getDataForSearch(array $data): array
     {
         $out = [];
         foreach ($this->uniqueColumns as $column) {
@@ -248,7 +255,7 @@ class TableSeeder extends SeederAbstract
      *
      * @return bool
      */
-    private function saveOrUpdateDuplicated(array $data):bool
+    private function saveOrUpdateDuplicated(array $data): bool
     {
         return $this->getRecord($data) ? $this->update($data) : $this->create($data);
     }
@@ -260,7 +267,7 @@ class TableSeeder extends SeederAbstract
      *
      * @return int Record ID
      */
-    private function create(array $data):int
+    private function create(array $data): int
     {
         return DB::table($this->tableName)->insertGetId($data);
     }
@@ -272,7 +279,7 @@ class TableSeeder extends SeederAbstract
      *
      * @return bool
      */
-    private function update(array $data):bool
+    private function update(array $data): bool
     {
         return $this->getQueryBuilder($data)->update($data);
     }
@@ -284,7 +291,7 @@ class TableSeeder extends SeederAbstract
      *
      * @return Builder
      */
-    private function getQueryBuilder(array $data):Builder
+    private function getQueryBuilder(array $data): Builder
     {
         return DB::table($this->tableName)->{$this->buildDynamicWhere()}(...$this->getDataForSearch($data));
     }
@@ -294,10 +301,14 @@ class TableSeeder extends SeederAbstract
      *
      * @return string
      */
-    private function buildDynamicWhere():string
+    private function buildDynamicWhere(): string
     {
-        return 'where'.implode('And', array_map(function ($item) {
+        return 'where' .
+            implode(
+                'And',
+                array_map(function ($item) {
                     return ucfirst($item);
-                }, $this->uniqueColumns));
+                }, $this->uniqueColumns)
+            );
     }
 }

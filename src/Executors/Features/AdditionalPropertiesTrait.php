@@ -1,7 +1,8 @@
 <?php
 /**
  * @author Rafał Tadaszak <r.tadaszak@soit.pl>
- * @copyright soIT 2019
+ * @copyright (c) soIT.pl (2018-2019)
+ * @url http://www.soit.pl
  */
 
 namespace soIT\LaravelSeeders\Executors\Features;
@@ -34,9 +35,9 @@ trait AdditionalPropertiesTrait
      *
      * @return self|ExecutorAbstract
      */
-    public function addPropertyWithConstant(string $property, $value): ExecutorAbstract
+    public function addPropertyWithValue(string $property, $value): ExecutorAbstract
     {
-        $this->getAdditionalProperties()->assignConstant($property, $value);
+        $this->getAdditionalProperties()->assignValue($property, $value);
 
         return $this;
     }
@@ -52,20 +53,6 @@ trait AdditionalPropertiesTrait
     public function addPropertyWithCallback(string $property, callable $callback): ExecutorAbstract
     {
         $this->getAdditionalProperties()->assignCallback($property, $callback);
-
-        return $this;
-    }
-
-    /**
-     * Setter for translations container
-     *
-     * @param AdditionalPropertiesContainer|null $properties
-     *
-     * @return self|ExecutorAbstract
-     */
-    public function setAdditionalProperties(?AdditionalPropertiesContainer $properties): ExecutorAbstract
-    {
-        $this->properties = $properties;
 
         return $this;
     }
