@@ -8,10 +8,13 @@ namespace soIT\LaravelSeeders\Seeders;
 
 use Illuminate\Database\Eloquent\Model;
 use soIT\LaravelSeeders\Containers\ModelContainer;
+use soIT\LaravelSeeders\Seeders\Features\SeederAdditionalPropertiesTrait;
+use soIT\LaravelSeeders\Seeders\Features\SeederTransformationsTrait;
+use soIT\LaravelSeeders\Seeders\Features\SeederTranslationsTrait;
 
 class ModelSeeder extends SeederAbstract
 {
-    use SeederTransformationsTrait, SeederTranslationsTrait;
+    use SeederTransformationsTrait, SeederTranslationsTrait, SeederAdditionalPropertiesTrait;
 
     /**
      * @var ModelContainer Instance of ModelMaker class
@@ -51,7 +54,7 @@ class ModelSeeder extends SeederAbstract
      *
      * @throws \soIT\LaravelSeeders\Exceptions\NoPropertySetException
      */
-    public function save()
+    public function save(): void
     {
         $container = $this->initModelContainer();
         $container->setData($this->getData());

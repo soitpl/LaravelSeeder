@@ -33,6 +33,8 @@ class TransformationsContainer implements Iterator, ArrayAccess, Countable
         $temp = &$this->items;
 
         foreach ($array as $key) {
+            $temp[$key] = [];
+
             $temp = &$temp[$key];
         }
 
@@ -82,12 +84,16 @@ class TransformationsContainer implements Iterator, ArrayAccess, Countable
             return $value;
         }
 
+        /**
+         * @var TransformationsInterface $transform
+         */
         $transform = $items[0];
         unset($items[0]);
 
         return $transform
             ->setPropertyName($property)
-            ->transform($value, (new TransformationsContainer())->assignArray($items));
+            ->setTransformationsContainer((new TransformationsContainer)->assignArray($items))
+            ->transform($value);
     }
 
     /**

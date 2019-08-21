@@ -4,7 +4,7 @@
  * @copyright (c) soIT.pl (2018-2019)
  * @url http://www.soit.pl
  */
-namespace soIT\LaravelSeeders\Seeders;
+namespace soIT\LaravelSeeders\Seeders\Features;
 
 use soIT\LaravelSeeders\Containers\TransformationsContainer;
 
