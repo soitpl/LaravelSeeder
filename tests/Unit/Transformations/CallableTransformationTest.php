@@ -1,13 +1,14 @@
 <?php
 /**
  * @author Rafał Tadaszak <r.tadaszak@soit.pl>
- * @copyright (c) soIT.pl  2018-2019
+ * @copyright (c) soIT.pl (2018-2019)
+ * @url http://www.soit.pl
  */
 
 namespace soIT\LaravelSeeders\Transformations;
 
 use PHPUnit\Framework\TestCase;
-use soIT\LaravelSeeders\Containers\TransformationsContainer;
+use soIT\LaravelSeeders\Containers\AdditionalProperiesConatiner;
 
 class CallableTransformationTest extends TestCase
 {
@@ -17,7 +18,7 @@ class CallableTransformationTest extends TestCase
         $transformation = new CallableTransformation(function($var){
             return $var.'-tested';
         });
-        $this->assertEquals('variable-tested', $transformation->transform('variable', new TransformationsContainer()));
+        $this->assertEquals('variable-tested', $transformation->transform('variable', new AdditionalProperiesConatiner()));
     }
 
     public function testSetPropertyName()

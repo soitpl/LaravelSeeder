@@ -1,17 +1,18 @@
 <?php
 /**
  * @author Rafał Tadaszak <r.tadaszak@soit.pl>
- * @copyright (c) soIT.pl  2018-2019
+ * @copyright (c) soIT.pl (2018-2019)
+ * @url http://www.soit.pl
  */
-
 namespace soIT\LaravelSeeders\Executors;
 
+use soIT\LaravelSeeders\Containers\TransformationsContainer;
+use soIT\LaravelSeeders\Executors\Features\AdditionalPropertiesTrait;
 use soIT\LaravelSeeders\Executors\Features\TransformationPropertiesTrait;
 use soIT\LaravelSeeders\Executors\Features\TranslationPropertiesTrait;
 use soIT\LaravelSeeders\Containers\DataContainer;
 use soIT\LaravelSeeders\Seeders\ModelSeeder;
 use soIT\LaravelSeeders\Transformations\ModelTransformation;
-use soIT\LaravelSeeders\Containers\TransformationsContainer;
 
 /**
  * Class ModelExecutor
@@ -21,13 +22,13 @@ use soIT\LaravelSeeders\Containers\TransformationsContainer;
  */
 class ModelExecutor extends ExecutorAbstract implements ModelExecutorInterface
 {
-    use TranslationPropertiesTrait, TransformationPropertiesTrait;
+    use TranslationPropertiesTrait, TransformationPropertiesTrait, AdditionalPropertiesTrait;
 
     /**
      * ModelExecutor constructor.
      *
      * @param string $model Model assigned to executor
-     * @param TransformationsContainer|null $transformations Mapping container with columns mapping info.
+     * @param TransformationsContainer $transformations Mapping container with columns mapping info.
      */
     public function __construct(string $model, TransformationsContainer $transformations = null)
     {

@@ -1,7 +1,8 @@
 <?php
 /**
  * @author Rafał Tadaszak <r.tadaszak@soit.pl>
- * @copyright soIT 2019
+ * @copyright (c) soIT.pl (2018-2019)
+ * @url http://www.soit.pl
  */
 namespace soIT\LaravelSeeders\Seeders;
 
@@ -52,20 +53,21 @@ class ModelSeeder extends SeederAbstract
      */
     public function save()
     {
-        $container = $this->_initModelContainer();
+        $container = $this->initModelContainer();
         $container->setData($this->getData());
         $container->prepare();
+
         $model = $container->getModel();
 
         $model->save();
 
-        $this->_executeSeeders($model, $container->getSeeders());
+        $this->executeSeeders($model, $container->getSeeders());
     }
 
     /**
      * Init instance of model maker
      */
-    protected function _initModelContainer(): ModelContainer
+    protected function initModelContainer(): ModelContainer
     {
         $this->modelContainer = new ModelContainer($this->modelName);
         $this->modelContainer->setTransformations($this->getTransformations());
@@ -78,7 +80,7 @@ class ModelSeeder extends SeederAbstract
      * @param Model $model
      * @param array $seeders
      */
-    protected function _executeSeeders(Model $model, array $seeders): void
+    protected function executeSeeders(Model $model, array $seeders): void
     {
         if (count($seeders)) {
             foreach ($seeders as $seeder) {
