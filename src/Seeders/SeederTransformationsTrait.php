@@ -32,7 +32,7 @@ trait SeederTransformationsTrait
      *
      * @return SeederTransformationsTrait
      */
-    public function setTransformations(TransformationsContainer $transformations)
+    public function setTransformations(?TransformationsContainer $transformations)
     {
         $this->transformations = $transformations;
 
