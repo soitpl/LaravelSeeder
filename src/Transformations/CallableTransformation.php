@@ -6,6 +6,8 @@
  */
 namespace soIT\LaravelSeeders\Transformations;
 
+use soIT\LaravelSeeders\Containers\TransformationsContainer;
+
 class CallableTransformation implements TransformationsInterface
 {
     /**
@@ -16,6 +18,10 @@ class CallableTransformation implements TransformationsInterface
      * @var string Property name for transformation
      */
     private $propertyName;
+    /**
+     * @var TransformationsContainer
+     */
+    private $transformationsContainer;
 
     /**
      * CallableTransformation constructor.
@@ -49,6 +55,17 @@ class CallableTransformation implements TransformationsInterface
     public function setPropertyName(string $property): TransformationsInterface
     {
         $this->propertyName = $property;
+
+        return $this;
+    }
+
+    /**
+     * @param TransformationsContainer $container
+     *
+     * @return TransformationsInterface
+     */
+    public function setTransformationsContainer(TransformationsContainer $container) : TransformationsInterface {
+        $this->transformationsContainer = $container;
 
         return $this;
     }
