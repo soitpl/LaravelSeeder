@@ -8,6 +8,7 @@ namespace soIT\LaravelSeeders\Containers;
 
 use Illuminate\Database\Eloquent\Model;
 use soIT\LaravelSeeders\Exceptions\NoPropertySetException;
+use soIT\LaravelSeeders\Seeders\SeederAbstract;
 use soIT\LaravelSeeders\Seeders\SeederInterface;
 
 class ModelContainer
@@ -122,7 +123,7 @@ class ModelContainer
      *
      * @return ModelContainer
      */
-    public function setSeeder(SeederInterface $seeder): self
+    public function setSeeder(SeederAbstract $seeder): self
     {
         array_push($this->seeders, $seeder);
         return $this;
@@ -172,7 +173,7 @@ class ModelContainer
             $propertyValue = $this->getTargetTransformation($property, $value);
             $propertyName = $this->getTargetProperty($property);
 
-            if ($propertyValue instanceof SeederInterface) {
+            if ($propertyValue instanceof SeederAbstract) {
                 $this->setSeeder($propertyValue);
             } elseif (is_string($propertyValue)) {
                 $this->model->{$propertyName} = $propertyValue;

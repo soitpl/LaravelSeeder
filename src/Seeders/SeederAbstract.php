@@ -8,9 +8,13 @@
 namespace soIT\LaravelSeeders\Seeders;
 
 use soIT\LaravelSeeders\Containers\DataContainer;
+use soIT\LaravelSeeders\Containers\TransformationsContainer;
 
 abstract class SeederAbstract
 {
+    abstract public function setTransformations(TransformationsContainer $transformations);
+    abstract public function save();
+    
     /**
      * @var DataContainer $data Data to seed
      */

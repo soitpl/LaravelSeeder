@@ -46,12 +46,12 @@ class ModelTransformation implements TransformationsInterface
     }
 
     /**
-     * @param TransformationsContainer $transformationsContainer
+     * @param TransformationsContainer $container
      *
      * @return TransformationsInterface
      */
-    public function setTransformationsContainer(TransformationsContainer $transformationsContainer) : TransformationsInterface {
-        $this->transformationsContainer = $transformationsContainer;
+    public function setTransformationsContainer(TransformationsContainer $container) : TransformationsInterface {
+        $this->transformationsContainer = $container;
 
         return $this;
     }
