@@ -62,10 +62,9 @@ class CallableTransformation implements TransformationsInterface
     /**
      * @param TransformationsContainer $container
      *
-     * @return $this
+     * @return TransformationsInterface
      */
-    public function setTransformationsContainer(TransformationsContainer $container)
-    {
+    public function setTransformationsContainer(TransformationsContainer $container) : TransformationsInterface {
         $this->transformationsContainer = $container;
 
         return $this;

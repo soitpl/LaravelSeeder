@@ -4,7 +4,7 @@
     "description": "Library for seed data form files",
     "homepage": "https://github.com/soitpl/LaravelSeeder",
     "license": "MIT",
-    "version": "0.2.0",
+    "version": "0.2.1",
     "keywords": [
         "seeder",
         "laravel"
