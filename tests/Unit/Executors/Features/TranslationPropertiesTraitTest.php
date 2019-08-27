@@ -18,7 +18,7 @@ class TranslationPropertiesTraitTest extends TestCase
     public function testSetTranslations()
     {
         /**
-         * @var TranslationPropertiesTrait $mock
+         * @var HasPropertiesTranslation $mock
          */
         $mock = $this->_createTraitMock();
         $translations = new TranslationsContainer();
@@ -32,7 +32,7 @@ class TranslationPropertiesTraitTest extends TestCase
     public function testGetTranslations()
     {
         /**
-         * @var TranslationPropertiesTrait $mock
+         * @var HasPropertiesTranslation $mock
          */
         $mock = $this->_createTraitMock();
 
@@ -49,7 +49,7 @@ class TranslationPropertiesTraitTest extends TestCase
     public function testTranslateProperty()
     {
         /**
-         * @var TranslationPropertiesTrait $mock
+         * @var HasPropertiesTranslation $mock
          */
         $mock = $this->_createTraitMock();
 
@@ -64,6 +64,6 @@ class TranslationPropertiesTraitTest extends TestCase
 
     private function _createTraitMock()
     {
-        return \Mockery::mock(TranslationPropertiesTrait::class, ExecutorAbstract::class);
+        return \Mockery::mock(HasPropertiesTranslation::class, ExecutorAbstract::class);
     }
 }

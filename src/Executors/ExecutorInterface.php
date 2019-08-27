@@ -12,7 +12,7 @@ use soIT\LaravelSeeders\Containers\DataContainer;
 
 interface ExecutorInterface
 {
-    public function addSource(SourceInterface $source): self;
+    public function addSource(SourceInterface $source);
     public function execute(DataContainer $data);
     public function seed();
 }

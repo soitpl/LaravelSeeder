@@ -5,12 +5,12 @@
  * @url http://www.soit.pl
  */
 
-namespace soIT\LaravelSeeders\Executors\Features;
+namespace soIT\LaravelSeeders\Executors\Traits;
 
 use soIT\LaravelSeeders\Containers\AdditionalPropertiesContainer;
 use soIT\LaravelSeeders\Executors\ExecutorAbstract;
 
-trait AdditionalPropertiesTrait
+trait HasAdditionalProperties
 {
     /**
      * @var AdditionalPropertiesContainer
@@ -20,7 +20,7 @@ trait AdditionalPropertiesTrait
     /**
      * Getter for translations container
      *
-     * @return AdditionalProperiesConatiner
+     * @return AdditionalPropertiesContainer
      */
     public function getAdditionalProperties(): AdditionalPropertiesContainer
     {

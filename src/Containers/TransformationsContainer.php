@@ -33,7 +33,9 @@ class TransformationsContainer implements Iterator, ArrayAccess, Countable
         $temp = &$this->items;
 
         foreach ($array as $key) {
-            $temp[$key] = [];
+            if(!isset($temp[$key])) {
+                $temp[$key] = [];
+            }
 
             $temp = &$temp[$key];
         }

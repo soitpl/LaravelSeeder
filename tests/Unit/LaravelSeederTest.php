@@ -19,11 +19,11 @@ class LaravelSeederTest extends TestCase
      */
     public function testConstructorWithExecutors()
     {
-        $executorsMock = $this->createMock(Executors::class);
+        $executorsMock = $this->createMock(Seeders::class);
         $instance = $this->getMockForAbstractClass(LaravelSeeder::class, [$executorsMock]);
 
         $executors = $instance->getExecutors();
-        $this->assertInstanceOf(Executors::class, $executors);
+        $this->assertInstanceOf(Seeders::class, $executors);
         $this->assertEquals($executorsMock, $executors);
     }
 
@@ -35,7 +35,7 @@ class LaravelSeederTest extends TestCase
         $instance = $this->getMockForAbstractClass(LaravelSeeder::class);
 
         $executors = $instance->getExecutors();
-        $this->assertInstanceOf(Executors::class, $executors);
+        $this->assertInstanceOf(Seeders::class, $executors);
     }
 
     /**
@@ -67,7 +67,7 @@ class LaravelSeederTest extends TestCase
     public function testMagicCall()
     {
         $executorMock = $this->createMock(ExecutorInterface::class);
-        $executorsMock = $this->getMockBuilder(Executors::class)
+        $executorsMock = $this->getMockBuilder(Seeders::class)
             ->setMethods(['setTest'])
             ->getMock();
 
@@ -88,7 +88,7 @@ class LaravelSeederTest extends TestCase
      */
     public function testMagicCallMethodDontExists()
     {
-        $executorsMock = $this->getMockBuilder(Executors::class)->getMock();
+        $executorsMock = $this->getMockBuilder(Seeders::class)->getMock();
 
         /**
          * @var LaravelSeeder $mock

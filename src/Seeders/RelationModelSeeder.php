@@ -47,7 +47,7 @@ class RelationModelSeeder extends ModelSeeder
      * @return void
      * @throws NoPropertySetException
      */
-    public function save()
+    public function save(): void
     {
         $this->prepareContainers($this->data);
         $this->saveContainers();
