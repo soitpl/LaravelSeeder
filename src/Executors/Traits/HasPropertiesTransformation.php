@@ -5,12 +5,12 @@
  * @url http://www.soit.pl
  */
 
-namespace soIT\LaravelSeeders\Executors\Features;
+namespace soIT\LaravelSeeders\Executors\Traits;
 
 use soIT\LaravelSeeders\Executors\ExecutorAbstract;
 use soIT\LaravelSeeders\Containers\TransformationsContainer;
 
-trait TransformationPropertiesTrait
+trait HasPropertiesTransformation
 {
     /**
      * @var TransformationsContainer
@@ -49,7 +49,7 @@ trait TransformationPropertiesTrait
      *
      * @return self|ExecutorAbstract
      */
-    public function assignCallback(string $property, callable $callback): ExecutorAbstract
+    public function assignTransformation(string $property, callable $callback): ExecutorAbstract
     {
         $this->getTransformations()->assignCallback($property, $callback);
 

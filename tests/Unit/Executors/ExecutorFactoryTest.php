@@ -19,12 +19,12 @@ class ExecutorFactoryTest extends TestCase
     public function testFactory()
     {
         /**
-         * @var Executors $executors
+         * @var Seeders $executors
          */
-        $executors = $this->createMock(Executors::class);
+        $executors = $this->createMock(Seeders::class);
         $instance = new ExecutorFactory($executors);
 
-        $executor = $instance->factory(Executors::MODEL, 'ModelName');
+        $executor = $instance->factory(Seeders::MODEL, 'ModelName');
 
         $this->assertInstanceOf(ModelExecutor::class, $executor);
     }
@@ -35,9 +35,9 @@ class ExecutorFactoryTest extends TestCase
     public function testFactoryWithWrongExecutor()
     {
         /**
-         * @var Executors $executors
+         * @var Seeders $executors
          */
-        $executors = $this->createMock(Executors::class);
+        $executors = $this->createMock(Seeders::class);
         $instance = new ExecutorFactory($executors);
 
         $this->expectException(ExecutorNotFoundException::class);

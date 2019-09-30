@@ -19,7 +19,7 @@ class TransformationPropertiesTraitTest extends TestCase
     public function testSetTransformations()
     {
         /**
-         * @var TransformationPropertiesTrait $mock
+         * @var HasTransformationProperties $mock
          */
         $mock = $this->_createTraitMock();
         $transformations = new TransformationsContainer();
@@ -32,7 +32,7 @@ class TransformationPropertiesTraitTest extends TestCase
     public function testGetTranslations()
     {
         /**
-         * @var TransformationPropertiesTrait $mock
+         * @var HasTransformationProperties $mock
          */
         $mock = $this->_createTraitMock();
 
@@ -54,7 +54,7 @@ class TransformationPropertiesTraitTest extends TestCase
         };
 
         /**
-         * @var TransformationPropertiesTrait $mock
+         * @var HasTransformationProperties $mock
          */
         $mock = $this->_createTraitMock();
 
@@ -72,6 +72,6 @@ class TransformationPropertiesTraitTest extends TestCase
 
     private function _createTraitMock()
     {
-        return \Mockery::mock(TransformationPropertiesTrait::class, ExecutorAbstract::class);
+        return \Mockery::mock(HasTransformationProperties::class, ExecutorAbstract::class);
     }
 }

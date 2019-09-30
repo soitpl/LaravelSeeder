@@ -7,10 +7,11 @@
 namespace soIT\LaravelSeeders\Executors;
 
 use soIT\LaravelSeeders\Containers\TransformationsContainer;
-use soIT\LaravelSeeders\Executors\Features\AdditionalPropertiesTrait;
-use soIT\LaravelSeeders\Executors\Features\TransformationPropertiesTrait;
-use soIT\LaravelSeeders\Executors\Features\TranslationPropertiesTrait;
 use soIT\LaravelSeeders\Containers\DataContainer;
+use soIT\LaravelSeeders\Executors\Traits\HasAdditionalProperties;
+use soIT\LaravelSeeders\Executors\Traits\HasPropertiesTranslation;
+use soIT\LaravelSeeders\Executors\Traits\HasSources;
+use soIT\LaravelSeeders\Executors\Traits\HasPropertiesTransformation;
 use soIT\LaravelSeeders\Seeders\ModelSeeder;
 use soIT\LaravelSeeders\Transformations\ModelTransformation;
 
@@ -20,9 +21,9 @@ use soIT\LaravelSeeders\Transformations\ModelTransformation;
  *
  * @property ModelSeeder $seeder
  */
-class ModelExecutor extends ExecutorAbstract implements ModelExecutorInterface
+class ModelExecutor extends ExecutorAbstract implements ExecutorInterface
 {
-    use TranslationPropertiesTrait, TransformationPropertiesTrait, AdditionalPropertiesTrait;
+    use HasSources, HasPropertiesTranslation, HasPropertiesTransformation, HasAdditionalProperties;
 
     /**
      * ModelExecutor constructor.

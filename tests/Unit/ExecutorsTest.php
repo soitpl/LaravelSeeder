@@ -20,7 +20,7 @@ class ExecutorsTest extends TestCase
      */
     public function testSetTable()
     {
-        $instance = new Executors();
+        $instance = new Seeders();
         $factoryMock = \Mockery::mock('overload:soIT\LaravelSeeders\Executors\ExecutorFactory');
         $factoryMock->shouldReceive('factory')->andReturn($this->createMock(Executors\TableExecutor::class));
 
@@ -38,7 +38,7 @@ class ExecutorsTest extends TestCase
      */
     public function testSetModel()
     {
-        $instance = new Executors();
+        $instance = new Seeders();
         $factoryMock = \Mockery::mock('overload:soIT\LaravelSeeders\Executors\ExecutorFactory');
         $factoryMock->shouldReceive('factory')->andReturn($this->createMock(Executors\ModelExecutor::class));
 

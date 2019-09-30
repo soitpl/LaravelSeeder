@@ -5,12 +5,12 @@
  * @url http://www.soit.pl
  */
 
-namespace soIT\LaravelSeeders\Executors\Features;
+namespace soIT\LaravelSeeders\Executors\Traits;
 
 use soIT\LaravelSeeders\Containers\TranslationsContainer;
 use soIT\LaravelSeeders\Executors\ExecutorAbstract;
 
-trait TranslationPropertiesTrait
+trait HasPropertiesTranslation
 {
     /**
      * @var TranslationsContainer
