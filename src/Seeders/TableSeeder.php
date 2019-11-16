@@ -16,15 +16,11 @@ use soIT\LaravelSeeders\Exceptions\SeedTargetFoundException;
 use soIT\LaravelSeeders\Seeders\Features\SeederAdditionalPropertiesTrait;
 use soIT\LaravelSeeders\Seeders\Features\SeederTransformationsTrait;
 use soIT\LaravelSeeders\Seeders\Features\SeederTranslationsTrait;
+use soIT\LaravelSeeders\Traits\HasTableColumns;
 
 class TableSeeder extends SeederAbstract
 {
-    use SeederTransformationsTrait, SeederTranslationsTrait, SeederAdditionalPropertiesTrait;
-
-    /**
-     * @var array Database table columns
-     */
-    protected $columns;
+    use HasTableColumns, SeederTransformationsTrait, SeederTranslationsTrait, SeederAdditionalPropertiesTrait;
 
     /**
      * @var array Unique columns in table
@@ -59,7 +55,7 @@ class TableSeeder extends SeederAbstract
     {
         if ($this->isTableExists($table)) {
             $this->tableName = $table;
-            $this->setColumns();
+            $this->setColumns($this->tableName);
         } else {
             throw new SeedTargetFoundException(sprintf("%s table was't found for seed", ucfirst($table)));
         }
@@ -80,14 +76,6 @@ class TableSeeder extends SeederAbstract
                 ->getDoctrineSchemaManager()
                 ->listTableNames()
         );
-    }
-
-    /**
-     * Set table columns
-     */
-    private function setColumns()
-    {
-        $this->columns = DB::getSchemaBuilder()->getColumnListing($this->tableName);
     }
 
     /**
@@ -131,18 +119,6 @@ class TableSeeder extends SeederAbstract
         } else {
             throw new ColumnNotFoundException(sprintf("%s column was't found for seed", ucfirst($column)));
         }
-    }
-
-    /**
-     * Check is column name exist in set table
-     *
-     * @param string $property Property/column name
-     *
-     * @return bool
-     */
-    private function isColumnExistInTable(string $property): bool
-    {
-        return in_array($property, $this->columns);
     }
 
     /**

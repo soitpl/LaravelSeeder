@@ -8,10 +8,10 @@
 namespace soIT\LaravelSeeders\Transformations;
 
 use soIT\LaravelSeeders\Containers\TransformationsContainer;
-use soIT\LaravelSeeders\Seeders\RelationModelSeeder;
+use soIT\LaravelSeeders\Seeders\AttachModelSeeder;
 use soIT\LaravelSeeders\Seeders\SeederAbstract;
 
-class ModelTransformation implements TransformationsInterface
+class AttachModelTransformation implements TransformationsInterface
 {
     /**
      * @var string Model name
@@ -41,7 +41,7 @@ class ModelTransformation implements TransformationsInterface
      */
     public function transform($propertyValue): SeederAbstract
     {
-        return (new RelationModelSeeder($this->modelName))
+        return (new AttachModelSeeder($this->modelName))
             ->setTransformations($this->transformationsContainer)
             ->setData($propertyValue);
     }

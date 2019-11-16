@@ -14,6 +14,7 @@ use soIT\LaravelSeeders\Executors\Traits\HasSources;
 use soIT\LaravelSeeders\Executors\Traits\HasPropertiesTransformation;
 use soIT\LaravelSeeders\Seeders\ModelSeeder;
 use soIT\LaravelSeeders\Transformations\ModelTransformation;
+use soIT\LaravelSeeders\Transformations\AttachModelTransformation;
 
 /**
  * Class ModelExecutor
@@ -49,6 +50,22 @@ class ModelExecutor extends ExecutorAbstract implements ExecutorInterface
     public function assignModel(string $propertyName, string $model): self
     {
         $this->getTransformations()->assign($propertyName, new ModelTransformation($model));
+
+        return $this;
+    }
+
+    /**
+     * Assign model to property.
+     * If property will be find new model will be created and added to databse
+     *
+     * @param string $propertyName
+     * @param string $model
+     *
+     * @return ModelExecutor
+     */
+    public function attachTo(string $propertyName, string $model): self
+    {
+        $this->getTransformations()->assign($propertyName, new AttachModelTransformation($model));
 
         return $this;
     }

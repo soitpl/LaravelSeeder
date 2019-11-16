@@ -7,12 +7,16 @@
 namespace soIT\LaravelSeeders\Containers;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 use soIT\LaravelSeeders\Exceptions\NoPropertySetException;
 use soIT\LaravelSeeders\Seeders\SeederAbstract;
 use soIT\LaravelSeeders\Seeders\SeederInterface;
+use soIT\LaravelSeeders\Traits\HasTableColumns;
 
 class ModelContainer
 {
+    use HasTableColumns;
+
     /**
      * @var string Model name
      */
@@ -87,6 +91,7 @@ class ModelContainer
         }
 
         $this->model = $this->initModel();
+        $this->setColumns($this->model->getTable());
         $this->proceedData();
 
         return $this;
@@ -175,7 +180,7 @@ class ModelContainer
 
             if ($propertyValue instanceof SeederAbstract) {
                 $this->setSeeder($propertyValue);
-            } elseif (is_string($propertyValue)) {
+            } elseif (is_string($propertyValue) && $this->isColumnExistInTable($propertyName)) {
                 $this->model->{$propertyName} = $propertyValue;
             }
         }

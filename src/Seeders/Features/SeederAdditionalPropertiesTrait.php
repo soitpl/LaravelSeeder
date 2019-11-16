@@ -23,6 +23,8 @@ trait SeederAdditionalPropertiesTrait
 
         foreach ($this->properties as $key => $value) {
             if ($value instanceof CallableTransformation) {
+
+             //   print_r($value);
                 $out[$key] = $value->setPropertyName($key)->transform($value);
             }
             else {
