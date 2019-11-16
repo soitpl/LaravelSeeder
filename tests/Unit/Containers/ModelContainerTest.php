@@ -8,29 +8,30 @@
 namespace soIT\LaravelSeeders\Containers;
 
 use Illuminate\Database\Eloquent\Model;
+use Mockery\Mock;
 use PHPUnit\Framework\TestCase;
 use soIT\LaravelSeeders\Exceptions\NoPropertySetException;
+use soIT\LaravelSeeders\Seeders\SeederAbstract;
 use soIT\LaravelSeeders\Seeders\SeederInterface;
 
 
 class ModelContainerTest extends TestCase
 {
-    private const MODEL_NAME = 'App\TestModel';
+    private const MODEL_NAME = 'soIT\LaravelSeeders\Containers\TestModel';
 
     public function testSetGetSeeder()
     {
         $container = new ModelContainer(self::MODEL_NAME);
 
         for ($i=1; $i < 5; $i++) {
-            $seederMockName = 'seederMock'.$i;
-            $$seederMockName = \Mockery::mock(SeederInterface::class);
-            $$seederMockName->shouldReceive('testMethod')->andReturn($i);
+            $seederMockName = \Mockery::mock(SeederAbstract::class);
+            $seederMockName->shouldReceive('testMethod')->andReturn($i);
 
-            $container->setSeeder($$seederMockName);
+            $container->setSeeder($seederMockName);
             $seeders = $container->getSeeders();
 
             $this->assertCount($i, $seeders);
-            $this->assertEquals($$seederMockName, $seeders[$i-1]);
+            $this->assertEquals($seederMockName, $seeders[$i-1]);
             $this->assertEquals($i, $seeders[$i-1]->testMethod());
         }
     }
@@ -48,15 +49,15 @@ class ModelContainerTest extends TestCase
     public function testGetModel()
     {
         /**
-         * @var ModelContainer $modelContainerMock
+         * @var ModelContainer|Mock $modelContainerMock
          */
         $modelContainerMock = \Mockery::mock(ModelContainer::class)
             ->shouldAllowMockingProtectedMethods()
             ->makePartial();
 
         $mockModel = \Mockery::mock(self::MODEL_NAME, Model::class);
-        $modelContainerMock->shouldReceive('_initModel')->andReturn($mockModel);
-        $modelContainerMock->shouldReceive('_proceedData')->once();
+        $modelContainerMock->shouldReceive('initModel')->andReturn($mockModel);
+        $modelContainerMock->shouldReceive('proceedData')->once();
 
         $modelContainerMock->setData(new DataContainer([]));
         $modelContainerMock->prepare();
@@ -75,11 +76,11 @@ class ModelContainerTest extends TestCase
     {
         $data = new DataContainer(['prop_1'=>'value_1', 'prop_2'=> "value_2"]);
 
-        $container = new ModelContainer(unitTestModel::class);
+        $container = new ModelContainer(TestModel::class);
         $container->setData($data);
 
         $container->prepare();
-        $this->assertInstanceOf(unitTestModel::class, $container->getModel());
+        $this->assertInstanceOf(TestModel::class, $container->getModel());
         $this->assertEquals($container->getData(), $data);
     }
 
@@ -91,7 +92,7 @@ class ModelContainerTest extends TestCase
     public function testPrepareWithoutData()
     {
 
-        $container = new ModelContainer(unitTestModel::class);
+        $container = new ModelContainer(TestModel::class);
         $this->expectException(NoPropertySetException::class);
 
         $container->prepare();
@@ -107,12 +108,12 @@ class ModelContainerTest extends TestCase
         $translationsMock->shouldReceive('get')->with('prop_1')->andReturn('prop_1_t');
         $translationsMock->shouldReceive('get')->with('prop_2')->andReturn(null);
 
-        $container = new ModelContainer(unitTestModel::class);
+        $container = new ModelContainer(TestModel::class);
         $container->setData(new DataContainer(['prop_1'=>'value_1', 'prop_2'=> "value_2"]));
         $container->setTranslations($translationsMock);
 
         $container->prepare();
-        $this->assertInstanceOf(unitTestModel::class, $container->getModel());
+        $this->assertInstanceOf(TestModel::class, $container->getModel());
         $this->assertEquals("value_1", $container->getModel()->prop_1_t);
         $this->assertEquals("value_2", $container->getModel()->prop_2);
     }
@@ -128,12 +129,12 @@ class ModelContainerTest extends TestCase
         $transformationsMock->shouldReceive('getValue')->with('prop_1', 'value_1')->andReturn('value_1_t');
         $transformationsMock->shouldReceive('getValue')->with('prop_2', 'value_2')->andReturn(\Mockery::mock(SeederInterface::class));
 
-        $container = new ModelContainer(unitTestModel::class);
+        $container = new ModelContainer(TestModel::class);
         $container->setData(new DataContainer(['prop_1'=>'value_1', 'prop_2'=> "value_2"]));
         $container->setTransformations($transformationsMock);
 
         $container->prepare();
-        $this->assertInstanceOf(unitTestModel::class, $container->getModel());
+        $this->assertInstanceOf(TestModel::class, $container->getModel());
         $this->assertEquals("value_1_t", $container->getModel()->prop_1);
 
         $seeders = $container->getSeeders();
@@ -202,6 +203,6 @@ class ModelContainerTest extends TestCase
     }
 }
 
-class unitTestModel extends Model{
+class TestModel extends Model{
 
 }

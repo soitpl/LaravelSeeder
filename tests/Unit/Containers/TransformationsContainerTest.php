@@ -11,8 +11,6 @@ use PHPUnit\Framework\TestCase;
 use soIT\LaravelSeeders\Transformations\CallableTransformation;
 use soIT\LaravelSeeders\Transformations\TransformationsInterface;
 
-use Illuminate\Contracts\Console\Kernel;
-
 class TransformationsContainerTest extends TestCase
 {
     public function testAssign()

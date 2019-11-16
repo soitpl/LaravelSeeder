@@ -38,7 +38,7 @@ class File implements SourceInterface
      * @throws FileDontExistExceptionAlias
      * @throws \soIT\LaravelSeeders\Exceptions\ParserNotFoundException
      */
-    public function data()
+    public function data() : array
     {
         return Parser::parse($this->getFilePath());
     }

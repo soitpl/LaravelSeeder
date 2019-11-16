@@ -74,11 +74,11 @@ abstract class ExecutorAbstract implements ExecutorInterface
      * Set behavior on duplicated entry
      *
      * @param int $duplicated
-
+     * @param array $uniqueKeys Array of unique kays which will be compare to define duplicated records
      *
      * @return ExecutorAbstract
      */
-    public function onDuplicate(int $duplicated): ExecutorAbstract
+    public function onDuplicate(int $duplicated, array $uniqueKeys): ExecutorAbstract
     {
         $this->getSeeder()->onDuplicate($duplicated);
 

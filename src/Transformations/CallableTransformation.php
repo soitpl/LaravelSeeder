@@ -40,7 +40,7 @@ class CallableTransformation implements TransformationsInterface
      *
      * @return mixed
      */
-    public function transform($propertyValue)
+    public function transform($propertyValue=null)
     {
         return call_user_func($this->callback, $propertyValue);
     }

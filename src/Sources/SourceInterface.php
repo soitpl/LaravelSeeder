@@ -14,5 +14,5 @@ interface SourceInterface
      *
      * @return mixed
      */
-    public function data();
+    public function data(): array;
 }

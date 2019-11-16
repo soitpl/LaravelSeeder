@@ -7,6 +7,7 @@
 namespace soIT\LaravelSeeders\Containers;
 
 use Illuminate\Support\Collection;
+use soIT\LaravelSeeders\Exceptions\WrongAttributeException;
 
 class DataContainer extends Collection
 {
@@ -48,6 +49,6 @@ class DataContainer extends Collection
             return $this->items[$key];
         }
 
-        return parent::__get($key);
+        throw new WrongAttributeException("Property [{$key}] does not exist on this collection instance.");
     }
 }
