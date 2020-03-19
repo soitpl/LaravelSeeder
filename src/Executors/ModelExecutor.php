@@ -4,17 +4,19 @@
  * @copyright (c) soIT.pl (2018-2019)
  * @url http://www.soit.pl
  */
-namespace soIT\LaravelSeeders\Executors;
+
+namespace soIT\LaravelSeeder\Executors;
 
 use soIT\LaravelSeeders\Containers\TransformationsContainer;
 use soIT\LaravelSeeders\Containers\DataContainer;
-use soIT\LaravelSeeders\Executors\Traits\HasAdditionalProperties;
+use soIT\LaravelSeeder\Executors\Traits\HasAdditionalProperties;
+use soIT\LaravelSeeders\Executors\ExecutorInterface;
 use soIT\LaravelSeeders\Executors\Traits\HasPropertiesTranslation;
 use soIT\LaravelSeeders\Executors\Traits\HasSources;
 use soIT\LaravelSeeders\Executors\Traits\HasPropertiesTransformation;
 use soIT\LaravelSeeders\Seeders\ModelSeeder;
 use soIT\LaravelSeeders\Transformations\ModelTransformation;
-use soIT\LaravelSeeders\Transformations\AttachModelTransformation;
+use soIT\LaravelSeeder\Transformations\AttachModelTransformation;
 
 /**
  * Class ModelExecutor
@@ -24,7 +26,10 @@ use soIT\LaravelSeeders\Transformations\AttachModelTransformation;
  */
 class ModelExecutor extends ExecutorAbstract implements ExecutorInterface
 {
-    use HasSources, HasPropertiesTranslation, HasPropertiesTransformation, HasAdditionalProperties;
+    use HasAdditionalProperties;
+    use HasPropertiesTransformation;
+    use HasPropertiesTranslation;
+    use HasSources;
 
     /**
      * ModelExecutor constructor.
@@ -47,7 +52,7 @@ class ModelExecutor extends ExecutorAbstract implements ExecutorInterface
      *
      * @return ModelExecutor
      */
-    public function assignModel(string $propertyName, string $model): self
+    public function assignModel(string $propertyName, string $model):self
     {
         $this->getTransformations()->assign($propertyName, new ModelTransformation($model));
 
@@ -63,7 +68,7 @@ class ModelExecutor extends ExecutorAbstract implements ExecutorInterface
      *
      * @return ModelExecutor
      */
-    public function attachTo(string $propertyName, string $model): self
+    public function attachTo(string $propertyName, string $model):self
     {
         $this->getTransformations()->assign($propertyName, new AttachModelTransformation($model));
 
@@ -77,7 +82,7 @@ class ModelExecutor extends ExecutorAbstract implements ExecutorInterface
      *
      * @return bool
      */
-    public function execute(DataContainer $data): bool
+    public function execute(DataContainer $data):bool
     {
         $this->seeder->setTransformations($this->getTransformations());
         $this->seeder->setTranslations($this->getTranslations());

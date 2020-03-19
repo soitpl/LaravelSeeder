@@ -4,8 +4,9 @@
  * @copyright (c) soIT.pl (2018-2019)
  * @url http://www.soit.pl
  */
-namespace soIT\LaravelSeeders\Executors;
+namespace soIT\LaravelSeeder\Executors;
 
+use soIT\LaravelSeeders\Executors\ExecutorInterface;
 use soIT\LaravelSeeders\Seeders\SeederAbstract;
 use soIT\LaravelSeeders\Containers\DataContainer;
 

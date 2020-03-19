@@ -8,6 +8,7 @@
 namespace soIT\LaravelSeeders\Executors;
 
 use PHPUnit\Framework\TestCase;
+use soIT\LaravelSeeder\Executors\ModelExecutor;
 use soIT\LaravelSeeders\Containers\DataContainer;
 use soIT\LaravelSeeders\Containers\TransformationsContainer;
 use soIT\LaravelSeeders\Seeders\SeederAbstract;

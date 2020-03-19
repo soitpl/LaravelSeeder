@@ -12,7 +12,7 @@ use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Facades\DB;
 use soIT\LaravelSeeders\Enums\Duplicated;
 use soIT\LaravelSeeders\Exceptions\ColumnNotFoundException;
-use soIT\LaravelSeeders\Exceptions\SeedTargetFoundException;
+use soIT\LaravelSeeder\Exceptions\SeedTargetFoundException;
 use soIT\LaravelSeeders\Seeders\Features\SeederAdditionalPropertiesTrait;
 use soIT\LaravelSeeders\Seeders\Features\SeederTransformationsTrait;
 use soIT\LaravelSeeders\Seeders\Features\SeederTranslationsTrait;

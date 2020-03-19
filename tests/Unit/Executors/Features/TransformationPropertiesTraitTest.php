@@ -11,7 +11,7 @@ use Illuminate\Support\Str;
 use PHPUnit\Framework\TestCase;
 use soIT\LaravelSeeders\Containers\TransformationContainer;
 use soIT\LaravelSeeders\Containers\TransformationsContainer;
-use soIT\LaravelSeeders\Executors\ExecutorAbstract;
+use soIT\LaravelSeeder\Executors\ExecutorAbstract;
 use soIT\LaravelSeeders\Containers\AdditionalProperiesConatiner;
 
 class TransformationPropertiesTraitTest extends TestCase

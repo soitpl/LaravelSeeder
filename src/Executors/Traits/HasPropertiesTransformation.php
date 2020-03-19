@@ -7,7 +7,7 @@
 
 namespace soIT\LaravelSeeders\Executors\Traits;
 
-use soIT\LaravelSeeders\Executors\ExecutorAbstract;
+use soIT\LaravelSeeder\Executors\ExecutorAbstract;
 use soIT\LaravelSeeders\Containers\TransformationsContainer;
 
 trait HasPropertiesTransformation
@@ -32,7 +32,7 @@ trait HasPropertiesTransformation
      *
      * @param TransformationsContainer|null $translations
      *
-     * @return self|ExecutorAbstract
+     * @return self|\soIT\LaravelSeeder\Executors\ExecutorAbstract
      */
     public function setTransformations(?TransformationsContainer $translations): ExecutorAbstract
     {

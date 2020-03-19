@@ -9,6 +9,7 @@ namespace soIT\LaravelSeeders\Containers;
 
 use Faker\Factory;
 use PHPUnit\Framework\TestCase;
+use soIT\LaravelSeeder\Containers\AdditionalPropertiesContainer;
 use soIT\LaravelSeeders\Transformations\CallableTransformation;
 
 class AdditionalPropertiesContainerTest extends TestCase

@@ -8,7 +8,7 @@
 namespace soIT\LaravelSeeders\Executors\Traits;
 
 use soIT\LaravelSeeders\Containers\TranslationsContainer;
-use soIT\LaravelSeeders\Executors\ExecutorAbstract;
+use soIT\LaravelSeeder\Executors\ExecutorAbstract;
 
 trait HasPropertiesTranslation
 {

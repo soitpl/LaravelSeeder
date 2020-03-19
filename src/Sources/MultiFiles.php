@@ -1,22 +1,32 @@
 <?php
 /**
+ * MultiFiles.php
+ *
+ * @lastModification 19.03.2020, 23:13
  * @author Rafał Tadaszak <r.tadaszak@soit.pl>
- * @copyright soIT {2019}
+ * @copyright soIT.pl 2018 - 2020
+ * @url http://www.soit.pl
  */
 
-namespace soIT\LaravelSeeders\Sources;
+namespace soIT\LaravelSeeder\Sources;
+
+use soIT\LaravelSeeders\Exceptions\FileDontExistException;
+use soIT\LaravelSeeder\Sources\File;
+use soIT\LaravelSeeders\Sources\SourceInterface;
 
 class MultiFiles implements SourceInterface
 {
     /**
      * @var File[] Array of files objects
      */
-    private $files = [];
+    private array $files = [];
 
     /**
      * MultiFiles constructor.
      *
      * @param array $files
+     *
+     * @throws FileDontExistException
      */
     public function __construct(array $files)
     {
@@ -24,13 +34,15 @@ class MultiFiles implements SourceInterface
     }
 
     /**
-     * Create class instace from glob standard pattern
+     * Create class instance from glob standard pattern
      *
-     * @param static Glob path pattern
+     * @param string $pattern
+     *
      * @return self
+     * @throws FileDontExistException
      * @see https://facelessuser.github.io/wcmatch/glob/
      */
-    public static function fromPattern(string $pattern): self
+    public static function fromPattern(string $pattern):self
     {
         return new self(glob($pattern) ?? []);
     }
@@ -40,12 +52,10 @@ class MultiFiles implements SourceInterface
      *
      * @return array
      */
-    public function data(): array
+    public function data():array
     {
         return array_merge(
-            ...array_map(function (File $item) {
-                return $item->data();
-            }, $this->files)
+            ...array_map(fn(File $item) => $item->data(), $this->files)
         );
     }
 
@@ -53,8 +63,10 @@ class MultiFiles implements SourceInterface
      * Set files form paths array
      *
      * @param array $files
+     *
+     * @throws FileDontExistException
      */
-    public function setFiles(array $files): void
+    public function setFiles(array $files):void
     {
         foreach ($files as $file) {
             array_push($this->files, new File($file));

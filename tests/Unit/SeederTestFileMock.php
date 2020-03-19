@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use org\bovigo\vfs\vfsStream;
 use org\bovigo\vfs\vfsStreamDirectory;
-use soIT\LaravelSeeders\Sources\File;
+use soIT\LaravelSeeder\Sources\File;
 
 trait SeederTestFileMock
 {

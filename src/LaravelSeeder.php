@@ -5,7 +5,7 @@
  * @url http://www.soit.pl
  */
 
-namespace soIT\LaravelSeeders;
+namespace soIT\LaravelSeeder;
 
 use Illuminate\Database\Seeder;
 use soIT\LaravelSeeders\Exceptions\ExecutorNotFoundException;
@@ -16,6 +16,7 @@ use soIT\LaravelSeeders\Executors\ExecutorInterface;
 /**
  * @method Executors\TableExecutor setTable(string $string)
  * @method Executors\ModelExecutor setModel(string $string)
+ * @deprecated
  */
 class LaravelSeeder extends Seeder
 {

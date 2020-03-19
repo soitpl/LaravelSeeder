@@ -4,54 +4,60 @@
  * @copyright (c) soIT.pl (2018-2019)
  * @url http://www.soit.pl
  */
-namespace soIT\LaravelSeeders\Executors;
 
+namespace soIT\LaravelSeeder\Executors;
+
+use soIT\LaravelSeeder\Exceptions\SeedTargetFoundException;
 use soIT\LaravelSeeders\Containers\TransformationsContainer;
-use soIT\LaravelSeeders\Executors\Traits\HasAdditionalProperties;
+use soIT\LaravelSeeders\Executors\AdditionalProperiesConatiner;
+use soIT\LaravelSeeders\Executors\ExecutorInterface;
+use soIT\LaravelSeeder\Executors\Traits\HasAdditionalProperties;
 use soIT\LaravelSeeders\Executors\Traits\HasPropertiesTranslation;
 use soIT\LaravelSeeders\Executors\Traits\HasSources;
 use soIT\LaravelSeeders\Executors\Traits\HasPropertiesTransformation;
 use soIT\LaravelSeeders\Seeders\TableSeeder;
 use soIT\LaravelSeeders\Containers\DataContainer;
-use soIT\LaravelSeeders\Sources\SourceInterface;
+
 
 /**
  * Class TableExecutor
  *
  * @property TableSeeder $seeder
- * @method TableExecutor addSource(SourceInterface $source)
  */
 class TableExecutor extends ExecutorAbstract implements ExecutorInterface
 {
-    use HasSources, HasPropertiesTranslation, HasPropertiesTransformation, HasAdditionalProperties;
+    use HasAdditionalProperties;
+    use HasPropertiesTransformation;
+    use HasPropertiesTranslation;
+    use HasSources;
 
     /**
      * ModelExecutor constructor.
      *
      * @param string $table Model assigned to executor
-     * @param AdditionalProperiesConatiner|null $transformations Mapping container with columns mapping info.
+     * @param TransformationsContainer $transformations Mapping container with columns mapping info.
      *
-     * @throws \soIT\LaravelSeeders\Exceptions\SeedTargetFoundException
+     * @throws SeedTargetFoundException
      */
     public function __construct(string $table, TransformationsContainer $transformations = null)
     {
         $this->setSeeder(new TableSeeder($table));
         $this->setTransformations($transformations);
     }
+
     /**
      * Set behavior on duplicated entry
      *
      * @param int $duplicated
-     *
      * @param array $uniqueKeys
      *
      * @return TableExecutor
      */
-    public function onDuplicate(int $duplicated, array $uniqueKeys=[]): ExecutorAbstract
+    public function onDuplicate(int $duplicated, array $uniqueKeys = []):ExecutorAbstract
     {
         $this->getSeeder()
-            ->onDuplicate($duplicated)
-            ->setUniqueKeys($uniqueKeys);
+             ->onDuplicate($duplicated)
+             ->setUniqueKeys($uniqueKeys);
 
         return $this;
     }
@@ -63,7 +69,7 @@ class TableExecutor extends ExecutorAbstract implements ExecutorInterface
      *
      * @return bool
      */
-    public function execute(DataContainer $data): bool
+    public function execute(DataContainer $data):bool
     {
         $this->seeder->setTransformations($this->getTransformations());
         $this->seeder->setTranslations($this->getTranslations());

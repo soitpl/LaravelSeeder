@@ -7,7 +7,7 @@
 
 namespace soIT\LaravelSeeders\Seeders\Features;
 
-use soIT\LaravelSeeders\Containers\AdditionalPropertiesContainer;
+use soIT\LaravelSeeder\Containers\AdditionalPropertiesContainer;
 use soIT\LaravelSeeders\Transformations\CallableTransformation;
 
 trait SeederAdditionalPropertiesTrait

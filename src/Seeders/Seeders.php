@@ -9,8 +9,8 @@ namespace soIT\LaravelSeeders\Seeders;
 use soIT\LaravelSeeders\Exceptions\ExecutorNotFoundException;
 use soIT\LaravelSeeders\Executors\ExecutorFactory;
 use soIT\LaravelSeeders\Executors\ExecutorInterface;
-use soIT\LaravelSeeders\Executors\ModelExecutor;
-use soIT\LaravelSeeders\Executors\TableExecutor;
+use soIT\LaravelSeeder\Executors\ModelExecutor;
+use soIT\LaravelSeeder\Executors\TableExecutor;
 
 class Seeders
 {

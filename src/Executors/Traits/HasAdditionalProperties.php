@@ -5,24 +5,24 @@
  * @url http://www.soit.pl
  */
 
-namespace soIT\LaravelSeeders\Executors\Traits;
+namespace soIT\LaravelSeeder\Executors\Traits;
 
-use soIT\LaravelSeeders\Containers\AdditionalPropertiesContainer;
-use soIT\LaravelSeeders\Executors\ExecutorAbstract;
+use soIT\LaravelSeeder\Containers\AdditionalPropertiesContainer;
+use soIT\LaravelSeeder\Executors\ExecutorAbstract;
 
 trait HasAdditionalProperties
 {
     /**
      * @var AdditionalPropertiesContainer
      */
-    private $properties;
+    private AdditionalPropertiesContainer $properties;
 
     /**
      * Getter for translations container
      *
      * @return AdditionalPropertiesContainer
      */
-    public function getAdditionalProperties(): AdditionalPropertiesContainer
+    public function getAdditionalProperties():AdditionalPropertiesContainer
     {
         return $this->properties ?? ($this->properties = new AdditionalPropertiesContainer());
     }
@@ -35,7 +35,7 @@ trait HasAdditionalProperties
      *
      * @return self|ExecutorAbstract
      */
-    public function addPropertyWithValue(string $property, $value): ExecutorAbstract
+    public function addPropertyWithValue(string $property, $value):ExecutorAbstract
     {
         $this->getAdditionalProperties()->assignValue($property, $value);
 
@@ -50,7 +50,7 @@ trait HasAdditionalProperties
      *
      * @return self|ExecutorAbstract
      */
-    public function addPropertyWithCallback(string $property, callable $callback): ExecutorAbstract
+    public function addPropertyWithCallback(string $property, callable $callback):ExecutorAbstract
     {
         $this->getAdditionalProperties()->assignCallback($property, $callback);
 

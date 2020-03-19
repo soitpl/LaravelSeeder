@@ -8,8 +8,8 @@ namespace soIT\LaravelSeeders;
 
 use soIT\LaravelSeeders\Executors\ExecutorFactory;
 use soIT\LaravelSeeders\Executors\ExecutorInterface;
-use soIT\LaravelSeeders\Executors\ModelExecutor;
-use soIT\LaravelSeeders\Executors\TableExecutor;
+use soIT\LaravelSeeder\Executors\ModelExecutor;
+use soIT\LaravelSeeder\Executors\TableExecutor;
 
 class Executors
 {

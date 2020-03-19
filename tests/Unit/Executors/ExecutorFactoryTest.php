@@ -9,7 +9,7 @@ namespace soIT\LaravelSeeders;
 use PHPUnit\Framework\TestCase;
 use soIT\LaravelSeeders\Exceptions\ExecutorNotFoundException;
 use soIT\LaravelSeeders\Executors\ExecutorFactory;
-use soIT\LaravelSeeders\Executors\ModelExecutor;
+use soIT\LaravelSeeder\Executors\ModelExecutor;
 
 class ExecutorFactoryTest extends TestCase
 {

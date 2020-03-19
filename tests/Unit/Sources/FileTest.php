@@ -9,6 +9,7 @@ namespace soIT\LaravelSeeders\Sources;
 
 use Illuminate\Support\Facades\Storage;
 use Orchestra\Testbench\TestCase;
+use soIT\LaravelSeeder\Sources\File;
 use soIT\LaravelSeeders\Exceptions\DirectoryDontExistException;
 use soIT\LaravelSeeders\Exceptions\FileDontExistException;
 use Tests\Unit\LaravelSeeders\SeederTestFileMock;

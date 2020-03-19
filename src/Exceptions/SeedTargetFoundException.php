@@ -1,12 +1,18 @@
 <?php
 /**
+ * SeedTargetFoundException.php
+ *
+ * @lastModification 16.11.2019, 18:20
  * @author Rafał Tadaszak <r.tadaszak@soit.pl>
- * @copyright (c) soIT.pl (2018-2019)
+ * @copyright soIT.pl 2018 - 2020
  * @url http://www.soit.pl
  */
 
-namespace soIT\LaravelSeeders\Exceptions;
 
-class SeedTargetFoundException extends \Exception
+namespace soIT\LaravelSeeder\Exceptions;
+
+use Exception;
+
+class SeedTargetFoundException extends Exception
 {
 }

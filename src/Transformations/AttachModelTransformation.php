@@ -5,27 +5,28 @@
  * @url http://www.soit.pl
  */
 
-namespace soIT\LaravelSeeders\Transformations;
+namespace soIT\LaravelSeeder\Transformations;
 
 use soIT\LaravelSeeders\Containers\TransformationsContainer;
 use soIT\LaravelSeeders\Seeders\AttachModelSeeder;
 use soIT\LaravelSeeders\Seeders\SeederAbstract;
+use soIT\LaravelSeeders\Transformations\TransformationsInterface;
 
 class AttachModelTransformation implements TransformationsInterface
 {
     /**
      * @var string Model name
      */
-    private $modelName;
+    private string $modelName;
     /**
      * @var string
      */
-    private $propertyName;
+    private string $propertyName;
 
     /**
      * @var TransformationsContainer
      */
-    private $transformationsContainer;
+    private TransformationsContainer $transformationsContainer;
 
     public function __construct(string $modelName)
     {
@@ -39,7 +40,7 @@ class AttachModelTransformation implements TransformationsInterface
      *
      * @return mixed
      */
-    public function transform($propertyValue): SeederAbstract
+    public function transform($propertyValue):SeederAbstract
     {
         return (new AttachModelSeeder($this->modelName))
             ->setTransformations($this->transformationsContainer)
@@ -51,7 +52,7 @@ class AttachModelTransformation implements TransformationsInterface
      *
      * @return TransformationsInterface
      */
-    public function setTransformationsContainer(TransformationsContainer $container): TransformationsInterface
+    public function setTransformationsContainer(TransformationsContainer $container):TransformationsInterface
     {
         $this->transformationsContainer = $container;
 
@@ -63,7 +64,7 @@ class AttachModelTransformation implements TransformationsInterface
      *
      * @return TransformationsInterface
      */
-    public function setPropertyName(string $property): TransformationsInterface
+    public function setPropertyName(string $property):TransformationsInterface
     {
         $this->propertyName = $property;
 

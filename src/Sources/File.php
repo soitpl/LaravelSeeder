@@ -1,23 +1,28 @@
 <?php
 /**
+ * File.php
+ *
+ * @lastModification 19.03.2020, 23:16
  * @author Rafał Tadaszak <r.tadaszak@soit.pl>
- * @copyright (c) soIT.pl (2018-2019)
+ * @copyright soIT.pl 2018 - 2020
  * @url http://www.soit.pl
  */
-namespace soIT\LaravelSeeders\Sources;
+
+namespace soIT\LaravelSeeder\Sources;
 
 use Illuminate\Support\Facades\Storage;
-use soIT\LaravelSeeders\Exceptions\DirectoryDontExistException;
 use soIT\LaravelSeeders\Exceptions\FileDontExistException as FileDontExistExceptionAlias;
+use soIT\LaravelSeeders\Exceptions\ParserNotFoundException;
 use soIT\LaravelSeeders\Parsers\File\Parser;
+use soIT\LaravelSeeders\Sources\SourceInterface;
 
 class File implements SourceInterface
 {
-    const DEFAULT_DIRECTORY = 'seeders';
+    private const DEFAULT_DIRECTORY = 'seeders';
     /**
      * @var string Seeder data File name
      */
-    protected $filePath;
+    protected string $filePath;
 
     /**
      * File constructor.
@@ -36,9 +41,9 @@ class File implements SourceInterface
      *
      * @return array
      * @throws FileDontExistExceptionAlias
-     * @throws \soIT\LaravelSeeders\Exceptions\ParserNotFoundException
+     * @throws ParserNotFoundException
      */
-    public function data() : array
+    public function data():array
     {
         return Parser::parse($this->getFilePath());
     }
@@ -48,7 +53,7 @@ class File implements SourceInterface
      *
      * @return string|null File name
      */
-    public function getFilePath(): ?string
+    public function getFilePath():?string
     {
         return $this->filePath;
     }
@@ -61,7 +66,7 @@ class File implements SourceInterface
      * @return File This object
      * @throws FileDontExistExceptionAlias
      */
-    public function setFile(string $fileName): self
+    public function setFile(string $fileName):self
     {
         if (
             !$this->setFileWithPath($fileName) &&
@@ -81,7 +86,7 @@ class File implements SourceInterface
      *
      * @return bool
      */
-    private function isFileExists(string $path): bool
+    private function isFileExists(string $path):bool
     {
         return file_exists($path) && is_readable($path);
     }
@@ -93,9 +98,9 @@ class File implements SourceInterface
      *
      * @return bool
      */
-    private function setFileByRootPath(string $path): bool
+    private function setFileByRootPath(string $path):bool
     {
-        return $this->setFileWithPath(base_path() . $path);
+        return $this->setFileWithPath(base_path().$path);
     }
 
     /**
@@ -105,9 +110,9 @@ class File implements SourceInterface
      *
      * @return bool
      */
-    private function setFileInDefaultLocation(string $path): bool
+    private function setFileInDefaultLocation(string $path):bool
     {
-        return $this->setFileWithPath($this->getDefaultPath() . $path);
+        return $this->setFileWithPath($this->getDefaultPath().$path);
     }
 
     /**
@@ -117,7 +122,7 @@ class File implements SourceInterface
      *
      * @return bool
      */
-    private function setFileWithPath(string $file): bool
+    private function setFileWithPath(string $file):bool
     {
         if ($this->isFileExists($file)) {
             $this->filePath = $file;
@@ -132,12 +137,12 @@ class File implements SourceInterface
      *
      * @return File
      */
-    private function getDefaultPath(): string
+    private function getDefaultPath():string
     {
         if (!Storage::exists(self::DEFAULT_DIRECTORY)) {
             Storage::makeDirectory(self::DEFAULT_DIRECTORY);
         }
 
-        return Storage::path(self::DEFAULT_DIRECTORY) . DIRECTORY_SEPARATOR;
+        return Storage::path(self::DEFAULT_DIRECTORY).DIRECTORY_SEPARATOR;
     }
 }

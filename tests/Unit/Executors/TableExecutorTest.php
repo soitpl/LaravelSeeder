@@ -10,6 +10,7 @@ namespace soIT\LaravelSeeders\Executors;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 use Orchestra\Testbench\TestCase;
+use soIT\LaravelSeeder\Executors\TableExecutor;
 use soIT\LaravelSeeders\Containers\DataContainer;
 use soIT\LaravelSeeders\Enums\Duplicated;
 use soIT\LaravelSeeders\Seeders\SeederAbstract;
@@ -25,7 +26,7 @@ class TableExecutorTest extends TestCase
     /**
      * @runInSeparateProcess
      * @preserveGlobalState disabled
-     * @throws \soIT\LaravelSeeders\Exceptions\SeedTargetFoundException
+     * @throws \soIT\LaravelSeeder\Exceptions\SeedTargetFoundException
      */
     public function testConstructor()
     {
@@ -44,7 +45,7 @@ class TableExecutorTest extends TestCase
     /**
      * @runInSeparateProcess
      * @preserveGlobalState disabled
-     * @throws \soIT\LaravelSeeders\Exceptions\SeedTargetFoundException
+     * @throws \soIT\LaravelSeeder\Exceptions\SeedTargetFoundException
      */
     public function testGetTarget()
     {
@@ -56,7 +57,7 @@ class TableExecutorTest extends TestCase
     }
 
     /**
-     * @throws \soIT\LaravelSeeders\Exceptions\SeedTargetFoundException
+     * @throws \soIT\LaravelSeeder\Exceptions\SeedTargetFoundException
      */
     public function testExecute()
     {
@@ -87,7 +88,7 @@ class TableExecutorTest extends TestCase
     /**
      * @runInSeparateProcess
      * @preserveGlobalState disabled
-     * @throws \soIT\LaravelSeeders\Exceptions\SeedTargetFoundException
+     * @throws \soIT\LaravelSeeder\Exceptions\SeedTargetFoundException
      */
     public function testOnDuplicate(){
         $factoryMock = \Mockery::mock(

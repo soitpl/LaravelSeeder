@@ -10,7 +10,7 @@ namespace soIT\LaravelSeeders\Executors\Features;
 
 use PHPUnit\Framework\TestCase;
 use soIT\LaravelSeeders\Containers\TranslationsContainer;
-use soIT\LaravelSeeders\Executors\ExecutorAbstract;
+use soIT\LaravelSeeder\Executors\ExecutorAbstract;
 
 class TranslationPropertiesTraitTest extends TestCase
 {
