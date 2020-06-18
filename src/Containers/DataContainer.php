@@ -4,7 +4,7 @@
  * @copyright (c) soIT.pl (2018-2019)
  * @url http://www.soit.pl
  */
-namespace soIT\LaravelSeeders\Containers;
+namespace soIT\LaravelSeeder\Containers;
 
 use Illuminate\Support\Collection;
 use soIT\LaravelSeeders\Exceptions\WrongAttributeException;
@@ -22,6 +22,7 @@ class DataContainer extends Collection
 
         $this->recursive();
     }
+
 
     /**
      * Recursive make of DataContainer

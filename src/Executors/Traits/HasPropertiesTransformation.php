@@ -5,26 +5,28 @@
  * @url http://www.soit.pl
  */
 
-namespace soIT\LaravelSeeders\Executors\Traits;
+namespace soIT\LaravelSeeder\Executors\Traits;
 
+use soIT\LaravelSeeder\Containers\TransformationsContainer;
+use soIT\LaravelSeeder\Contracts\ExecutorInterface;
 use soIT\LaravelSeeder\Executors\ExecutorAbstract;
-use soIT\LaravelSeeders\Containers\TransformationsContainer;
+
 
 trait HasPropertiesTransformation
 {
     /**
      * @var TransformationsContainer
      */
-    private $transformations;
+    private ?TransformationsContainer $transformations = null;
 
     /**
      * Getter for translations container
      *
      * @return TransformationsContainer
      */
-    public function getTransformations(): TransformationsContainer
+    public function getTransformations():TransformationsContainer
     {
-        return $this->transformations ?? ($this->transformations = new TransformationsContainer());
+        return $this->transformations ?? ($this->transformations = $this->createTransformationsContainer());
     }
 
     /**
@@ -32,9 +34,10 @@ trait HasPropertiesTransformation
      *
      * @param TransformationsContainer|null $translations
      *
-     * @return self|\soIT\LaravelSeeder\Executors\ExecutorAbstract
+     * @return self|ExecutorAbstract
+     * @codeCoverageIgnore
      */
-    public function setTransformations(?TransformationsContainer $translations): ExecutorAbstract
+    public function setTransformations(?TransformationsContainer $translations):ExecutorInterface
     {
         $this->transformations = $translations;
 
@@ -48,11 +51,20 @@ trait HasPropertiesTransformation
      * @param callable $callback Callback function
      *
      * @return self|ExecutorAbstract
+     * @codeCoverageIgnore
      */
-    public function assignTransformation(string $property, callable $callback): ExecutorAbstract
+    public function assignTransformation(string $property, callable $callback):ExecutorInterface
     {
         $this->getTransformations()->assignCallback($property, $callback);
 
         return $this;
+    }
+
+    /**
+     * @return TransformationsContainer
+     * @codeCoverageIgnore
+     */
+    protected function createTransformationsContainer(): TransformationsContainer {
+        return new TransformationsContainer();
     }
 }

@@ -11,12 +11,16 @@ use soIT\LaravelSeeders\Executors\ExecutorInterface;
 use soIT\LaravelSeeder\Executors\ModelExecutor;
 use soIT\LaravelSeeder\Executors\TableExecutor;
 
+/**
+ * Class Executors
+ * @package soIT\LaravelSeeders
+ * @deprecated
+ */
 class Executors
 {
-    const MODEL = 0;
-    const TABLE = 1;
-
-    const CLASSES = [ModelExecutor::class, TableExecutor::class];
+    public const MODEL = 0;
+    public const TABLE = 1;
+    public const CLASSES = [ModelExecutor::class, TableExecutor::class];
 
     /**
      * Set model as a target for seeder

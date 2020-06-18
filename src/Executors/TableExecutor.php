@@ -7,42 +7,39 @@
 
 namespace soIT\LaravelSeeder\Executors;
 
-use soIT\LaravelSeeder\Exceptions\SeedTargetFoundException;
-use soIT\LaravelSeeders\Containers\TransformationsContainer;
-use soIT\LaravelSeeders\Executors\AdditionalProperiesConatiner;
-use soIT\LaravelSeeders\Executors\ExecutorInterface;
+use soIT\LaravelSeeder\Containers\DataContainer;
+use soIT\LaravelSeeder\Containers\TransformationsContainer;
+use soIT\LaravelSeeder\Contracts\ExecutorInterface;
 use soIT\LaravelSeeder\Executors\Traits\HasAdditionalProperties;
-use soIT\LaravelSeeders\Executors\Traits\HasPropertiesTranslation;
-use soIT\LaravelSeeders\Executors\Traits\HasSources;
-use soIT\LaravelSeeders\Executors\Traits\HasPropertiesTransformation;
-use soIT\LaravelSeeders\Seeders\TableSeeder;
-use soIT\LaravelSeeders\Containers\DataContainer;
-
+use soIT\LaravelSeeder\Executors\Traits\HasPropertiesTransformation;
+use soIT\LaravelSeeder\Executors\Traits\HasNamingStrategy;
+use soIT\LaravelSeeder\Executors\Traits\HasSources;
+use soIT\LaravelSeeder\Seeders\TableSeeder;
 
 /**
  * Class TableExecutor
  *
- * @property TableSeeder $seeder
+ * @codeCoverageIgnore
  */
 class TableExecutor extends ExecutorAbstract implements ExecutorInterface
 {
     use HasAdditionalProperties;
     use HasPropertiesTransformation;
-    use HasPropertiesTranslation;
+    use HasNamingStrategy;
     use HasSources;
 
     /**
      * ModelExecutor constructor.
      *
-     * @param string $table Model assigned to executor
+     * @param TableSeeder $table Model assigned to executor
      * @param TransformationsContainer $transformations Mapping container with columns mapping info.
      *
-     * @throws SeedTargetFoundException
+
      */
-    public function __construct(string $table, TransformationsContainer $transformations = null)
+    public function __construct(TableSeeder $table, TransformationsContainer $transformations = null)
     {
-        $this->setSeeder(new TableSeeder($table));
-        $this->setTransformations($transformations);
+        $this->setSeeder($table)
+             ->setTransformations($transformations);
     }
 
     /**
@@ -53,7 +50,7 @@ class TableExecutor extends ExecutorAbstract implements ExecutorInterface
      *
      * @return TableExecutor
      */
-    public function onDuplicate(int $duplicated, array $uniqueKeys = []):ExecutorAbstract
+    public function onDuplicate(int $duplicated, array $uniqueKeys = []):ExecutorInterface
     {
         $this->getSeeder()
              ->onDuplicate($duplicated)
@@ -71,9 +68,10 @@ class TableExecutor extends ExecutorAbstract implements ExecutorInterface
      */
     public function execute(DataContainer $data):bool
     {
-        $this->seeder->setTransformations($this->getTransformations());
-        $this->seeder->setTranslations($this->getTranslations());
-        $this->seeder->setProperties($this->getAdditionalProperties());
+        $this->getSeeder()
+             ->setTransformations($this->getTransformations())
+             ->setTranslations($this->getNamingStrategy())
+             ->setProperties($this->getAdditionalProperties());
 
         return parent::execute($data);
     }

@@ -1,144 +1,154 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1573921889">
-  <project timestamp="1573921889">
-    <package name="soIT\LaravelSeeders\Containers">
-      <file name="/app/src/Containers/AdditionalPropertiesContainer.php">
-        <class name="soIT\LaravelSeeders\Containers\AdditionalPropertiesContainer" namespace="soIT\LaravelSeeders\Containers">
+<coverage generated="1589619669">
+  <project timestamp="1589619669">
+    <package name="soIT\LaravelSeeder\Containers">
+      <file name="/opt/project/app/Libraries/LaravelSeeder/src/Containers/AdditionalPropertiesContainer.php">
+        <class name="soIT\LaravelSeeder\Containers\AdditionalPropertiesContainer" namespace="soIT\LaravelSeeder\Containers">
           <metrics complexity="2" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="4" elements="6" coveredelements="6"/>
         </class>
-        <line num="25" type="method" name="assignValue" visibility="public" complexity="1" crap="1" count="2"/>
-        <line num="27" type="stmt" count="2"/>
-        <line num="28" type="stmt" count="2"/>
-        <line num="36" type="method" name="assignCallback" visibility="public" complexity="1" crap="1" count="1"/>
-        <line num="38" type="stmt" count="1"/>
-        <line num="39" type="stmt" count="1"/>
-        <metrics loc="40" ncloc="23" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="4" elements="6" coveredelements="6"/>
+        <line num="33" type="method" name="assignValue" visibility="public" complexity="1" crap="1" count="2"/>
+        <line num="35" type="stmt" count="2"/>
+        <line num="36" type="stmt" count="2"/>
+        <line num="44" type="method" name="assignCallback" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="46" type="stmt" count="1"/>
+        <line num="47" type="stmt" count="1"/>
+        <metrics loc="48" ncloc="28" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="4" elements="6" coveredelements="6"/>
       </file>
-      <file name="/app/src/Containers/DataContainer.php">
-        <class name="soIT\LaravelSeeders\Containers\DataContainer" namespace="soIT\LaravelSeeders\Containers">
+      <file name="/opt/project/app/Libraries/LaravelSeeder/src/Containers/DataContainer.php">
+        <class name="soIT\LaravelSeeder\Containers\DataContainer" namespace="soIT\LaravelSeeder\Containers">
           <metrics complexity="6" methods="3" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="10" coveredstatements="10" elements="13" coveredelements="13"/>
         </class>
         <line num="19" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="9"/>
         <line num="21" type="stmt" count="9"/>
         <line num="23" type="stmt" count="9"/>
         <line num="24" type="stmt" count="9"/>
-        <line num="29" type="method" name="recursive" visibility="private" complexity="3" crap="3" count="9"/>
-        <line num="31" type="stmt" count="9"/>
-        <line num="32" type="stmt" count="6"/>
-        <line num="33" type="stmt" count="1"/>
-        <line num="36" type="stmt" count="9"/>
-        <line num="46" type="method" name="__get" visibility="public" complexity="2" crap="2" count="2"/>
-        <line num="48" type="stmt" count="2"/>
-        <line num="49" type="stmt" count="1"/>
-        <line num="52" type="stmt" count="1"/>
-        <metrics loc="54" ncloc="33" classes="1" methods="3" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="10" coveredstatements="10" elements="13" coveredelements="13"/>
+        <line num="30" type="method" name="recursive" visibility="private" complexity="3" crap="3" count="9"/>
+        <line num="32" type="stmt" count="9"/>
+        <line num="33" type="stmt" count="6"/>
+        <line num="34" type="stmt" count="1"/>
+        <line num="37" type="stmt" count="9"/>
+        <line num="47" type="method" name="__get" visibility="public" complexity="2" crap="2" count="2"/>
+        <line num="49" type="stmt" count="2"/>
+        <line num="50" type="stmt" count="1"/>
+        <line num="53" type="stmt" count="1"/>
+        <metrics loc="55" ncloc="34" classes="1" methods="3" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="10" coveredstatements="10" elements="13" coveredelements="13"/>
       </file>
-      <file name="/app/src/Containers/ModelContainer.php">
-        <class name="soIT\LaravelSeeders\Containers\ModelContainer" namespace="soIT\LaravelSeeders\Containers">
-          <metrics complexity="22" methods="14" coveredmethods="11" conditionals="0" coveredconditionals="0" statements="34" coveredstatements="31" elements="48" coveredelements="42"/>
+      <file name="/opt/project/app/Libraries/LaravelSeeder/src/Containers/ModelContainer.php">
+        <class name="soIT\LaravelSeeder\Containers\ModelContainer" namespace="soIT\LaravelSeeder\Containers">
+          <metrics complexity="23" methods="14" coveredmethods="9" conditionals="0" coveredconditionals="0" statements="35" coveredstatements="29" elements="49" coveredelements="38"/>
         </class>
-        <line num="46" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="9"/>
-        <line num="48" type="stmt" count="9"/>
-        <line num="49" type="stmt" count="9"/>
-        <line num="56" type="method" name="getModel" visibility="public" complexity="1" crap="1" count="2"/>
-        <line num="58" type="stmt" count="2"/>
-        <line num="66" type="method" name="getModelName" visibility="public" complexity="1" crap="1" count="1"/>
-        <line num="68" type="stmt" count="1"/>
-        <line num="74" type="method" name="getSeeders" visibility="public" complexity="1" crap="1" count="1"/>
-        <line num="76" type="stmt" count="1"/>
-        <line num="83" type="method" name="prepare" visibility="public" complexity="2" crap="2" count="3"/>
-        <line num="85" type="stmt" count="3"/>
-        <line num="86" type="stmt" count="1"/>
-        <line num="89" type="stmt" count="2"/>
-        <line num="90" type="stmt" count="2"/>
-        <line num="92" type="stmt" count="2"/>
-        <line num="100" type="method" name="getData" visibility="public" complexity="1" crap="1" count="3"/>
-        <line num="102" type="stmt" count="3"/>
-        <line num="112" type="method" name="setData" visibility="public" complexity="1" crap="1" count="3"/>
-        <line num="114" type="stmt" count="3"/>
-        <line num="116" type="stmt" count="3"/>
-        <line num="126" type="method" name="setSeeder" visibility="public" complexity="1" crap="1" count="1"/>
-        <line num="128" type="stmt" count="1"/>
-        <line num="129" type="stmt" count="1"/>
-        <line num="139" type="method" name="setTransformations" visibility="public" complexity="2" crap="2" count="1"/>
-        <line num="141" type="stmt" count="1"/>
-        <line num="143" type="stmt" count="1"/>
-        <line num="152" type="method" name="setTranslations" visibility="public" complexity="2" crap="2" count="1"/>
-        <line num="154" type="stmt" count="1"/>
-        <line num="156" type="stmt" count="1"/>
-        <line num="162" type="method" name="initModel" visibility="protected" complexity="1" crap="1" count="1"/>
-        <line num="164" type="stmt" count="1"/>
-        <line num="170" type="method" name="proceedData" visibility="protected" complexity="4" crap="4.03" count="1"/>
-        <line num="172" type="stmt" count="1"/>
-        <line num="173" type="stmt" count="1"/>
-        <line num="174" type="stmt" count="1"/>
-        <line num="176" type="stmt" count="1"/>
-        <line num="177" type="stmt" count="0"/>
-        <line num="178" type="stmt" count="1"/>
+        <line num="50" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="8"/>
+        <line num="52" type="stmt" count="8"/>
+        <line num="53" type="stmt" count="8"/>
+        <line num="60" type="method" name="getModel" visibility="public" complexity="1" crap="1" count="3"/>
+        <line num="62" type="stmt" count="3"/>
+        <line num="70" type="method" name="getModelName" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="72" type="stmt" count="1"/>
+        <line num="78" type="method" name="getSeeders" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="80" type="stmt" count="0"/>
+        <line num="87" type="method" name="prepare" visibility="public" complexity="2" crap="2" count="4"/>
+        <line num="89" type="stmt" count="4"/>
+        <line num="90" type="stmt" count="1"/>
+        <line num="93" type="stmt" count="3"/>
+        <line num="94" type="stmt" count="3"/>
+        <line num="95" type="stmt" count="3"/>
+        <line num="97" type="stmt" count="3"/>
+        <line num="105" type="method" name="getData" visibility="public" complexity="1" crap="1" count="3"/>
+        <line num="107" type="stmt" count="3"/>
+        <line num="117" type="method" name="setData" visibility="public" complexity="1" crap="1" count="4"/>
+        <line num="119" type="stmt" count="4"/>
+        <line num="121" type="stmt" count="4"/>
+        <line num="131" type="method" name="setSeeder" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="133" type="stmt" count="0"/>
+        <line num="135" type="stmt" count="0"/>
+        <line num="145" type="method" name="setTransformations" visibility="public" complexity="2" crap="2" count="1"/>
+        <line num="147" type="stmt" count="1"/>
+        <line num="149" type="stmt" count="1"/>
+        <line num="159" type="method" name="setNamingStrategy" visibility="public" complexity="2" crap="2" count="2"/>
+        <line num="161" type="stmt" count="2"/>
+        <line num="163" type="stmt" count="2"/>
+        <line num="169" type="method" name="createModel" visibility="protected" complexity="1" crap="1" count="1"/>
+        <line num="171" type="stmt" count="1"/>
+        <line num="177" type="method" name="proceedData" visibility="protected" complexity="5" crap="5.05" count="1"/>
         <line num="179" type="stmt" count="1"/>
-        <line num="182" type="stmt" count="1"/>
-        <line num="191" type="method" name="getTargetProperty" visibility="private" complexity="2" crap="2.15" count="1"/>
-        <line num="193" type="stmt" count="1"/>
-        <line num="194" type="stmt" count="1"/>
-        <line num="197" type="stmt" count="0"/>
-        <line num="209" type="method" name="getTargetTransformation" visibility="private" complexity="2" crap="2.15" count="1"/>
-        <line num="211" type="stmt" count="1"/>
-        <line num="212" type="stmt" count="1"/>
-        <line num="215" type="stmt" count="0"/>
-        <metrics loc="217" ncloc="118" classes="1" methods="14" coveredmethods="11" conditionals="0" coveredconditionals="0" statements="34" coveredstatements="31" elements="48" coveredelements="42"/>
+        <line num="180" type="stmt" count="1"/>
+        <line num="181" type="stmt" count="1"/>
+        <line num="183" type="stmt" count="1"/>
+        <line num="184" type="stmt" count="0"/>
+        <line num="185" type="stmt" count="1"/>
+        <line num="186" type="stmt" count="1"/>
+        <line num="189" type="stmt" count="1"/>
+        <line num="198" type="method" name="getTargetProperty" visibility="private" complexity="2" crap="2.15" count="1"/>
+        <line num="200" type="stmt" count="1"/>
+        <line num="201" type="stmt" count="0"/>
+        <line num="204" type="stmt" count="1"/>
+        <line num="216" type="method" name="getTargetTransformation" visibility="private" complexity="2" crap="2.15" count="1"/>
+        <line num="218" type="stmt" count="1"/>
+        <line num="219" type="stmt" count="1"/>
+        <line num="222" type="stmt" count="0"/>
+        <metrics loc="224" ncloc="124" classes="1" methods="14" coveredmethods="9" conditionals="0" coveredconditionals="0" statements="35" coveredstatements="29" elements="49" coveredelements="38"/>
       </file>
-      <file name="/app/src/Containers/TransformationsContainer.php">
-        <class name="soIT\LaravelSeeders\Containers\TransformationsContainer" namespace="soIT\LaravelSeeders\Containers">
-          <metrics complexity="15" methods="7" coveredmethods="5" conditionals="0" coveredconditionals="0" statements="25" coveredstatements="15" elements="32" coveredelements="20"/>
-        </class>
-        <line num="29" type="method" name="assign" visibility="public" complexity="3" crap="3" count="5"/>
-        <line num="31" type="stmt" count="5"/>
-        <line num="33" type="stmt" count="5"/>
-        <line num="35" type="stmt" count="5"/>
-        <line num="36" type="stmt" count="5"/>
-        <line num="37" type="stmt" count="5"/>
-        <line num="40" type="stmt" count="5"/>
-        <line num="43" type="stmt" count="5"/>
-        <line num="44" type="stmt" count="5"/>
-        <line num="52" type="method" name="assignCallback" visibility="public" complexity="1" crap="1" count="1"/>
-        <line num="54" type="stmt" count="1"/>
-        <line num="55" type="stmt" count="1"/>
-        <line num="64" type="method" name="getTransformation" visibility="public" complexity="3" crap="3" count="3"/>
-        <line num="66" type="stmt" count="3"/>
-        <line num="67" type="stmt" count="3"/>
-        <line num="70" type="stmt" count="1"/>
-        <line num="81" type="method" name="getValue" visibility="public" complexity="3" crap="12.00" count="0"/>
-        <line num="83" type="stmt" count="0"/>
-        <line num="85" type="stmt" count="0"/>
-        <line num="86" type="stmt" count="0"/>
-        <line num="92" type="stmt" count="0"/>
-        <line num="93" type="stmt" count="0"/>
-        <line num="96" type="stmt" count="0"/>
-        <line num="97" type="stmt" count="0"/>
-        <line num="98" type="stmt" count="0"/>
-        <line num="106" type="method" name="count" visibility="public" complexity="1" crap="1" count="1"/>
-        <line num="108" type="stmt" count="1"/>
-        <line num="118" type="method" name="assignArray" visibility="private" complexity="2" crap="6.00" count="0"/>
-        <line num="120" type="stmt" count="0"/>
-        <line num="122" type="stmt" count="0"/>
-        <line num="132" type="method" name="getByPropertyName" visibility="private" complexity="2" crap="2" count="3"/>
-        <line num="134" type="stmt" count="3"/>
-        <metrics loc="136" ncloc="82" classes="1" methods="7" coveredmethods="5" conditionals="0" coveredconditionals="0" statements="25" coveredstatements="15" elements="32" coveredelements="20"/>
-      </file>
-      <file name="/app/src/Containers/TranslationsContainer.php">
-        <class name="soIT\LaravelSeeders\Containers\TranslationsContainer" namespace="soIT\LaravelSeeders\Containers">
+      <file name="/opt/project/app/Libraries/LaravelSeeder/src/Containers/NamingStrategyContainer.php">
+        <class name="soIT\LaravelSeeder\Containers\NamingStrategyContainer" namespace="soIT\LaravelSeeder\Containers">
           <metrics complexity="3" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="3" elements="5" coveredelements="5"/>
         </class>
-        <line num="23" type="method" name="add" visibility="public" complexity="1" crap="1" count="1"/>
-        <line num="25" type="stmt" count="1"/>
-        <line num="26" type="stmt" count="1"/>
-        <line num="35" type="method" name="get" visibility="public" complexity="2" crap="2" count="1"/>
-        <line num="37" type="stmt" count="1"/>
-        <metrics loc="39" ncloc="21" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="3" elements="5" coveredelements="5"/>
+        <line num="25" type="method" name="add" visibility="public" complexity="1" crap="1" count="2"/>
+        <line num="27" type="stmt" count="2"/>
+        <line num="28" type="stmt" count="2"/>
+        <line num="37" type="method" name="get" visibility="public" complexity="2" crap="2" count="2"/>
+        <line num="39" type="stmt" count="2"/>
+        <metrics loc="41" ncloc="23" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="3" elements="5" coveredelements="5"/>
+      </file>
+      <file name="/opt/project/app/Libraries/LaravelSeeder/src/Containers/TransformationsContainer.php">
+        <class name="soIT\LaravelSeeder\Containers\TransformationsContainer" namespace="soIT\LaravelSeeder\Containers">
+          <metrics complexity="15" methods="7" coveredmethods="5" conditionals="0" coveredconditionals="0" statements="25" coveredstatements="15" elements="32" coveredelements="20"/>
+        </class>
+        <line num="34" type="method" name="assign" visibility="public" complexity="3" crap="3" count="4"/>
+        <line num="36" type="stmt" count="4"/>
+        <line num="38" type="stmt" count="4"/>
+        <line num="40" type="stmt" count="4"/>
+        <line num="41" type="stmt" count="4"/>
+        <line num="42" type="stmt" count="4"/>
+        <line num="45" type="stmt" count="4"/>
+        <line num="48" type="stmt" count="4"/>
+        <line num="49" type="stmt" count="4"/>
+        <line num="57" type="method" name="assignCallback" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="59" type="stmt" count="1"/>
+        <line num="60" type="stmt" count="1"/>
+        <line num="69" type="method" name="getTransformation" visibility="public" complexity="3" crap="3" count="3"/>
+        <line num="71" type="stmt" count="3"/>
+        <line num="72" type="stmt" count="3"/>
+        <line num="75" type="stmt" count="1"/>
+        <line num="86" type="method" name="getValue" visibility="public" complexity="3" crap="12" count="0"/>
+        <line num="88" type="stmt" count="0"/>
+        <line num="90" type="stmt" count="0"/>
+        <line num="91" type="stmt" count="0"/>
+        <line num="97" type="stmt" count="0"/>
+        <line num="98" type="stmt" count="0"/>
+        <line num="101" type="stmt" count="0"/>
+        <line num="102" type="stmt" count="0"/>
+        <line num="103" type="stmt" count="0"/>
+        <line num="111" type="method" name="count" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="113" type="stmt" count="1"/>
+        <line num="123" type="method" name="assignArray" visibility="private" complexity="2" crap="6" count="0"/>
+        <line num="125" type="stmt" count="0"/>
+        <line num="127" type="stmt" count="0"/>
+        <line num="137" type="method" name="getByPropertyName" visibility="private" complexity="2" crap="2" count="3"/>
+        <line num="139" type="stmt" count="3"/>
+        <metrics loc="141" ncloc="83" classes="1" methods="7" coveredmethods="5" conditionals="0" coveredconditionals="0" statements="25" coveredstatements="15" elements="32" coveredelements="20"/>
       </file>
     </package>
+    <file name="/opt/project/app/Libraries/LaravelSeeder/src/Contracts/ExecutorInterface.php">
+      <metrics loc="21" ncloc="13" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+    </file>
+    <file name="/opt/project/app/Libraries/LaravelSeeder/src/Contracts/SeederInterface.php">
+      <metrics loc="15" ncloc="7" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+    </file>
+    <file name="/opt/project/app/Libraries/LaravelSeeder/src/Contracts/SourceInterface.php">
+      <metrics loc="22" ncloc="8" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+    </file>
     <package name="soIT\LaravelSeeders\Enums">
-      <file name="/app/src/Enums/Duplicated.php">
+      <file name="/opt/project/app/Libraries/LaravelSeeder/src/Enums/Duplicated.php">
         <class name="soIT\LaravelSeeders\Enums\Duplicated" namespace="soIT\LaravelSeeders\Enums">
           <metrics complexity="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
         </class>
@@ -146,389 +156,342 @@
       </file>
     </package>
     <package name="soIT\LaravelSeeders\Exceptions">
-      <file name="/app/src/Exceptions/ColumnNotFoundException.php">
+      <file name="/opt/project/app/Libraries/LaravelSeeder/src/Exceptions/ColumnNotFoundException.php">
         <class name="soIT\LaravelSeeders\Exceptions\ColumnNotFoundException" namespace="soIT\LaravelSeeders\Exceptions">
           <metrics complexity="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
         </class>
         <metrics loc="12" ncloc="7" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
       </file>
-      <file name="/app/src/Exceptions/DirectoryDontExistException.php">
+      <file name="/opt/project/app/Libraries/LaravelSeeder/src/Exceptions/DirectoryDontExistException.php">
         <class name="soIT\LaravelSeeders\Exceptions\DirectoryDontExistException" namespace="soIT\LaravelSeeders\Exceptions">
           <metrics complexity="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
         </class>
         <metrics loc="12" ncloc="7" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
       </file>
-      <file name="/app/src/Exceptions/ExecutorNotFoundException.php">
+      <file name="/opt/project/app/Libraries/LaravelSeeder/src/Exceptions/ExecutorNotFoundException.php">
         <class name="soIT\LaravelSeeders\Exceptions\ExecutorNotFoundException" namespace="soIT\LaravelSeeders\Exceptions">
           <metrics complexity="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
         </class>
         <metrics loc="12" ncloc="7" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
       </file>
-      <file name="/app/src/Exceptions/FileDontExistException.php">
+      <file name="/opt/project/app/Libraries/LaravelSeeder/src/Exceptions/FileDontExistException.php">
         <class name="soIT\LaravelSeeders\Exceptions\FileDontExistException" namespace="soIT\LaravelSeeders\Exceptions">
           <metrics complexity="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
         </class>
         <metrics loc="11" ncloc="6" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
       </file>
-      <file name="/app/src/Exceptions/MethodNotFoundException.php">
+      <file name="/opt/project/app/Libraries/LaravelSeeder/src/Exceptions/MethodNotFoundException.php">
         <class name="soIT\LaravelSeeders\Exceptions\MethodNotFoundException" namespace="soIT\LaravelSeeders\Exceptions">
           <metrics complexity="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
         </class>
         <metrics loc="12" ncloc="7" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
       </file>
-      <file name="/app/src/Exceptions/ModelSeedFailedException.php">
+      <file name="/opt/project/app/Libraries/LaravelSeeder/src/Exceptions/ModelSeedFailedException.php">
         <class name="soIT\LaravelSeeders\Exceptions\ModelSeedFailedException" namespace="soIT\LaravelSeeders\Exceptions">
           <metrics complexity="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
         </class>
         <metrics loc="12" ncloc="7" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
       </file>
-      <file name="/app/src/Exceptions/NoPropertySetException.php">
-        <class name="soIT\LaravelSeeders\Exceptions\NoPropertySetException" namespace="soIT\LaravelSeeders\Exceptions">
-          <metrics complexity="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
-        </class>
-        <metrics loc="13" ncloc="8" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
-      </file>
-      <file name="/app/src/Exceptions/ParserNotFoundException.php">
+      <file name="/opt/project/app/Libraries/LaravelSeeder/src/Exceptions/ParserNotFoundException.php">
         <class name="soIT\LaravelSeeders\Exceptions\ParserNotFoundException" namespace="soIT\LaravelSeeders\Exceptions">
           <metrics complexity="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
         </class>
         <metrics loc="13" ncloc="8" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
       </file>
-      <file name="/app/src/Exceptions/SeedTargetFoundException.php">
-        <class name="soIT\LaravelSeeders\Exceptions\SeedTargetFoundException" namespace="soIT\LaravelSeeders\Exceptions">
-          <metrics complexity="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
-        </class>
-        <metrics loc="12" ncloc="7" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
-      </file>
-      <file name="/app/src/Exceptions/WrongAttributeException.php">
+      <file name="/opt/project/app/Libraries/LaravelSeeder/src/Exceptions/WrongAttributeException.php">
         <class name="soIT\LaravelSeeders\Exceptions\WrongAttributeException" namespace="soIT\LaravelSeeders\Exceptions">
           <metrics complexity="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
         </class>
         <metrics loc="12" ncloc="7" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
       </file>
     </package>
-    <package name="soIT\LaravelSeeders">
-      <file name="/app/src/Executors.php">
-        <class name="soIT\LaravelSeeders\Executors" namespace="soIT\LaravelSeeders">
-          <metrics complexity="2" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="0" elements="4" coveredelements="0"/>
+    <package name="soIT\LaravelSeeder\Exceptions">
+      <file name="/opt/project/app/Libraries/LaravelSeeder/src/Exceptions/NoPropertySetException.php">
+        <class name="soIT\LaravelSeeder\Exceptions\NoPropertySetException" namespace="soIT\LaravelSeeder\Exceptions">
+          <metrics complexity="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
         </class>
-        <line num="29" type="method" name="setModel" visibility="public" complexity="1" crap="2.00" count="0"/>
-        <line num="31" type="stmt" count="0"/>
-        <line num="42" type="method" name="setTable" visibility="public" complexity="1" crap="2.00" count="0"/>
-        <line num="44" type="stmt" count="0"/>
-        <metrics loc="46" ncloc="25" classes="1" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="0" elements="4" coveredelements="0"/>
+        <metrics loc="13" ncloc="8" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
       </file>
-      <file name="/app/src/LaravelSeeder.php">
-        <class name="soIT\LaravelSeeders\LaravelSeeder" namespace="soIT\LaravelSeeders">
-          <metrics complexity="6" methods="5" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="10" coveredstatements="5" elements="15" coveredelements="8"/>
+      <file name="/opt/project/app/Libraries/LaravelSeeder/src/Exceptions/SeedTargetFoundException.php">
+        <class name="soIT\LaravelSeeder\Exceptions\SeedTargetFoundException" namespace="soIT\LaravelSeeder\Exceptions">
+          <metrics complexity="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
         </class>
-        <line num="32" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="1"/>
-        <line num="34" type="stmt" count="1"/>
-        <line num="35" type="stmt" count="1"/>
-        <line num="42" type="method" name="getExecutors" visibility="public" complexity="1" crap="2.00" count="0"/>
-        <line num="44" type="stmt" count="0"/>
-        <line num="52" type="method" name="setExecutors" visibility="public" complexity="1" crap="1" count="1"/>
-        <line num="54" type="stmt" count="1"/>
-        <line num="55" type="stmt" count="1"/>
-        <line num="66" type="method" name="getExecutor" visibility="public" complexity="1" crap="1" count="1"/>
-        <line num="68" type="stmt" count="1"/>
-        <line num="80" type="method" name="__call" visibility="public" complexity="2" crap="6.00" count="0"/>
-        <line num="82" type="stmt" count="0"/>
-        <line num="83" type="stmt" count="0"/>
-        <line num="85" type="stmt" count="0"/>
-        <line num="86" type="stmt" count="0"/>
-        <metrics loc="90" ncloc="45" classes="1" methods="5" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="10" coveredstatements="5" elements="15" coveredelements="8"/>
+        <metrics loc="18" ncloc="10" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
       </file>
     </package>
-    <package name="soIT\LaravelSeeders\Executors">
-      <file name="/app/src/Executors/ExecutorAbstract.php">
-        <class name="soIT\LaravelSeeders\Executors\ExecutorAbstract" namespace="soIT\LaravelSeeders\Executors">
-          <metrics complexity="12" methods="8" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="17" coveredstatements="8" elements="25" coveredelements="11"/>
+    <package name="soIT\LaravelSeeders">
+      <file name="/opt/project/app/Libraries/LaravelSeeder/src/Executors.php">
+        <class name="soIT\LaravelSeeders\Executors" namespace="soIT\LaravelSeeders" fullPackage="soIT" package="soIT">
+          <metrics complexity="2" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="0" elements="4" coveredelements="0"/>
         </class>
-        <line num="37" type="method" name="execute" visibility="public" complexity="3" crap="3.07" count="1"/>
-        <line num="39" type="stmt" count="1"/>
+        <line num="33" type="method" name="setModel" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="35" type="stmt" count="0"/>
+        <line num="46" type="method" name="setTable" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="48" type="stmt" count="0"/>
+        <metrics loc="50" ncloc="24" classes="1" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="0" elements="4" coveredelements="0"/>
+      </file>
+    </package>
+    <package name="soIT\LaravelSeeder\Executors">
+      <file name="/opt/project/app/Libraries/LaravelSeeder/src/Executors/ExecutorAbstract.php">
+        <class name="soIT\LaravelSeeder\Executors\ExecutorAbstract" namespace="soIT\LaravelSeeder\Executors">
+          <metrics complexity="12" methods="8" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="17" coveredstatements="0" elements="25" coveredelements="0"/>
+        </class>
+        <line num="37" type="method" name="execute" visibility="public" complexity="3" crap="12" count="0"/>
+        <line num="39" type="stmt" count="0"/>
         <line num="40" type="stmt" count="0"/>
-        <line num="43" type="stmt" count="1"/>
-        <line num="44" type="stmt" count="1"/>
-        <line num="46" type="stmt" count="1"/>
-        <line num="55" type="method" name="getSeeder" visibility="public" complexity="2" crap="2" count="3"/>
-        <line num="57" type="stmt" count="3"/>
-        <line num="67" type="method" name="setSeeder" visibility="public" complexity="1" crap="1" count="5"/>
-        <line num="69" type="stmt" count="5"/>
-        <line num="70" type="stmt" count="5"/>
-        <line num="81" type="method" name="onDuplicate" visibility="public" complexity="1" crap="2.00" count="0"/>
+        <line num="43" type="stmt" count="0"/>
+        <line num="44" type="stmt" count="0"/>
+        <line num="46" type="stmt" count="0"/>
+        <line num="55" type="method" name="getSeeder" visibility="public" complexity="2" crap="6" count="0"/>
+        <line num="57" type="stmt" count="0"/>
+        <line num="67" type="method" name="setSeeder" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="69" type="stmt" count="0"/>
+        <line num="70" type="stmt" count="0"/>
+        <line num="81" type="method" name="onDuplicate" visibility="public" complexity="1" crap="2" count="0"/>
         <line num="83" type="stmt" count="0"/>
         <line num="85" type="stmt" count="0"/>
-        <line num="95" type="method" name="oneCol" visibility="public" complexity="1" crap="2.00" count="0"/>
+        <line num="95" type="method" name="oneCol" visibility="public" complexity="1" crap="2" count="0"/>
         <line num="97" type="stmt" count="0"/>
         <line num="99" type="stmt" count="0"/>
-        <line num="105" type="method" name="seed" visibility="public" complexity="1" crap="2.00" count="0"/>
+        <line num="105" type="method" name="seed" visibility="public" complexity="1" crap="2" count="0"/>
         <line num="107" type="stmt" count="0"/>
-        <line num="116" type="method" name="executeTarget" visibility="protected" complexity="1" crap="1" count="1"/>
-        <line num="118" type="stmt" count="1"/>
-        <line num="128" type="method" name="packStringToDataContainer" visibility="protected" complexity="2" crap="6.00" count="0"/>
+        <line num="116" type="method" name="executeTarget" visibility="protected" complexity="1" crap="2" count="0"/>
+        <line num="118" type="stmt" count="0"/>
+        <line num="128" type="method" name="packStringToDataContainer" visibility="protected" complexity="2" crap="6" count="0"/>
         <line num="130" type="stmt" count="0"/>
         <line num="131" type="stmt" count="0"/>
         <line num="133" type="stmt" count="0"/>
-        <metrics loc="135" ncloc="72" classes="1" methods="8" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="17" coveredstatements="8" elements="25" coveredelements="11"/>
+        <metrics loc="135" ncloc="72" classes="1" methods="8" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="17" coveredstatements="0" elements="25" coveredelements="0"/>
       </file>
-      <file name="/app/src/Executors/ExecutorFactory.php">
-        <class name="soIT\LaravelSeeders\Executors\ExecutorFactory" namespace="soIT\LaravelSeeders\Executors">
-          <metrics complexity="3" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="6" coveredstatements="0" elements="8" coveredelements="0"/>
+      <file name="/opt/project/app/Libraries/LaravelSeeder/src/Executors/ModelExecutor.php">
+        <class name="soIT\LaravelSeeder\Executors\ModelExecutor" namespace="soIT\LaravelSeeder\Executors" fullPackage="soIT" package="soIT">
+          <metrics complexity="4" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
         </class>
-        <line num="19" type="method" name="__construct" visibility="public" complexity="1" crap="2.00" count="0"/>
-        <line num="21" type="stmt" count="0"/>
-        <line num="22" type="stmt" count="0"/>
-        <line num="33" type="method" name="factory" visibility="public" complexity="2" crap="6.00" count="0"/>
-        <line num="35" type="stmt" count="0"/>
-        <line num="37" type="stmt" count="0"/>
-        <line num="38" type="stmt" count="0"/>
-        <line num="40" type="stmt" count="0"/>
-        <metrics loc="43" ncloc="26" classes="1" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="6" coveredstatements="0" elements="8" coveredelements="0"/>
+        <metrics loc="94" ncloc="51" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
       </file>
-      <file name="/app/src/Executors/ModelExecutor.php">
-        <class name="soIT\LaravelSeeders\Executors\ModelExecutor" namespace="soIT\LaravelSeeders\Executors" fullPackage="soIT" package="soIT">
-          <metrics complexity="3" methods="3" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="8" coveredstatements="8" elements="11" coveredelements="11"/>
+      <file name="/opt/project/app/Libraries/LaravelSeeder/src/Executors/TableExecutor.php">
+        <class name="soIT\LaravelSeeder\Executors\TableExecutor" namespace="soIT\LaravelSeeder\Executors">
+          <metrics complexity="3" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
         </class>
-        <line num="34" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="4"/>
-        <line num="36" type="stmt" count="4"/>
-        <line num="37" type="stmt" count="4"/>
-        <line num="38" type="stmt" count="4"/>
-        <line num="49" type="method" name="assignModel" visibility="public" complexity="1" crap="1" count="1"/>
-        <line num="51" type="stmt" count="1"/>
-        <line num="53" type="stmt" count="1"/>
-        <line num="63" type="method" name="execute" visibility="public" complexity="1" crap="1" count="1"/>
-        <line num="65" type="stmt" count="1"/>
-        <line num="66" type="stmt" count="1"/>
-        <line num="68" type="stmt" count="1"/>
-        <metrics loc="70" ncloc="37" classes="1" methods="3" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="8" coveredstatements="8" elements="11" coveredelements="11"/>
-      </file>
-      <file name="/app/src/Executors/TableExecutor.php">
-        <class name="soIT\LaravelSeeders\Executors\TableExecutor" namespace="soIT\LaravelSeeders\Executors">
-          <metrics complexity="3" methods="3" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="11" coveredstatements="0" elements="14" coveredelements="0"/>
-        </class>
-        <line num="36" type="method" name="__construct" visibility="public" complexity="1" crap="2.00" count="0"/>
-        <line num="38" type="stmt" count="0"/>
-        <line num="39" type="stmt" count="0"/>
-        <line num="40" type="stmt" count="0"/>
-        <line num="50" type="method" name="onDuplicate" visibility="public" complexity="1" crap="2.00" count="0"/>
-        <line num="52" type="stmt" count="0"/>
-        <line num="53" type="stmt" count="0"/>
-        <line num="54" type="stmt" count="0"/>
-        <line num="56" type="stmt" count="0"/>
-        <line num="66" type="method" name="execute" visibility="public" complexity="1" crap="2.00" count="0"/>
-        <line num="68" type="stmt" count="0"/>
-        <line num="69" type="stmt" count="0"/>
-        <line num="70" type="stmt" count="0"/>
-        <line num="72" type="stmt" count="0"/>
-        <metrics loc="74" ncloc="39" classes="1" methods="3" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="11" coveredstatements="0" elements="14" coveredelements="0"/>
+        <metrics loc="78" ncloc="45" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
       </file>
     </package>
-    <file name="/app/src/Executors/ExecutorInterface.php">
-      <metrics loc="18" ncloc="13" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
-    </file>
-    <package name="soIT\LaravelSeeders\Executors\Traits">
-      <file name="/app/src/Executors/Traits/HasAdditionalProperties.php">
-        <class name="HasAdditionalProperties" namespace="soIT\LaravelSeeders\Executors\Traits">
-          <metrics complexity="3" methods="3" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="0" elements="8" coveredelements="0"/>
+    <package name="soIT\LaravelSeeder\Executors\Traits">
+      <file name="/opt/project/app/Libraries/LaravelSeeder/src/Executors/Traits/HasAdditionalProperties.php">
+        <class name="HasAdditionalProperties" namespace="soIT\LaravelSeeder\Executors\Traits">
+          <metrics complexity="4" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
         </class>
-        <line num="25" type="method" name="getAdditionalProperties" visibility="public" complexity="1" crap="2.00" count="0"/>
-        <line num="27" type="stmt" count="0"/>
-        <line num="38" type="method" name="addPropertyWithValue" visibility="public" complexity="1" crap="2.00" count="0"/>
-        <line num="40" type="stmt" count="0"/>
-        <line num="42" type="stmt" count="0"/>
-        <line num="53" type="method" name="addPropertyWithCallback" visibility="public" complexity="1" crap="2.00" count="0"/>
-        <line num="55" type="stmt" count="0"/>
-        <line num="57" type="stmt" count="0"/>
-        <metrics loc="59" ncloc="30" classes="1" methods="3" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="0" elements="8" coveredelements="0"/>
-      </file>
-      <file name="/app/src/Executors/Traits/HasPropertiesTransformation.php">
-        <class name="HasPropertiesTransformation" namespace="soIT\LaravelSeeders\Executors\Traits">
-          <metrics complexity="4" methods="3" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="3" elements="8" coveredelements="5"/>
-        </class>
-        <line num="25" type="method" name="getTransformations" visibility="public" complexity="1" crap="1" count="4"/>
-        <line num="27" type="stmt" count="4"/>
-        <line num="37" type="method" name="setTransformations" visibility="public" complexity="2" crap="2" count="4"/>
-        <line num="39" type="stmt" count="4"/>
-        <line num="41" type="stmt" count="4"/>
-        <line num="52" type="method" name="assignTransformation" visibility="public" complexity="1" crap="2.00" count="0"/>
-        <line num="54" type="stmt" count="0"/>
-        <line num="56" type="stmt" count="0"/>
-        <metrics loc="58" ncloc="30" classes="1" methods="3" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="3" elements="8" coveredelements="5"/>
-      </file>
-      <file name="/app/src/Executors/Traits/HasPropertiesTranslation.php">
-        <class name="HasPropertiesTranslation" namespace="soIT\LaravelSeeders\Executors\Traits">
-          <metrics complexity="3" methods="3" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="1" elements="8" coveredelements="2"/>
-        </class>
-        <line num="25" type="method" name="getTranslations" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="25" type="method" name="getAdditionalProperties" visibility="public" complexity="1" crap="1" count="1"/>
         <line num="27" type="stmt" count="1"/>
-        <line num="37" type="method" name="setTranslations" visibility="public" complexity="1" crap="2.00" count="0"/>
-        <line num="39" type="stmt" count="0"/>
-        <line num="41" type="stmt" count="0"/>
-        <line num="52" type="method" name="translateProperty" visibility="public" complexity="1" crap="2.00" count="0"/>
-        <line num="54" type="stmt" count="0"/>
-        <line num="56" type="stmt" count="0"/>
-        <metrics loc="58" ncloc="30" classes="1" methods="3" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="1" elements="8" coveredelements="2"/>
+        <metrics loc="70" ncloc="35" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
       </file>
-      <file name="/app/src/Executors/Traits/HasSources.php">
-        <class name="HasSources" namespace="soIT\LaravelSeeders\Executors\Traits">
-          <metrics complexity="4" methods="3" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="0" elements="10" coveredelements="0"/>
+      <file name="/opt/project/app/Libraries/LaravelSeeder/src/Executors/Traits/HasNamingStrategy.php">
+        <class name="HasNamingStrategy" namespace="soIT\LaravelSeeder\Executors\Traits">
+          <metrics complexity="4" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
         </class>
-        <line num="27" type="method" name="addSource" visibility="public" complexity="1" crap="2.00" count="0"/>
-        <line num="29" type="stmt" count="0"/>
-        <line num="31" type="stmt" count="0"/>
-        <line num="39" type="method" name="getSources" visibility="public" complexity="1" crap="2.00" count="0"/>
-        <line num="41" type="stmt" count="0"/>
-        <line num="49" type="method" name="proceedSources" visibility="public" complexity="2" crap="6.00" count="0"/>
-        <line num="51" type="stmt" count="0"/>
-        <line num="53" type="stmt" count="0"/>
-        <line num="54" type="stmt" count="0"/>
-        <line num="57" type="stmt" count="0"/>
-        <metrics loc="59" ncloc="35" classes="1" methods="3" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="0" elements="10" coveredelements="0"/>
+        <line num="29" type="method" name="getNamingStrategy" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="31" type="stmt" count="1"/>
+        <metrics loc="73" ncloc="35" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
+      </file>
+      <file name="/opt/project/app/Libraries/LaravelSeeder/src/Executors/Traits/HasPropertiesTransformation.php">
+        <class name="HasPropertiesTransformation" namespace="soIT\LaravelSeeder\Executors\Traits">
+          <metrics complexity="5" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
+        </class>
+        <line num="27" type="method" name="getTransformations" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="29" type="stmt" count="1"/>
+        <metrics loc="70" ncloc="36" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
+      </file>
+      <file name="/opt/project/app/Libraries/LaravelSeeder/src/Executors/Traits/HasSources.php">
+        <class name="HasSources" namespace="soIT\LaravelSeeder\Executors\Traits">
+          <metrics complexity="4" methods="3" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="7" elements="10" coveredelements="10"/>
+        </class>
+        <line num="27" type="method" name="addSource" visibility="public" complexity="1" crap="1" count="2"/>
+        <line num="29" type="stmt" count="2"/>
+        <line num="31" type="stmt" count="2"/>
+        <line num="39" type="method" name="getSources" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="41" type="stmt" count="1"/>
+        <line num="49" type="method" name="proceedSources" visibility="public" complexity="2" crap="2" count="1"/>
+        <line num="51" type="stmt" count="1"/>
+        <line num="53" type="stmt" count="1"/>
+        <line num="54" type="stmt" count="1"/>
+        <line num="57" type="stmt" count="1"/>
+        <metrics loc="59" ncloc="35" classes="1" methods="3" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="7" elements="10" coveredelements="10"/>
+      </file>
+    </package>
+    <package name="soIT\LaravelSeeder">
+      <file name="/opt/project/app/Libraries/LaravelSeeder/src/LaravelSeeder.php">
+        <class name="soIT\LaravelSeeder\LaravelSeeder" namespace="soIT\LaravelSeeder">
+          <metrics complexity="6" methods="5" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="10" coveredstatements="0" elements="15" coveredelements="0"/>
+        </class>
+        <line num="33" type="method" name="__construct" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="35" type="stmt" count="0"/>
+        <line num="36" type="stmt" count="0"/>
+        <line num="43" type="method" name="getExecutors" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="45" type="stmt" count="0"/>
+        <line num="53" type="method" name="setExecutors" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="55" type="stmt" count="0"/>
+        <line num="56" type="stmt" count="0"/>
+        <line num="67" type="method" name="getExecutor" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="69" type="stmt" count="0"/>
+        <line num="81" type="method" name="__call" visibility="public" complexity="2" crap="6" count="0"/>
+        <line num="83" type="stmt" count="0"/>
+        <line num="84" type="stmt" count="0"/>
+        <line num="86" type="stmt" count="0"/>
+        <line num="87" type="stmt" count="0"/>
+        <metrics loc="91" ncloc="45" classes="1" methods="5" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="10" coveredstatements="0" elements="15" coveredelements="0"/>
+      </file>
+      <file name="/opt/project/app/Libraries/LaravelSeeder/src/SeederFactory.php">
+        <class name="soIT\LaravelSeeder\SeederFactory" namespace="soIT\LaravelSeeder">
+          <metrics complexity="2" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+        </class>
+        <metrics loc="49" ncloc="22" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
       </file>
     </package>
     <package name="soIT\LaravelSeeders\Parsers\File">
-      <file name="/app/src/Parsers/File/JsonParser.php">
+      <file name="/opt/project/app/Libraries/LaravelSeeder/src/Parsers/File/JsonParser.php">
         <class name="soIT\LaravelSeeders\Parsers\File\JsonParser" namespace="soIT\LaravelSeeders\Parsers\File">
-          <metrics complexity="2" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="3" elements="5" coveredelements="5"/>
-        </class>
-        <line num="23" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="2"/>
-        <line num="25" type="stmt" count="2"/>
-        <line num="26" type="stmt" count="2"/>
-        <line num="33" type="method" name="parse" visibility="public" complexity="1" crap="1" count="2"/>
-        <line num="35" type="stmt" count="2"/>
-        <metrics loc="37" ncloc="19" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="3" elements="5" coveredelements="5"/>
-      </file>
-      <file name="/app/src/Parsers/File/Parser.php">
-        <class name="soIT\LaravelSeeders\Parsers\File\Parser" namespace="soIT\LaravelSeeders\Parsers\File">
-          <metrics complexity="5" methods="3" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="8" coveredstatements="8" elements="11" coveredelements="11"/>
-        </class>
-        <line num="30" type="method" name="parse" visibility="public" complexity="2" crap="2" count="4"/>
-        <line num="32" type="stmt" count="4"/>
-        <line num="33" type="stmt" count="3"/>
-        <line num="35" type="stmt" count="1"/>
-        <line num="47" type="method" name="factory" visibility="private" complexity="2" crap="2" count="3"/>
-        <line num="49" type="stmt" count="3"/>
-        <line num="51" type="stmt" count="3"/>
-        <line num="52" type="stmt" count="1"/>
-        <line num="54" type="stmt" count="2"/>
-        <line num="65" type="method" name="getExtension" visibility="protected" complexity="1" crap="1" count="3"/>
-        <line num="67" type="stmt" count="3"/>
-        <metrics loc="69" ncloc="39" classes="1" methods="3" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="8" coveredstatements="8" elements="11" coveredelements="11"/>
-      </file>
-    </package>
-    <file name="/app/src/Parsers/ParserInterface.php">
-      <metrics loc="13" ncloc="8" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
-    </file>
-    <package name="soIT\LaravelSeeders\Seeders\Features">
-      <file name="/app/src/Seeders/Features/SeederAdditionalPropertiesTrait.php">
-        <class name="SeederAdditionalPropertiesTrait" namespace="soIT\LaravelSeeders\Seeders\Features">
-          <metrics complexity="5" methods="3" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="9" coveredstatements="0" elements="12" coveredelements="0"/>
-        </class>
-        <line num="20" type="method" name="getAdditionalPropertiesInsertData" visibility="private" complexity="3" crap="12.00" count="0"/>
-        <line num="22" type="stmt" count="0"/>
-        <line num="24" type="stmt" count="0"/>
-        <line num="25" type="stmt" count="0"/>
-        <line num="26" type="stmt" count="0"/>
-        <line num="29" type="stmt" count="0"/>
-        <line num="33" type="stmt" count="0"/>
-        <line num="41" type="method" name="getProperties" visibility="public" complexity="1" crap="2.00" count="0"/>
-        <line num="43" type="stmt" count="0"/>
-        <line num="53" type="method" name="setProperties" visibility="public" complexity="1" crap="2.00" count="0"/>
-        <line num="55" type="stmt" count="0"/>
-        <line num="57" type="stmt" count="0"/>
-        <metrics loc="59" ncloc="39" classes="1" methods="3" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="9" coveredstatements="0" elements="12" coveredelements="0"/>
-      </file>
-      <file name="/app/src/Seeders/Features/SeederTransformationsTrait.php">
-        <class name="SeederTransformationsTrait" namespace="soIT\LaravelSeeders\Seeders\Features">
-          <metrics complexity="3" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="0" elements="5" coveredelements="0"/>
-        </class>
-        <line num="23" type="method" name="getTransformations" visibility="public" complexity="1" crap="2.00" count="0"/>
-        <line num="25" type="stmt" count="0"/>
-        <line num="35" type="method" name="setTransformations" visibility="public" complexity="2" crap="6.00" count="0"/>
-        <line num="37" type="stmt" count="0"/>
-        <line num="39" type="stmt" count="0"/>
-        <metrics loc="41" ncloc="21" classes="1" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="0" elements="5" coveredelements="0"/>
-      </file>
-      <file name="/app/src/Seeders/Features/SeederTranslationsTrait.php">
-        <class name="SeederTranslationsTrait" namespace="soIT\LaravelSeeders\Seeders\Features">
           <metrics complexity="2" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="0" elements="5" coveredelements="0"/>
         </class>
-        <line num="24" type="method" name="getTranslations" visibility="public" complexity="1" crap="2.00" count="0"/>
+        <line num="23" type="method" name="__construct" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="25" type="stmt" count="0"/>
         <line num="26" type="stmt" count="0"/>
-        <line num="36" type="method" name="setTranslations" visibility="public" complexity="1" crap="2.00" count="0"/>
-        <line num="38" type="stmt" count="0"/>
-        <line num="40" type="stmt" count="0"/>
-        <metrics loc="42" ncloc="22" classes="1" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="0" elements="5" coveredelements="0"/>
+        <line num="33" type="method" name="parse" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="35" type="stmt" count="0"/>
+        <metrics loc="37" ncloc="19" classes="1" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="0" elements="5" coveredelements="0"/>
+      </file>
+      <file name="/opt/project/app/Libraries/LaravelSeeder/src/Parsers/File/Parser.php">
+        <class name="soIT\LaravelSeeders\Parsers\File\Parser" namespace="soIT\LaravelSeeders\Parsers\File">
+          <metrics complexity="5" methods="3" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="8" coveredstatements="0" elements="11" coveredelements="0"/>
+        </class>
+        <line num="30" type="method" name="parse" visibility="public" complexity="2" crap="6" count="0"/>
+        <line num="32" type="stmt" count="0"/>
+        <line num="33" type="stmt" count="0"/>
+        <line num="35" type="stmt" count="0"/>
+        <line num="47" type="method" name="factory" visibility="private" complexity="2" crap="6" count="0"/>
+        <line num="49" type="stmt" count="0"/>
+        <line num="51" type="stmt" count="0"/>
+        <line num="52" type="stmt" count="0"/>
+        <line num="54" type="stmt" count="0"/>
+        <line num="65" type="method" name="getExtension" visibility="protected" complexity="1" crap="2" count="0"/>
+        <line num="67" type="stmt" count="0"/>
+        <metrics loc="69" ncloc="39" classes="1" methods="3" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="8" coveredstatements="0" elements="11" coveredelements="0"/>
       </file>
     </package>
-    <package name="soIT\LaravelSeeders\Seeders">
-      <file name="/app/src/Seeders/ModelSeeder.php">
-        <class name="soIT\LaravelSeeders\Seeders\ModelSeeder" namespace="soIT\LaravelSeeders\Seeders">
-          <metrics complexity="7" methods="5" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="19" coveredstatements="3" elements="24" coveredelements="5"/>
+    <file name="/opt/project/app/Libraries/LaravelSeeder/src/Parsers/ParserInterface.php">
+      <metrics loc="13" ncloc="8" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+    </file>
+    <package name="soIT\LaravelSeeder\Seeders">
+      <file name="/opt/project/app/Libraries/LaravelSeeder/src/Seeders/AttachModelSeeder.php">
+        <class name="soIT\LaravelSeeder\Seeders\AttachModelSeeder" namespace="soIT\LaravelSeeder\Seeders">
+          <metrics complexity="14" methods="9" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="30" coveredstatements="0" elements="39" coveredelements="0"/>
         </class>
-        <line num="37" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="4"/>
-        <line num="39" type="stmt" count="4"/>
-        <line num="40" type="stmt" count="4"/>
-        <line num="47" type="method" name="getName" visibility="public" complexity="1" crap="1" count="2"/>
-        <line num="49" type="stmt" count="2"/>
-        <line num="57" type="method" name="save" visibility="public" complexity="1" crap="2.00" count="0"/>
-        <line num="59" type="stmt" count="0"/>
-        <line num="60" type="stmt" count="0"/>
-        <line num="61" type="stmt" count="0"/>
-        <line num="63" type="stmt" count="0"/>
-        <line num="65" type="stmt" count="0"/>
-        <line num="67" type="stmt" count="0"/>
-        <line num="68" type="stmt" count="0"/>
-        <line num="73" type="method" name="initModelContainer" visibility="protected" complexity="1" crap="2.00" count="0"/>
-        <line num="75" type="stmt" count="0"/>
-        <line num="76" type="stmt" count="0"/>
-        <line num="77" type="stmt" count="0"/>
-        <line num="79" type="stmt" count="0"/>
-        <line num="86" type="method" name="executeSeeders" visibility="protected" complexity="3" crap="12.00" count="0"/>
-        <line num="88" type="stmt" count="0"/>
-        <line num="89" type="stmt" count="0"/>
-        <line num="90" type="stmt" count="0"/>
-        <line num="91" type="stmt" count="0"/>
-        <line num="94" type="stmt" count="0"/>
-        <metrics loc="95" ncloc="59" classes="1" methods="5" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="19" coveredstatements="3" elements="24" coveredelements="5"/>
-      </file>
-      <file name="/app/src/Seeders/RelationModelSeeder.php">
-        <class name="soIT\LaravelSeeders\Seeders\RelationModelSeeder" namespace="soIT\LaravelSeeders\Seeders">
-          <metrics complexity="12" methods="9" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="32" coveredstatements="0" elements="41" coveredelements="0"/>
-        </class>
-        <line num="27" type="method" name="__construct" visibility="public" complexity="1" crap="2.00" count="0"/>
+        <line num="27" type="method" name="__construct" visibility="public" complexity="1" crap="2" count="0"/>
         <line num="29" type="stmt" count="0"/>
         <line num="31" type="stmt" count="0"/>
         <line num="32" type="stmt" count="0"/>
-        <line num="39" type="method" name="setParentModel" visibility="public" complexity="1" crap="2.00" count="0"/>
+        <line num="40" type="method" name="setData" visibility="public" complexity="3" crap="12" count="0"/>
+        <line num="42" type="stmt" count="0"/>
+        <line num="44" type="stmt" count="0"/>
+        <line num="45" type="stmt" count="0"/>
+        <line num="46" type="stmt" count="0"/>
+        <line num="47" type="stmt" count="0"/>
+        <line num="51" type="stmt" count="0"/>
+        <line num="54" type="stmt" count="0"/>
+        <line num="56" type="stmt" count="0"/>
+        <line num="64" type="method" name="setParentModel" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="66" type="stmt" count="0"/>
+        <line num="67" type="stmt" count="0"/>
+        <line num="75" type="method" name="save" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="77" type="stmt" count="0"/>
+        <line num="78" type="stmt" count="0"/>
+        <line num="79" type="stmt" count="0"/>
+        <line num="87" type="method" name="prepareContainers" visibility="private" complexity="1" crap="2" count="0"/>
+        <line num="89" type="stmt" count="0"/>
+        <line num="90" type="stmt" count="0"/>
+        <line num="96" type="method" name="saveContainers" visibility="private" complexity="1" crap="2" count="0"/>
+        <line num="98" type="stmt" count="0"/>
+        <line num="99" type="stmt" count="0"/>
+        <line num="106" type="method" name="attachModels" visibility="private" complexity="3" crap="12" count="0"/>
+        <line num="108" type="stmt" count="0"/>
+        <line num="112" type="stmt" count="0"/>
+        <line num="114" type="stmt" count="0"/>
+        <line num="115" type="stmt" count="0"/>
+        <line num="116" type="stmt" count="0"/>
+        <line num="119" type="stmt" count="0"/>
+        <line num="128" type="method" name="getRelationName" visibility="private" complexity="1" crap="2" count="0"/>
+        <line num="130" type="stmt" count="0"/>
+        <line num="141" type="method" name="getRelation" visibility="private" complexity="2" crap="6" count="0"/>
+        <line num="143" type="stmt" count="0"/>
+        <line num="144" type="stmt" count="0"/>
+        <line num="147" type="stmt" count="0"/>
+        <metrics loc="149" ncloc="88" classes="1" methods="9" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="30" coveredstatements="0" elements="39" coveredelements="0"/>
+      </file>
+      <file name="/opt/project/app/Libraries/LaravelSeeder/src/Seeders/ModelSeeder.php">
+        <class name="soIT\LaravelSeeder\Seeders\ModelSeeder" namespace="soIT\LaravelSeeder\Seeders">
+          <metrics complexity="7" methods="5" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="19" coveredstatements="0" elements="24" coveredelements="0"/>
+        </class>
+        <line num="41" type="method" name="__construct" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="43" type="stmt" count="0"/>
+        <line num="44" type="stmt" count="0"/>
+        <line num="51" type="method" name="getName" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="53" type="stmt" count="0"/>
+        <line num="61" type="method" name="save" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="63" type="stmt" count="0"/>
+        <line num="64" type="stmt" count="0"/>
+        <line num="65" type="stmt" count="0"/>
+        <line num="67" type="stmt" count="0"/>
+        <line num="69" type="stmt" count="0"/>
+        <line num="71" type="stmt" count="0"/>
+        <line num="72" type="stmt" count="0"/>
+        <line num="77" type="method" name="initModelContainer" visibility="protected" complexity="1" crap="2" count="0"/>
+        <line num="79" type="stmt" count="0"/>
+        <line num="80" type="stmt" count="0"/>
+        <line num="81" type="stmt" count="0"/>
+        <line num="83" type="stmt" count="0"/>
+        <line num="90" type="method" name="executeSeeders" visibility="protected" complexity="3" crap="12" count="0"/>
+        <line num="92" type="stmt" count="0"/>
+        <line num="93" type="stmt" count="0"/>
+        <line num="94" type="stmt" count="0"/>
+        <line num="95" type="stmt" count="0"/>
+        <line num="98" type="stmt" count="0"/>
+        <metrics loc="99" ncloc="63" classes="1" methods="5" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="19" coveredstatements="0" elements="24" coveredelements="0"/>
+      </file>
+      <file name="/opt/project/app/Libraries/LaravelSeeder/src/Seeders/RelationModelSeeder.php">
+        <class name="soIT\LaravelSeeder\Seeders\RelationModelSeeder" namespace="soIT\LaravelSeeder\Seeders">
+          <metrics complexity="12" methods="9" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="32" coveredstatements="0" elements="41" coveredelements="0"/>
+        </class>
+        <line num="27" type="method" name="__construct" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="29" type="stmt" count="0"/>
+        <line num="31" type="stmt" count="0"/>
+        <line num="32" type="stmt" count="0"/>
+        <line num="39" type="method" name="setParentModel" visibility="public" complexity="1" crap="2" count="0"/>
         <line num="41" type="stmt" count="0"/>
         <line num="42" type="stmt" count="0"/>
-        <line num="50" type="method" name="save" visibility="public" complexity="1" crap="2.00" count="0"/>
+        <line num="50" type="method" name="save" visibility="public" complexity="1" crap="2" count="0"/>
         <line num="52" type="stmt" count="0"/>
         <line num="53" type="stmt" count="0"/>
         <line num="54" type="stmt" count="0"/>
-        <line num="63" type="method" name="prepareContainers" visibility="private" complexity="2" crap="6.00" count="0"/>
+        <line num="63" type="method" name="prepareContainers" visibility="private" complexity="2" crap="6" count="0"/>
         <line num="65" type="stmt" count="0"/>
         <line num="66" type="stmt" count="0"/>
         <line num="67" type="stmt" count="0"/>
         <line num="68" type="stmt" count="0"/>
         <line num="69" type="stmt" count="0"/>
         <line num="72" type="stmt" count="0"/>
-        <line num="77" type="method" name="saveContainers" visibility="private" complexity="2" crap="6.00" count="0"/>
+        <line num="77" type="method" name="saveContainers" visibility="private" complexity="2" crap="6" count="0"/>
         <line num="79" type="stmt" count="0"/>
         <line num="80" type="stmt" count="0"/>
         <line num="82" type="stmt" count="0"/>
         <line num="84" type="stmt" count="0"/>
-        <line num="91" type="method" name="getAllModels" visibility="private" complexity="1" crap="2.00" count="0"/>
+        <line num="91" type="method" name="getAllModels" visibility="private" complexity="1" crap="2" count="0"/>
         <line num="94" type="stmt" count="0"/>
         <line num="95" type="stmt" count="0"/>
-        <line num="101" type="method" name="saveModelsBulk" visibility="private" complexity="1" crap="2.00" count="0"/>
+        <line num="101" type="method" name="saveModelsBulk" visibility="private" complexity="1" crap="2" count="0"/>
         <line num="103" type="stmt" count="0"/>
         <line num="104" type="stmt" count="0"/>
         <line num="106" type="stmt" count="0"/>
         <line num="107" type="stmt" count="0"/>
-        <line num="113" type="method" name="saveModels" visibility="private" complexity="2" crap="6.00" count="0"/>
+        <line num="113" type="method" name="saveModels" visibility="private" complexity="2" crap="6" count="0"/>
         <line num="115" type="stmt" count="0"/>
         <line num="116" type="stmt" count="0"/>
         <line num="117" type="stmt" count="0"/>
@@ -536,304 +499,373 @@
         <line num="120" type="stmt" count="0"/>
         <line num="122" type="stmt" count="0"/>
         <line num="124" type="stmt" count="0"/>
-        <line num="133" type="method" name="getRelationName" visibility="private" complexity="1" crap="2.00" count="0"/>
+        <line num="133" type="method" name="getRelationName" visibility="private" complexity="1" crap="2" count="0"/>
         <line num="135" type="stmt" count="0"/>
         <metrics loc="137" ncloc="86" classes="1" methods="9" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="32" coveredstatements="0" elements="41" coveredelements="0"/>
       </file>
-      <file name="/app/src/Seeders/SeederAbstract.php">
-        <class name="soIT\LaravelSeeders\Seeders\SeederAbstract" namespace="soIT\LaravelSeeders\Seeders">
-          <metrics complexity="5" methods="3" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="5" elements="8" coveredelements="8"/>
+      <file name="/opt/project/app/Libraries/LaravelSeeder/src/Seeders/SeederAbstract.php">
+        <class name="soIT\LaravelSeeder\Seeders\SeederAbstract" namespace="soIT\LaravelSeeder\Seeders">
+          <metrics complexity="5" methods="3" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="0" elements="8" coveredelements="0"/>
         </class>
-        <line num="35" type="method" name="onDuplicate" visibility="public" complexity="1" crap="1" count="1"/>
-        <line num="37" type="stmt" count="1"/>
-        <line num="39" type="stmt" count="1"/>
-        <line num="49" type="method" name="setData" visibility="public" complexity="1" crap="1" count="1"/>
-        <line num="51" type="stmt" count="1"/>
-        <line num="53" type="stmt" count="1"/>
-        <line num="59" type="method" name="getData" visibility="public" complexity="1" crap="1" count="1"/>
-        <line num="61" type="stmt" count="1"/>
-        <metrics loc="63" ncloc="35" classes="1" methods="3" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="5" elements="8" coveredelements="8"/>
+        <line num="36" type="method" name="onDuplicate" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="38" type="stmt" count="0"/>
+        <line num="40" type="stmt" count="0"/>
+        <line num="50" type="method" name="setData" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="52" type="stmt" count="0"/>
+        <line num="54" type="stmt" count="0"/>
+        <line num="60" type="method" name="getData" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="62" type="stmt" count="0"/>
+        <metrics loc="64" ncloc="36" classes="1" methods="3" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="0" elements="8" coveredelements="0"/>
       </file>
-      <file name="/app/src/Seeders/Seeders.php">
-        <class name="soIT\LaravelSeeders\Seeders\Seeders" namespace="soIT\LaravelSeeders\Seeders">
+      <file name="/opt/project/app/Libraries/LaravelSeeder/src/Seeders/Seeders.php">
+        <class name="soIT\LaravelSeeder\Seeders\Seeders" namespace="soIT\LaravelSeeder\Seeders">
           <metrics complexity="2" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="0" elements="4" coveredelements="0"/>
         </class>
-        <line num="30" type="method" name="setModel" visibility="public" complexity="1" crap="2.00" count="0"/>
+        <line num="30" type="method" name="setModel" visibility="public" complexity="1" crap="2" count="0"/>
         <line num="32" type="stmt" count="0"/>
-        <line num="43" type="method" name="setTable" visibility="public" complexity="1" crap="2.00" count="0"/>
+        <line num="43" type="method" name="setTable" visibility="public" complexity="1" crap="2" count="0"/>
         <line num="45" type="stmt" count="0"/>
         <metrics loc="47" ncloc="26" classes="1" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="0" elements="4" coveredelements="0"/>
       </file>
-      <file name="/app/src/Seeders/TableSeeder.php">
-        <class name="soIT\LaravelSeeders\Seeders\TableSeeder" namespace="soIT\LaravelSeeders\Seeders">
-          <metrics complexity="33" methods="20" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="55" coveredstatements="0" elements="75" coveredelements="0"/>
+      <file name="/opt/project/app/Libraries/LaravelSeeder/src/Seeders/TableSeeder.php">
+        <class name="soIT\LaravelSeeder\Seeders\TableSeeder" namespace="soIT\LaravelSeeder\Seeders">
+          <metrics complexity="31" methods="18" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="54" coveredstatements="0" elements="72" coveredelements="0"/>
         </class>
-        <line num="46" type="method" name="__construct" visibility="public" complexity="1" crap="2.00" count="0"/>
-        <line num="48" type="stmt" count="0"/>
+        <line num="47" type="method" name="__construct" visibility="public" complexity="1" crap="2" count="0"/>
         <line num="49" type="stmt" count="0"/>
-        <line num="58" type="method" name="setTable" visibility="public" complexity="2" crap="6.00" count="0"/>
-        <line num="60" type="stmt" count="0"/>
+        <line num="50" type="stmt" count="0"/>
+        <line num="59" type="method" name="setTable" visibility="public" complexity="2" crap="6" count="0"/>
         <line num="61" type="stmt" count="0"/>
         <line num="62" type="stmt" count="0"/>
-        <line num="64" type="stmt" count="0"/>
-        <line num="66" type="stmt" count="0"/>
-        <line num="75" type="method" name="isTableExists" visibility="protected" complexity="1" crap="2.00" count="0"/>
-        <line num="77" type="stmt" count="0"/>
-        <line num="78" type="stmt" count="0"/>
-        <line num="79" type="stmt" count="0"/>
-        <line num="80" type="stmt" count="0"/>
-        <line num="81" type="stmt" count="0"/>
-        <line num="88" type="method" name="setColumns" visibility="private" complexity="1" crap="2.00" count="0"/>
-        <line num="90" type="stmt" count="0"/>
+        <line num="63" type="stmt" count="0"/>
+        <line num="65" type="stmt" count="0"/>
+        <line num="67" type="stmt" count="0"/>
+        <line num="74" type="method" name="getUniqueColumns" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="76" type="stmt" count="0"/>
+        <line num="87" type="method" name="setUniqueKeys" visibility="public" complexity="2" crap="6" count="0"/>
+        <line num="89" type="stmt" count="0"/>
         <line num="91" type="stmt" count="0"/>
-        <line num="98" type="method" name="getUniqueColumns" visibility="public" complexity="1" crap="2.00" count="0"/>
-        <line num="100" type="stmt" count="0"/>
-        <line num="111" type="method" name="setUniqueKeys" visibility="public" complexity="2" crap="6.00" count="0"/>
-        <line num="113" type="stmt" count="0"/>
+        <line num="92" type="stmt" count="0"/>
+        <line num="95" type="stmt" count="0"/>
+        <line num="103" type="method" name="getName" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="105" type="stmt" count="0"/>
+        <line num="113" type="method" name="save" visibility="public" complexity="3" crap="12" count="0"/>
         <line num="115" type="stmt" count="0"/>
-        <line num="116" type="stmt" count="0"/>
+        <line num="117" type="stmt" count="0"/>
         <line num="119" type="stmt" count="0"/>
-        <line num="127" type="method" name="setUniqueColumn" visibility="private" complexity="2" crap="6.00" count="0"/>
-        <line num="129" type="stmt" count="0"/>
-        <line num="130" type="stmt" count="0"/>
-        <line num="132" type="stmt" count="0"/>
-        <line num="134" type="stmt" count="0"/>
-        <line num="143" type="method" name="isColumnExistInTable" visibility="private" complexity="1" crap="2.00" count="0"/>
-        <line num="145" type="stmt" count="0"/>
-        <line num="153" type="method" name="getName" visibility="public" complexity="1" crap="2.00" count="0"/>
-        <line num="155" type="stmt" count="0"/>
-        <line num="163" type="method" name="save" visibility="public" complexity="3" crap="12.00" count="0"/>
-        <line num="165" type="stmt" count="0"/>
+        <line num="122" type="stmt" count="0"/>
+        <line num="125" type="stmt" count="0"/>
+        <line num="136" type="method" name="isTableExists" visibility="protected" complexity="1" crap="2" count="0"/>
+        <line num="138" type="stmt" count="0"/>
+        <line num="139" type="stmt" count="0"/>
+        <line num="140" type="stmt" count="0"/>
+        <line num="141" type="stmt" count="0"/>
+        <line num="142" type="stmt" count="0"/>
+        <line num="151" type="method" name="setUniqueColumn" visibility="private" complexity="2" crap="6" count="0"/>
+        <line num="153" type="stmt" count="0"/>
+        <line num="154" type="stmt" count="0"/>
+        <line num="156" type="stmt" count="0"/>
+        <line num="158" type="stmt" count="0"/>
+        <line num="165" type="method" name="getInsertData" visibility="private" complexity="4" crap="20" count="0"/>
         <line num="167" type="stmt" count="0"/>
+        <line num="168" type="stmt" count="0"/>
         <line num="169" type="stmt" count="0"/>
+        <line num="171" type="stmt" count="0"/>
         <line num="172" type="stmt" count="0"/>
-        <line num="175" type="stmt" count="0"/>
-        <line num="184" type="method" name="getInsertData" visibility="private" complexity="4" crap="20.00" count="0"/>
-        <line num="186" type="stmt" count="0"/>
-        <line num="187" type="stmt" count="0"/>
+        <line num="173" type="stmt" count="0"/>
+        <line num="174" type="stmt" count="0"/>
+        <line num="178" type="stmt" count="0"/>
+        <line num="186" type="method" name="getTargetProperty" visibility="private" complexity="2" crap="6" count="0"/>
         <line num="188" type="stmt" count="0"/>
-        <line num="190" type="stmt" count="0"/>
-        <line num="191" type="stmt" count="0"/>
-        <line num="192" type="stmt" count="0"/>
-        <line num="193" type="stmt" count="0"/>
-        <line num="197" type="stmt" count="0"/>
-        <line num="205" type="method" name="getTargetProperty" visibility="private" complexity="2" crap="6.00" count="0"/>
-        <line num="207" type="stmt" count="0"/>
-        <line num="217" type="method" name="saveAndIgnoreDuplicated" visibility="private" complexity="3" crap="12.00" count="0"/>
-        <line num="219" type="stmt" count="0"/>
-        <line num="220" type="stmt" count="0"/>
-        <line num="222" type="stmt" count="0"/>
-        <line num="233" type="method" name="getRecord" visibility="private" complexity="1" crap="2.00" count="0"/>
-        <line num="235" type="stmt" count="0"/>
-        <line num="243" type="method" name="getDataForSearch" visibility="private" complexity="2" crap="6.00" count="0"/>
-        <line num="245" type="stmt" count="0"/>
-        <line num="246" type="stmt" count="0"/>
-        <line num="247" type="stmt" count="0"/>
-        <line num="250" type="stmt" count="0"/>
-        <line num="260" type="method" name="saveOrUpdateDuplicated" visibility="private" complexity="2" crap="6.00" count="0"/>
-        <line num="262" type="stmt" count="0"/>
-        <line num="272" type="method" name="create" visibility="private" complexity="1" crap="2.00" count="0"/>
-        <line num="274" type="stmt" count="0"/>
-        <line num="284" type="method" name="update" visibility="private" complexity="1" crap="2.00" count="0"/>
-        <line num="286" type="stmt" count="0"/>
-        <line num="296" type="method" name="getQueryBuilder" visibility="private" complexity="1" crap="2.00" count="0"/>
-        <line num="298" type="stmt" count="0"/>
-        <line num="306" type="method" name="buildDynamicWhere" visibility="private" complexity="1" crap="2.00" count="0"/>
-        <line num="309" type="stmt" count="0"/>
-        <line num="310" type="stmt" count="0"/>
-        <line num="312" type="stmt" count="0"/>
-        <line num="313" type="stmt" count="0"/>
-        <metrics loc="316" ncloc="181" classes="1" methods="20" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="55" coveredstatements="0" elements="75" coveredelements="0"/>
+        <line num="198" type="method" name="saveAndIgnoreDuplicated" visibility="private" complexity="3" crap="12" count="0"/>
+        <line num="200" type="stmt" count="0"/>
+        <line num="201" type="stmt" count="0"/>
+        <line num="203" type="stmt" count="0"/>
+        <line num="214" type="method" name="getRecord" visibility="private" complexity="1" crap="2" count="0"/>
+        <line num="216" type="stmt" count="0"/>
+        <line num="224" type="method" name="getDataForSearch" visibility="private" complexity="2" crap="6" count="0"/>
+        <line num="226" type="stmt" count="0"/>
+        <line num="227" type="stmt" count="0"/>
+        <line num="228" type="stmt" count="0"/>
+        <line num="231" type="stmt" count="0"/>
+        <line num="241" type="method" name="saveOrUpdateDuplicated" visibility="private" complexity="2" crap="6" count="0"/>
+        <line num="243" type="stmt" count="0"/>
+        <line num="253" type="method" name="create" visibility="private" complexity="1" crap="2" count="0"/>
+        <line num="255" type="stmt" count="0"/>
+        <line num="265" type="method" name="update" visibility="private" complexity="1" crap="2" count="0"/>
+        <line num="267" type="stmt" count="0"/>
+        <line num="277" type="method" name="getQueryBuilder" visibility="private" complexity="1" crap="2" count="0"/>
+        <line num="279" type="stmt" count="0"/>
+        <line num="287" type="method" name="buildDynamicWhere" visibility="private" complexity="1" crap="2" count="0"/>
+        <line num="290" type="stmt" count="0"/>
+        <line num="291" type="stmt" count="0"/>
+        <line num="292" type="stmt" count="0"/>
+        <line num="294" type="stmt" count="0"/>
+        <line num="295" type="stmt" count="0"/>
+        <line num="296" type="stmt" count="0"/>
+        <metrics loc="300" ncloc="178" classes="1" methods="18" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="54" coveredstatements="0" elements="72" coveredelements="0"/>
       </file>
     </package>
-    <file name="/app/src/Seeders/SeederInterface.php">
+    <file name="/opt/project/app/Libraries/LaravelSeeder/src/Seeders/SeederInterface.php">
       <metrics loc="18" ncloc="13" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
     </file>
+    <package name="soIT\LaravelSeeder\Seeders\Traits">
+      <file name="/opt/project/app/Libraries/LaravelSeeder/src/Seeders/Traits/HasTransformations.php">
+        <class name="HasTransformations" namespace="soIT\LaravelSeeder\Seeders\Traits">
+          <metrics complexity="3" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="0" elements="5" coveredelements="0"/>
+        </class>
+        <line num="24" type="method" name="getTransformations" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="26" type="stmt" count="0"/>
+        <line num="36" type="method" name="setTransformations" visibility="public" complexity="2" crap="6" count="0"/>
+        <line num="38" type="stmt" count="0"/>
+        <line num="40" type="stmt" count="0"/>
+        <metrics loc="42" ncloc="22" classes="1" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="0" elements="5" coveredelements="0"/>
+      </file>
+      <file name="/opt/project/app/Libraries/LaravelSeeder/src/Seeders/Traits/SeederAdditionalPropertiesTrait.php">
+        <class name="SeederAdditionalPropertiesTrait" namespace="soIT\LaravelSeeder\Seeders\Traits">
+          <metrics complexity="5" methods="3" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="9" coveredstatements="0" elements="12" coveredelements="0"/>
+        </class>
+        <line num="20" type="method" name="getAdditionalPropertiesInsertData" visibility="private" complexity="3" crap="12" count="0"/>
+        <line num="22" type="stmt" count="0"/>
+        <line num="24" type="stmt" count="0"/>
+        <line num="25" type="stmt" count="0"/>
+        <line num="28" type="stmt" count="0"/>
+        <line num="31" type="stmt" count="0"/>
+        <line num="35" type="stmt" count="0"/>
+        <line num="43" type="method" name="getProperties" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="45" type="stmt" count="0"/>
+        <line num="55" type="method" name="setProperties" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="57" type="stmt" count="0"/>
+        <line num="59" type="stmt" count="0"/>
+        <metrics loc="61" ncloc="39" classes="1" methods="3" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="9" coveredstatements="0" elements="12" coveredelements="0"/>
+      </file>
+      <file name="/opt/project/app/Libraries/LaravelSeeder/src/Seeders/Traits/SeederTranslationsTrait.php">
+        <class name="SeederTranslationsTrait" namespace="soIT\LaravelSeeder\Seeders\Traits">
+          <metrics complexity="2" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="0" elements="5" coveredelements="0"/>
+        </class>
+        <line num="24" type="method" name="getTranslations" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="26" type="stmt" count="0"/>
+        <line num="36" type="method" name="setTranslations" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="38" type="stmt" count="0"/>
+        <line num="40" type="stmt" count="0"/>
+        <metrics loc="42" ncloc="22" classes="1" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="0" elements="5" coveredelements="0"/>
+      </file>
+    </package>
     <package name="soIT\LaravelSeeders\Sources">
-      <file name="/app/src/Sources/Entity.php">
+      <file name="/opt/project/app/Libraries/LaravelSeeder/src/Sources/Entity.php">
         <class name="soIT\LaravelSeeders\Sources\Entity" namespace="soIT\LaravelSeeders\Sources">
-          <metrics complexity="5" methods="4" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="9" coveredstatements="9" elements="13" coveredelements="13"/>
-        </class>
-        <line num="25" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="2"/>
-        <line num="27" type="stmt" count="2"/>
-        <line num="28" type="stmt" count="1"/>
-        <line num="35" type="method" name="data" visibility="public" complexity="1" crap="1" count="1"/>
-        <line num="37" type="stmt" count="1"/>
-        <line num="47" type="method" name="_setEntity" visibility="private" complexity="2" crap="2" count="2"/>
-        <line num="49" type="stmt" count="2"/>
-        <line num="50" type="stmt" count="1"/>
-        <line num="52" type="stmt" count="1"/>
-        <line num="53" type="stmt" count="1"/>
-        <line num="56" type="stmt" count="1"/>
-        <line num="65" type="method" name="isAssociativeArray" visibility="private" complexity="1" crap="1" count="2"/>
-        <line num="67" type="stmt" count="2"/>
-        <metrics loc="69" ncloc="35" classes="1" methods="4" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="9" coveredstatements="9" elements="13" coveredelements="13"/>
-      </file>
-      <file name="/app/src/Sources/File.php">
-        <class name="soIT\LaravelSeeders\Sources\File" namespace="soIT\LaravelSeeders\Sources">
-          <metrics complexity="16" methods="9" coveredmethods="8" conditionals="0" coveredconditionals="0" statements="19" coveredstatements="18" elements="28" coveredelements="26"/>
-        </class>
-        <line num="29" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="6"/>
-        <line num="31" type="stmt" count="6"/>
-        <line num="32" type="stmt" count="4"/>
-        <line num="41" type="method" name="data" visibility="public" complexity="1" crap="1" count="1"/>
-        <line num="43" type="stmt" count="1"/>
-        <line num="51" type="method" name="getFilePath" visibility="public" complexity="2" crap="2" count="4"/>
-        <line num="53" type="stmt" count="4"/>
-        <line num="64" type="method" name="setFile" visibility="public" complexity="4" crap="4" count="6"/>
-        <line num="67" type="stmt" count="6"/>
-        <line num="68" type="stmt" count="6"/>
-        <line num="69" type="stmt" count="6"/>
-        <line num="71" type="stmt" count="2"/>
-        <line num="74" type="stmt" count="4"/>
-        <line num="84" type="method" name="isFileExists" visibility="private" complexity="2" crap="2" count="6"/>
-        <line num="86" type="stmt" count="6"/>
-        <line num="96" type="method" name="setFileByRootPath" visibility="private" complexity="1" crap="1" count="2"/>
-        <line num="98" type="stmt" count="2"/>
-        <line num="108" type="method" name="setFileInDefaultLocation" visibility="private" complexity="1" crap="1" count="5"/>
-        <line num="110" type="stmt" count="5"/>
-        <line num="120" type="method" name="setFileWithPath" visibility="private" complexity="2" crap="2" count="6"/>
-        <line num="122" type="stmt" count="6"/>
-        <line num="123" type="stmt" count="4"/>
-        <line num="124" type="stmt" count="4"/>
-        <line num="127" type="stmt" count="5"/>
-        <line num="135" type="method" name="getDefaultPath" visibility="private" complexity="2" crap="2.15" count="5"/>
-        <line num="137" type="stmt" count="5"/>
-        <line num="138" type="stmt" count="0"/>
-        <line num="141" type="stmt" count="5"/>
-        <metrics loc="143" ncloc="75" classes="1" methods="9" coveredmethods="8" conditionals="0" coveredconditionals="0" statements="19" coveredstatements="18" elements="28" coveredelements="26"/>
-      </file>
-      <file name="/app/src/Sources/MultiFiles.php">
-        <class name="soIT\LaravelSeeders\Sources\MultiFiles" namespace="soIT\LaravelSeeders\Sources">
           <metrics complexity="5" methods="4" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="9" coveredstatements="0" elements="13" coveredelements="0"/>
         </class>
-        <line num="21" type="method" name="__construct" visibility="public" complexity="1" crap="2.00" count="0"/>
-        <line num="23" type="stmt" count="0"/>
-        <line num="24" type="stmt" count="0"/>
-        <line num="33" type="method" name="fromPattern" visibility="public" complexity="1" crap="2.00" count="0"/>
-        <line num="35" type="stmt" count="0"/>
-        <line num="43" type="method" name="data" visibility="public" complexity="1" crap="2.00" count="0"/>
-        <line num="45" type="stmt" count="0"/>
+        <line num="26" type="method" name="__construct" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="28" type="stmt" count="0"/>
+        <line num="29" type="stmt" count="0"/>
+        <line num="36" type="method" name="data" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="38" type="stmt" count="0"/>
+        <line num="48" type="method" name="_setEntity" visibility="private" complexity="2" crap="6" count="0"/>
+        <line num="50" type="stmt" count="0"/>
+        <line num="51" type="stmt" count="0"/>
+        <line num="53" type="stmt" count="0"/>
+        <line num="54" type="stmt" count="0"/>
+        <line num="57" type="stmt" count="0"/>
+        <line num="66" type="method" name="isAssociativeArray" visibility="private" complexity="1" crap="2" count="0"/>
+        <line num="68" type="stmt" count="0"/>
+        <metrics loc="70" ncloc="36" classes="1" methods="4" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="9" coveredstatements="0" elements="13" coveredelements="0"/>
+      </file>
+    </package>
+    <package name="soIT\LaravelSeeder\Sources">
+      <file name="/opt/project/app/Libraries/LaravelSeeder/src/Sources/File.php">
+        <class name="soIT\LaravelSeeder\Sources\File" namespace="soIT\LaravelSeeder\Sources">
+          <metrics complexity="16" methods="9" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="19" coveredstatements="0" elements="28" coveredelements="0"/>
+        </class>
+        <line num="34" type="method" name="__construct" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="36" type="stmt" count="0"/>
+        <line num="37" type="stmt" count="0"/>
+        <line num="46" type="method" name="data" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="48" type="stmt" count="0"/>
+        <line num="56" type="method" name="getFilePath" visibility="public" complexity="2" crap="6" count="0"/>
+        <line num="58" type="stmt" count="0"/>
+        <line num="69" type="method" name="setFile" visibility="public" complexity="4" crap="20" count="0"/>
+        <line num="72" type="stmt" count="0"/>
+        <line num="73" type="stmt" count="0"/>
+        <line num="74" type="stmt" count="0"/>
+        <line num="76" type="stmt" count="0"/>
+        <line num="79" type="stmt" count="0"/>
+        <line num="89" type="method" name="isFileExists" visibility="private" complexity="2" crap="6" count="0"/>
+        <line num="91" type="stmt" count="0"/>
+        <line num="101" type="method" name="setFileByRootPath" visibility="private" complexity="1" crap="2" count="0"/>
+        <line num="103" type="stmt" count="0"/>
+        <line num="113" type="method" name="setFileInDefaultLocation" visibility="private" complexity="1" crap="2" count="0"/>
+        <line num="115" type="stmt" count="0"/>
+        <line num="125" type="method" name="setFileWithPath" visibility="private" complexity="2" crap="6" count="0"/>
+        <line num="127" type="stmt" count="0"/>
+        <line num="128" type="stmt" count="0"/>
+        <line num="129" type="stmt" count="0"/>
+        <line num="132" type="stmt" count="0"/>
+        <line num="140" type="method" name="getDefaultPath" visibility="private" complexity="2" crap="6" count="0"/>
+        <line num="142" type="stmt" count="0"/>
+        <line num="143" type="stmt" count="0"/>
+        <line num="146" type="stmt" count="0"/>
+        <metrics loc="148" ncloc="77" classes="1" methods="9" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="19" coveredstatements="0" elements="28" coveredelements="0"/>
+      </file>
+      <file name="/opt/project/app/Libraries/LaravelSeeder/src/Sources/MultiFiles.php">
+        <class name="soIT\LaravelSeeder\Sources\MultiFiles" namespace="soIT\LaravelSeeder\Sources">
+          <metrics complexity="5" methods="4" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="8" coveredstatements="0" elements="12" coveredelements="0"/>
+        </class>
+        <line num="31" type="method" name="__construct" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="33" type="stmt" count="0"/>
+        <line num="34" type="stmt" count="0"/>
+        <line num="45" type="method" name="fromPattern" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="47" type="stmt" count="0"/>
+        <line num="55" type="method" name="data" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="57" type="stmt" count="0"/>
+        <line num="58" type="stmt" count="0"/>
+        <line num="69" type="method" name="setFiles" visibility="public" complexity="2" crap="6" count="0"/>
+        <line num="71" type="stmt" count="0"/>
+        <line num="72" type="stmt" count="0"/>
+        <line num="74" type="stmt" count="0"/>
+        <metrics loc="75" ncloc="36" classes="1" methods="4" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="8" coveredstatements="0" elements="12" coveredelements="0"/>
+      </file>
+    </package>
+    <package name="soIT\LaravelSeeders\Traits">
+      <file name="/opt/project/app/Libraries/LaravelSeeder/src/Traits/HasTableColumns.php">
+        <class name="HasTableColumns" namespace="soIT\LaravelSeeders\Traits">
+          <metrics complexity="3" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="0" elements="5" coveredelements="0"/>
+        </class>
+        <line num="35" type="method" name="setColumns" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="37" type="stmt" count="0"/>
+        <line num="39" type="stmt" count="0"/>
+        <line num="49" type="method" name="isColumnExistInTable" visibility="protected" complexity="1" crap="2" count="0"/>
+        <line num="51" type="stmt" count="0"/>
+        <metrics loc="53" ncloc="27" classes="1" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="0" elements="5" coveredelements="0"/>
+      </file>
+    </package>
+    <package name="soIT\LaravelSeeder\Transformations">
+      <file name="/opt/project/app/Libraries/LaravelSeeder/src/Transformations/AttachModelTransformation.php">
+        <class name="soIT\LaravelSeeder\Transformations\AttachModelTransformation" namespace="soIT\LaravelSeeder\Transformations">
+          <metrics complexity="4" methods="4" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="9" coveredstatements="0" elements="13" coveredelements="0"/>
+        </class>
+        <line num="31" type="method" name="__construct" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="33" type="stmt" count="0"/>
+        <line num="34" type="stmt" count="0"/>
+        <line num="44" type="method" name="transform" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="46" type="stmt" count="0"/>
         <line num="47" type="stmt" count="0"/>
         <line num="48" type="stmt" count="0"/>
-        <line num="57" type="method" name="setFiles" visibility="public" complexity="2" crap="6.00" count="0"/>
-        <line num="59" type="stmt" count="0"/>
+        <line num="56" type="method" name="setTransformationsContainer" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="58" type="stmt" count="0"/>
         <line num="60" type="stmt" count="0"/>
-        <line num="62" type="stmt" count="0"/>
-        <metrics loc="63" ncloc="34" classes="1" methods="4" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="9" coveredstatements="0" elements="13" coveredelements="0"/>
+        <line num="68" type="method" name="setPropertyName" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="70" type="stmt" count="0"/>
+        <line num="72" type="stmt" count="0"/>
+        <metrics loc="74" ncloc="42" classes="1" methods="4" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="9" coveredstatements="0" elements="13" coveredelements="0"/>
       </file>
-    </package>
-    <file name="/app/src/Sources/SourceInterface.php">
-      <metrics loc="18" ncloc="8" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
-    </file>
-    <package name="soIT\LaravelSeeders\Transformations">
-      <file name="/app/src/Transformations/CallableTransformation.php">
-        <class name="soIT\LaravelSeeders\Transformations\CallableTransformation" namespace="soIT\LaravelSeeders\Transformations">
-          <metrics complexity="4" methods="4" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="5" elements="11" coveredelements="8"/>
+      <file name="/opt/project/app/Libraries/LaravelSeeder/src/Transformations/CallableTransformation.php">
+        <class name="soIT\LaravelSeeder\Transformations\CallableTransformation" namespace="soIT\LaravelSeeder\Transformations">
+          <metrics complexity="4" methods="4" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="3" elements="11" coveredelements="5"/>
         </class>
-        <line num="31" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="3"/>
-        <line num="33" type="stmt" count="3"/>
-        <line num="34" type="stmt" count="3"/>
+        <line num="31" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="2"/>
+        <line num="33" type="stmt" count="2"/>
+        <line num="34" type="stmt" count="2"/>
         <line num="43" type="method" name="transform" visibility="public" complexity="1" crap="1" count="2"/>
         <line num="45" type="stmt" count="2"/>
-        <line num="55" type="method" name="setPropertyName" visibility="public" complexity="1" crap="1" count="1"/>
-        <line num="57" type="stmt" count="1"/>
-        <line num="59" type="stmt" count="1"/>
-        <line num="67" type="method" name="setTransformationsContainer" visibility="public" complexity="1" crap="2.00" count="0"/>
+        <line num="55" type="method" name="setPropertyName" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="57" type="stmt" count="0"/>
+        <line num="59" type="stmt" count="0"/>
+        <line num="67" type="method" name="setTransformationsContainer" visibility="public" complexity="1" crap="2" count="0"/>
         <line num="68" type="stmt" count="0"/>
         <line num="70" type="stmt" count="0"/>
-        <metrics loc="72" ncloc="34" classes="1" methods="4" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="5" elements="11" coveredelements="8"/>
+        <metrics loc="72" ncloc="34" classes="1" methods="4" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="3" elements="11" coveredelements="5"/>
       </file>
-      <file name="/app/src/Transformations/ModelTransformation.php">
-        <class name="soIT\LaravelSeeders\Transformations\ModelTransformation" namespace="soIT\LaravelSeeders\Transformations">
-          <metrics complexity="4" methods="4" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="9" coveredstatements="2" elements="13" coveredelements="3"/>
+      <file name="/opt/project/app/Libraries/LaravelSeeder/src/Transformations/ModelTransformation.php">
+        <class name="soIT\LaravelSeeder\Transformations\ModelTransformation" namespace="soIT\LaravelSeeder\Transformations">
+          <metrics complexity="4" methods="4" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="9" coveredstatements="0" elements="13" coveredelements="0"/>
         </class>
-        <line num="29" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="1"/>
-        <line num="31" type="stmt" count="1"/>
-        <line num="32" type="stmt" count="1"/>
-        <line num="41" type="method" name="transform" visibility="public" complexity="1" crap="2.00" count="0"/>
-        <line num="43" type="stmt" count="0"/>
+        <line num="30" type="method" name="__construct" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="32" type="stmt" count="0"/>
+        <line num="33" type="stmt" count="0"/>
+        <line num="42" type="method" name="transform" visibility="public" complexity="1" crap="2" count="0"/>
         <line num="44" type="stmt" count="0"/>
         <line num="45" type="stmt" count="0"/>
-        <line num="53" type="method" name="setTransformationsContainer" visibility="public" complexity="1" crap="2.00" count="0"/>
-        <line num="54" type="stmt" count="0"/>
+        <line num="46" type="stmt" count="0"/>
+        <line num="54" type="method" name="setTransformationsContainer" visibility="public" complexity="1" crap="2" count="0"/>
         <line num="56" type="stmt" count="0"/>
-        <line num="64" type="method" name="setPropertyName" visibility="public" complexity="1" crap="2.00" count="0"/>
-        <line num="66" type="stmt" count="0"/>
+        <line num="58" type="stmt" count="0"/>
+        <line num="66" type="method" name="setPropertyName" visibility="public" complexity="1" crap="2" count="0"/>
         <line num="68" type="stmt" count="0"/>
-        <metrics loc="70" ncloc="39" classes="1" methods="4" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="9" coveredstatements="2" elements="13" coveredelements="3"/>
+        <line num="70" type="stmt" count="0"/>
+        <metrics loc="72" ncloc="41" classes="1" methods="4" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="9" coveredstatements="0" elements="13" coveredelements="0"/>
       </file>
     </package>
-    <file name="/app/src/Transformations/TransformationsInterface.php">
-      <metrics loc="19" ncloc="14" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+    <file name="/opt/project/app/Libraries/LaravelSeeder/src/Transformations/TransformationsInterface.php">
+      <metrics loc="17" ncloc="12" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
     </file>
     <package name="soIT\LaravelSeeders\Utils">
-      <file name="/app/src/Utils/ArrayAccessTrait.php">
+      <file name="/opt/project/app/Libraries/LaravelSeeder/src/Utils/ArrayAccessTrait.php">
         <class name="ArrayAccessTrait" namespace="soIT\LaravelSeeders\Utils">
-          <metrics complexity="6" methods="5" coveredmethods="5" conditionals="0" coveredconditionals="0" statements="10" coveredstatements="10" elements="15" coveredelements="15"/>
+          <metrics complexity="6" methods="5" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="10" coveredstatements="1" elements="15" coveredelements="2"/>
         </class>
-        <line num="22" type="method" name="setItems" visibility="public" complexity="1" crap="1" count="4"/>
-        <line num="24" type="stmt" count="4"/>
-        <line num="25" type="stmt" count="4"/>
-        <line num="30" type="method" name="offsetExists" visibility="public" complexity="1" crap="1" count="1"/>
-        <line num="32" type="stmt" count="1"/>
-        <line num="38" type="method" name="offsetGet" visibility="public" complexity="1" crap="1" count="5"/>
-        <line num="40" type="stmt" count="5"/>
-        <line num="46" type="method" name="offsetSet" visibility="public" complexity="2" crap="2" count="1"/>
-        <line num="48" type="stmt" count="1"/>
-        <line num="49" type="stmt" count="1"/>
-        <line num="51" type="stmt" count="1"/>
-        <line num="53" type="stmt" count="1"/>
-        <line num="58" type="method" name="offsetUnset" visibility="public" complexity="1" crap="1" count="1"/>
-        <line num="60" type="stmt" count="1"/>
-        <line num="61" type="stmt" count="1"/>
-        <metrics loc="62" ncloc="37" classes="1" methods="5" coveredmethods="5" conditionals="0" coveredconditionals="0" statements="10" coveredstatements="10" elements="15" coveredelements="15"/>
+        <line num="22" type="method" name="setItems" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="24" type="stmt" count="0"/>
+        <line num="25" type="stmt" count="0"/>
+        <line num="30" type="method" name="offsetExists" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="32" type="stmt" count="0"/>
+        <line num="38" type="method" name="offsetGet" visibility="public" complexity="1" crap="1" count="2"/>
+        <line num="40" type="stmt" count="2"/>
+        <line num="46" type="method" name="offsetSet" visibility="public" complexity="2" crap="6" count="0"/>
+        <line num="48" type="stmt" count="0"/>
+        <line num="49" type="stmt" count="0"/>
+        <line num="51" type="stmt" count="0"/>
+        <line num="53" type="stmt" count="0"/>
+        <line num="58" type="method" name="offsetUnset" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="60" type="stmt" count="0"/>
+        <line num="61" type="stmt" count="0"/>
+        <metrics loc="62" ncloc="37" classes="1" methods="5" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="10" coveredstatements="1" elements="15" coveredelements="2"/>
       </file>
-      <file name="/app/src/Utils/Converters.php">
+      <file name="/opt/project/app/Libraries/LaravelSeeder/src/Utils/Converters.php">
         <class name="soIT\LaravelSeeders\Utils\Converters" namespace="soIT\LaravelSeeders\Utils">
-          <metrics complexity="5" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="7" elements="9" coveredelements="9"/>
+          <metrics complexity="5" methods="2" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="1" elements="9" coveredelements="2"/>
         </class>
-        <line num="21" type="method" name="arrayToObject" visibility="public" complexity="4" crap="4" count="1"/>
-        <line num="23" type="stmt" count="1"/>
-        <line num="25" type="stmt" count="1"/>
-        <line num="26" type="stmt" count="1"/>
-        <line num="27" type="stmt" count="1"/>
-        <line num="28" type="stmt" count="1"/>
-        <line num="32" type="stmt" count="1"/>
-        <line num="41" type="method" name="stringToArray" visibility="public" complexity="1" crap="1" count="6"/>
-        <line num="43" type="stmt" count="6"/>
-        <metrics loc="45" ncloc="27" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="7" elements="9" coveredelements="9"/>
+        <line num="21" type="method" name="arrayToObject" visibility="public" complexity="4" crap="20" count="0"/>
+        <line num="23" type="stmt" count="0"/>
+        <line num="25" type="stmt" count="0"/>
+        <line num="26" type="stmt" count="0"/>
+        <line num="27" type="stmt" count="0"/>
+        <line num="28" type="stmt" count="0"/>
+        <line num="32" type="stmt" count="0"/>
+        <line num="41" type="method" name="stringToArray" visibility="public" complexity="1" crap="1" count="4"/>
+        <line num="43" type="stmt" count="4"/>
+        <metrics loc="45" ncloc="27" classes="1" methods="2" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="1" elements="9" coveredelements="2"/>
       </file>
-      <file name="/app/src/Utils/CountableTrait.php">
+      <file name="/opt/project/app/Libraries/LaravelSeeder/src/Utils/CountableTrait.php">
         <class name="CountableTrait" namespace="soIT\LaravelSeeders\Utils">
-          <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
+          <metrics complexity="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="0" elements="2" coveredelements="0"/>
         </class>
-        <line num="22" type="method" name="count" visibility="public" complexity="1" crap="1" count="1"/>
-        <line num="24" type="stmt" count="1"/>
-        <metrics loc="26" ncloc="13" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
+        <line num="22" type="method" name="count" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="24" type="stmt" count="0"/>
+        <metrics loc="26" ncloc="13" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="0" elements="2" coveredelements="0"/>
       </file>
-      <file name="/app/src/Utils/IteratorTrait.php">
+      <file name="/opt/project/app/Libraries/LaravelSeeder/src/Utils/IteratorTrait.php">
         <class name="IteratorTrait" namespace="soIT\LaravelSeeders\Utils">
-          <metrics complexity="7" methods="7" coveredmethods="7" conditionals="0" coveredconditionals="0" statements="8" coveredstatements="8" elements="15" coveredelements="15"/>
+          <metrics complexity="7" methods="7" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="8" coveredstatements="0" elements="15" coveredelements="0"/>
         </class>
-        <line num="24" type="method" name="all" visibility="public" complexity="1" crap="1" count="2"/>
-        <line num="26" type="stmt" count="2"/>
-        <line num="34" type="method" name="set" complexity="1" crap="1" count="7"/>
-        <line num="36" type="stmt" count="7"/>
-        <line num="37" type="stmt" count="7"/>
-        <line num="42" type="method" name="rewind" complexity="1" crap="1" count="1"/>
-        <line num="44" type="stmt" count="1"/>
-        <line num="50" type="method" name="current" complexity="1" crap="1" count="3"/>
-        <line num="52" type="stmt" count="3"/>
-        <line num="58" type="method" name="key" complexity="1" crap="1" count="1"/>
-        <line num="60" type="stmt" count="1"/>
-        <line num="66" type="method" name="next" complexity="1" crap="1" count="5"/>
-        <line num="68" type="stmt" count="5"/>
-        <line num="74" type="method" name="valid" complexity="1" crap="1" count="1"/>
-        <line num="76" type="stmt" count="1"/>
-        <metrics loc="78" ncloc="42" classes="1" methods="7" coveredmethods="7" conditionals="0" coveredconditionals="0" statements="8" coveredstatements="8" elements="15" coveredelements="15"/>
+        <line num="24" type="method" name="all" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="26" type="stmt" count="0"/>
+        <line num="34" type="method" name="set" complexity="1" crap="2" count="0"/>
+        <line num="36" type="stmt" count="0"/>
+        <line num="37" type="stmt" count="0"/>
+        <line num="42" type="method" name="rewind" complexity="1" crap="2" count="0"/>
+        <line num="44" type="stmt" count="0"/>
+        <line num="50" type="method" name="current" complexity="1" crap="2" count="0"/>
+        <line num="52" type="stmt" count="0"/>
+        <line num="58" type="method" name="key" complexity="1" crap="2" count="0"/>
+        <line num="60" type="stmt" count="0"/>
+        <line num="66" type="method" name="next" complexity="1" crap="2" count="0"/>
+        <line num="68" type="stmt" count="0"/>
+        <line num="74" type="method" name="valid" complexity="1" crap="2" count="0"/>
+        <line num="76" type="stmt" count="0"/>
+        <metrics loc="78" ncloc="42" classes="1" methods="7" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="8" coveredstatements="0" elements="15" coveredelements="0"/>
       </file>
     </package>
-    <metrics files="50" loc="2935" ncloc="1647" classes="34" methods="154" coveredmethods="76" conditionals="0" coveredconditionals="0" statements="370" coveredstatements="167" elements="524" coveredelements="243"/>
+    <metrics files="54" loc="3349" ncloc="1868" classes="34" methods="153" coveredmethods="31" conditionals="0" coveredconditionals="0" statements="374" coveredstatements="76" elements="527" coveredelements="107"/>
   </project>
 </coverage>

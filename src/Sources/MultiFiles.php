@@ -10,9 +10,9 @@
 
 namespace soIT\LaravelSeeder\Sources;
 
+use soIT\LaravelSeeder\Contracts\SourceInterface;
 use soIT\LaravelSeeders\Exceptions\FileDontExistException;
 use soIT\LaravelSeeder\Sources\File;
-use soIT\LaravelSeeders\Sources\SourceInterface;
 
 class MultiFiles implements SourceInterface
 {

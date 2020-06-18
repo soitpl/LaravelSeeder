@@ -11,10 +11,10 @@
 namespace soIT\LaravelSeeder\Sources;
 
 use Illuminate\Support\Facades\Storage;
+use soIT\LaravelSeeder\Contracts\SourceInterface;
 use soIT\LaravelSeeders\Exceptions\FileDontExistException as FileDontExistExceptionAlias;
 use soIT\LaravelSeeders\Exceptions\ParserNotFoundException;
 use soIT\LaravelSeeders\Parsers\File\Parser;
-use soIT\LaravelSeeders\Sources\SourceInterface;
 
 class File implements SourceInterface
 {

@@ -6,6 +6,7 @@
  */
 namespace soIT\LaravelSeeders\Sources;
 
+use soIT\LaravelSeeder\Contracts\SourceInterface;
 use soIT\LaravelSeeders\Exceptions\WrongAttributeException;
 
 class Entity implements SourceInterface

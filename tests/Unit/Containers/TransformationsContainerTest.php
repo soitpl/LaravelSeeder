@@ -4,18 +4,20 @@
  * @copyright (c) soIT.pl (2018-2019)
  * @url http://www.soit.pl
  */
-namespace soIT\LaravelSeeders\Containers;
 
-use Illuminate\Support\Str;
+namespace soIT\LaravelSeeder\Tests\Unit\Containers;
+
+use Faker\Provider\Lorem;
 use PHPUnit\Framework\TestCase;
-use soIT\LaravelSeeders\Transformations\CallableTransformation;
-use soIT\LaravelSeeders\Transformations\TransformationsInterface;
+use soIT\LaravelSeeder\Containers\TransformationsContainer;
+use soIT\LaravelSeeder\Transformations\CallableTransformation;
+use soIT\LaravelSeeder\Transformations\TransformationsInterface;
 
 class TransformationsContainerTest extends TestCase
 {
     public function testAssign()
     {
-        $transformationMock = \Mockery::mock(TransformationsInterface::class);
+        $transformationMock = $this->createStub(TransformationsInterface::class);
 
         $container = new TransformationsContainer();
         $container->assign('test', $transformationMock);
@@ -25,7 +27,7 @@ class TransformationsContainerTest extends TestCase
 
     public function testGetTransformation()
     {
-        $transformationMock = \Mockery::mock(TransformationsInterface::class);
+        $transformationMock = $this->createStub(TransformationsInterface::class);
 
         $container = new TransformationsContainer();
         $container->assign('test', $transformationMock);
@@ -36,30 +38,38 @@ class TransformationsContainerTest extends TestCase
 
     public function testGetValue()
     {
-        $testValue = Str::random(15);
-        $testProperty = Str::random(15);
+        $testValue = Lorem::word();
+        $testProperty = Lorem::word();
+
         $container = new TransformationsContainer();
 
-        $transformationMock = \Mockery::mock(TransformationsInterface::class);
-        $transformationMock
-            ->shouldReceive('setPropertyName')
-            ->withArgs([$testProperty])
-            ->andReturn($transformationMock);
-        $transformationMock
-            ->shouldReceive('transform')
-            ->withArgs([$testValue, TransformationsContainer::class])
-            ->andReturn('ok');
+        $transformationMock = $this->getMockBuilder(TransformationsInterface::class)
+                                   ->onlyMethods(['setPropertyName', 'transform', 'setTransformationsContainer'])
+                                   ->getMock();
+
+        $transformationMock->expects($this->once())->method('setPropertyName')->with($testProperty)->willReturnSelf();
+        $transformationMock->expects($this->once())->method('transform')->with($testValue)->willReturn('ok');
+        $transformationMock->expects($this->once())->method('setTransformationsContainer')->willReturnSelf();
 
         $container->assign($testProperty, $transformationMock);
 
         $this->assertEquals('ok', $container->getValue($testProperty, $testValue));
-        $this->assertEquals($testValue, $container->getValue($testProperty . '-x', $testValue));
+    }
+
+    public function testGetValueWithNoSetProperty()
+    {
+        $testValue = Lorem::word();
+        $testProperty = Lorem::word();
+
+        $container = new TransformationsContainer();
+
+        $this->assertEquals($testValue, $container->getValue($testProperty, $testValue));
     }
 
     public function testAssignCallback()
     {
         $function = function ($value) {
-            return $value . '-tested';
+            return $value.'-tested';
         };
 
         $container = new TransformationsContainer();
@@ -71,7 +81,7 @@ class TransformationsContainerTest extends TestCase
 
     public function testCount()
     {
-        $transformationMock = \Mockery::mock(TransformationsInterface::class);
+        $transformationMock = $this->createMock(TransformationsInterface::class);
 
         $container = new TransformationsContainer();
         $container->assign('test', $transformationMock);

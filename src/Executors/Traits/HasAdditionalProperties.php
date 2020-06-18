@@ -8,7 +8,7 @@
 namespace soIT\LaravelSeeder\Executors\Traits;
 
 use soIT\LaravelSeeder\Containers\AdditionalPropertiesContainer;
-use soIT\LaravelSeeder\Executors\ExecutorAbstract;
+use soIT\LaravelSeeder\Contracts\ExecutorInterface;
 
 trait HasAdditionalProperties
 {
@@ -24,7 +24,7 @@ trait HasAdditionalProperties
      */
     public function getAdditionalProperties():AdditionalPropertiesContainer
     {
-        return $this->properties ?? ($this->properties = new AdditionalPropertiesContainer());
+        return $this->properties ?? ($this->properties = $this->createAdditionalPropertiesContainer());
     }
 
     /**
@@ -33,9 +33,10 @@ trait HasAdditionalProperties
      * @param string $property
      * @param $value
      *
-     * @return self|ExecutorAbstract
+     * @return self|ExecutorInterface
+     * @codeCoverageIgnore
      */
-    public function addPropertyWithValue(string $property, $value):ExecutorAbstract
+    public function addPropertyWithValue(string $property, $value):ExecutorInterface
     {
         $this->getAdditionalProperties()->assignValue($property, $value);
 
@@ -48,12 +49,22 @@ trait HasAdditionalProperties
      * @param string  Property name
      * @param callable $callback Callback function
      *
-     * @return self|ExecutorAbstract
+     * @return self|ExecutorInterface
+     * @codeCoverageIgnore
      */
-    public function addPropertyWithCallback(string $property, callable $callback):ExecutorAbstract
+    public function addPropertyWithCallback(string $property, callable $callback):ExecutorInterface
     {
         $this->getAdditionalProperties()->assignCallback($property, $callback);
 
         return $this;
+    }
+
+    /**
+     * @return AdditionalPropertiesContainer
+     * @codeCoverageIgnore
+     */
+    protected function createAdditionalPropertiesContainer():AdditionalPropertiesContainer
+    {
+        return new AdditionalPropertiesContainer();
     }
 }

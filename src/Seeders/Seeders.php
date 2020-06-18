@@ -4,7 +4,7 @@
  * @copyright (c) soIT.pl (2018-2019)
  * @url http://www.soit.pl
  */
-namespace soIT\LaravelSeeders\Seeders;
+namespace soIT\LaravelSeeder\Seeders;
 
 use soIT\LaravelSeeders\Exceptions\ExecutorNotFoundException;
 use soIT\LaravelSeeders\Executors\ExecutorFactory;

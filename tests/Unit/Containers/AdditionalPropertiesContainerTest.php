@@ -5,12 +5,12 @@
  * @url http://www.soit.pl
  */
 
-namespace soIT\LaravelSeeders\Containers;
+namespace soIT\LaravelSeeder\Tests\Unit\Containers;
 
 use Faker\Factory;
 use PHPUnit\Framework\TestCase;
 use soIT\LaravelSeeder\Containers\AdditionalPropertiesContainer;
-use soIT\LaravelSeeders\Transformations\CallableTransformation;
+use soIT\LaravelSeeder\Transformations\CallableTransformation;
 
 class AdditionalPropertiesContainerTest extends TestCase
 {

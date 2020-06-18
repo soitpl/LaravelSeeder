@@ -4,12 +4,12 @@
  * @copyright (c) soIT.pl (2018-2019)
  * @url http://www.soit.pl
  */
-namespace soIT\LaravelSeeders\Seeders;
+namespace soIT\LaravelSeeder\Seeders;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Illuminate\Support\Collection;
-use soIT\LaravelSeeders\Containers\DataContainer;
+use soIT\LaravelSeeder\Containers\DataContainer;
 use soIT\LaravelSeeders\Exceptions\WrongAttributeException;
 
 class AttachModelSeeder extends ModelSeeder

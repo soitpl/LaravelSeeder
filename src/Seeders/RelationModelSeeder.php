@@ -4,11 +4,11 @@
  * @copyright (c) soIT.pl (2018-2019)
  * @url http://www.soit.pl
  */
-namespace soIT\LaravelSeeders\Seeders;
+namespace soIT\LaravelSeeder\Seeders;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
-use soIT\LaravelSeeders\Containers\DataContainer;
+use soIT\LaravelSeeder\Containers\DataContainer;
 use soIT\LaravelSeeders\Containers\ModelContainer;
 use soIT\LaravelSeeders\Exceptions\NoPropertySetException;
 

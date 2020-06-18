@@ -7,10 +7,10 @@
 
 namespace soIT\LaravelSeeder\Transformations;
 
-use soIT\LaravelSeeders\Containers\TransformationsContainer;
-use soIT\LaravelSeeders\Seeders\AttachModelSeeder;
-use soIT\LaravelSeeders\Seeders\SeederAbstract;
-use soIT\LaravelSeeders\Transformations\TransformationsInterface;
+use soIT\LaravelSeeder\Contracts\SeederInterface;
+use soIT\LaravelSeeder\Seeders\AttachModelSeeder;
+use soIT\LaravelSeeder\Containers\TransformationsContainer;
+use soIT\LaravelSeeders\Exceptions\WrongAttributeException;
 
 class AttachModelTransformation implements TransformationsInterface
 {
@@ -39,8 +39,9 @@ class AttachModelTransformation implements TransformationsInterface
      * @param mixed $propertyValue
      *
      * @return mixed
+     * @throws WrongAttributeException
      */
-    public function transform($propertyValue):SeederAbstract
+    public function transform($propertyValue):SeederInterface
     {
         return (new AttachModelSeeder($this->modelName))
             ->setTransformations($this->transformationsContainer)

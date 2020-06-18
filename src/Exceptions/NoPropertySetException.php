@@ -5,7 +5,7 @@
  * @url http://www.soit.pl
  */
 
-namespace soIT\LaravelSeeders\Exceptions;
+namespace soIT\LaravelSeeder\Exceptions;
 
 
 class NoPropertySetException extends \Exception

@@ -4,13 +4,12 @@
  * @copyright (c) soIT.pl (2018-2019)
  * @url http://www.soit.pl
  */
-namespace soIT\LaravelSeeders\Containers;
+
+namespace soIT\LaravelSeeder\Containers;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\DB;
-use soIT\LaravelSeeders\Exceptions\NoPropertySetException;
-use soIT\LaravelSeeders\Seeders\SeederAbstract;
-use soIT\LaravelSeeders\Seeders\SeederInterface;
+use soIT\LaravelSeeder\Seeders\SeederInterface;
+use soIT\LaravelSeeder\Exceptions\NoPropertySetException;
 use soIT\LaravelSeeders\Traits\HasTableColumns;
 
 class ModelContainer
@@ -20,27 +19,27 @@ class ModelContainer
     /**
      * @var string Model name
      */
-    private $modelName;
+    private string $modelName;
     /**
-     * @var DataContainer
+     * @var DataContainer|null
      */
-    private $data;
+    private ?DataContainer $data = null;
     /**
      * @var TransformationsContainer
      */
-    private $transformations;
+    private ?TransformationsContainer $transformations = null;
     /**
-     * @var TranslationsContainer
+     * @var NamingStrategyContainer
      */
-    private $translations;
+    private ?NamingStrategyContainer $namingStrategy = null;
     /**
      * @var Model
      */
-    private $model;
+    private Model $model;
     /**
      * @var ModelContainer[]
      */
-    private $seeders = [];
+    private array $seeders = [];
 
     /**
      * ModelMaker constructor.
@@ -57,7 +56,7 @@ class ModelContainer
      *
      * @return Model
      */
-    public function getModel(): Model
+    public function getModel():Model
     {
         return $this->model;
     }
@@ -67,7 +66,7 @@ class ModelContainer
      *
      * @return string
      */
-    public function getModelName(): string
+    public function getModelName():string
     {
         return $this->modelName;
     }
@@ -75,22 +74,36 @@ class ModelContainer
     /**
      * @return ModelContainer[] Array of defined seeders
      */
-    public function getSeeders(): array
+    public function getSeeders():array
     {
         return $this->seeders;
+    }
+
+    /**
+     * Set seeder for property
+     *
+     * @param SeederInterface $seeder
+     *
+     * @return ModelContainer
+     */
+    public function setSeeder(SeederInterface $seeder):self
+    {
+        array_push($this->seeders, $seeder);
+
+        return $this;
     }
 
     /**
      * Prepare all model data to save
      * @throws NoPropertySetException
      */
-    public function prepare(): self
+    public function prepare():self
     {
         if (is_null($this->data)) {
             throw new NoPropertySetException("Data must be set for proceeding model container");
         }
 
-        $this->model = $this->initModel();
+        $this->model = $this->createModel();
         $this->setColumns($this->model->getTable());
         $this->proceedData();
 
@@ -102,7 +115,7 @@ class ModelContainer
      *
      * @return DataContainer
      */
-    public function getData(): DataContainer
+    public function getData():DataContainer
     {
         return $this->data ?? new DataContainer();
     }
@@ -114,23 +127,10 @@ class ModelContainer
      *
      * @return ModelContainer
      */
-    public function setData(DataContainer $data): self
+    public function setData(DataContainer $data):self
     {
         $this->data = $data;
 
-        return $this;
-    }
-
-    /**
-     * Set seeder for property
-     *
-     * @param SeederInterface $seeder
-     *
-     * @return ModelContainer
-     */
-    public function setSeeder(SeederAbstract $seeder): self
-    {
-        array_push($this->seeders, $seeder);
         return $this;
     }
 
@@ -141,7 +141,7 @@ class ModelContainer
      *
      * @return ModelContainer
      */
-    public function setTransformations(?TransformationsContainer $transformations): self
+    public function setTransformations(?TransformationsContainer $transformations):self
     {
         $this->transformations = $transformations ?? new TransformationsContainer();
 
@@ -151,12 +151,13 @@ class ModelContainer
     /**
      * Set property translations container
      *
-     * @param TranslationsContainer $translations
+     * @param NamingStrategyContainer $namingStrategy
+     *
      * @return ModelContainer
      */
-    public function setTranslations(?TranslationsContainer $translations): self
+    public function setNamingStrategy(?NamingStrategyContainer $namingStrategy):self
     {
-        $this->translations = $translations ?? new TranslationsContainer();
+        $this->namingStrategy = $namingStrategy ?? new NamingStrategyContainer();
 
         return $this;
     }
@@ -164,7 +165,7 @@ class ModelContainer
     /**
      * Init model instance
      */
-    protected function initModel(): Model
+    protected function createModel():Model
     {
         return new $this->modelName();
     }
@@ -178,10 +179,10 @@ class ModelContainer
             $propertyValue = $this->getTargetTransformation($property, $value);
             $propertyName = $this->getTargetProperty($property);
 
-            if ($propertyValue instanceof SeederAbstract) {
+            if ($propertyValue instanceof SeederInterface) {
                 $this->setSeeder($propertyValue);
             } elseif (is_string($propertyValue) && $this->isColumnExistInTable($propertyName)) {
-                $this->model->{$propertyName} = $propertyValue;
+                $this->model->setAttribute($propertyName, $propertyValue);
             }
         }
     }
@@ -193,13 +194,13 @@ class ModelContainer
      *
      * @return string
      */
-    private function getTargetProperty(string $property): string
+    private function getTargetProperty(string $property):string
     {
-        if (is_null($this->translations)) {
+        if (is_null($this->namingStrategy)) {
             return $property;
         }
 
-        return $this->translations->get($property) ?? $property;
+        return $this->namingStrategy->get($property) ?? $property;
     }
 
     /**

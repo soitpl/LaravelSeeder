@@ -5,11 +5,11 @@
  * @url http://www.soit.pl
  */
 
-namespace soIT\LaravelSeeders\Transformations;
+namespace soIT\LaravelSeeder\Transformations;
 
-use soIT\LaravelSeeders\Containers\TransformationsContainer;
-use soIT\LaravelSeeders\Seeders\RelationModelSeeder;
-use soIT\LaravelSeeders\Seeders\SeederAbstract;
+use soIT\LaravelSeeder\Containers\TransformationsContainer;
+use soIT\LaravelSeeder\Seeders\RelationModelSeeder;
+use soIT\LaravelSeeder\Seeders\SeederAbstract;
 
 class ModelTransformation implements TransformationsInterface
 {
