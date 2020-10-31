@@ -4,12 +4,13 @@
  * @copyright (c) soIT.pl (2018-2019)
  * @url http://www.soit.pl
  */
-namespace soIT\LaravelSeeders\Seeders;
+namespace soIT\LaravelSeeder\Seeders;
 
+use Exception;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Illuminate\Support\Collection;
-use soIT\LaravelSeeders\Containers\DataContainer;
+use soIT\LaravelSeeder\Containers\DataContainer;
 use soIT\LaravelSeeders\Exceptions\WrongAttributeException;
 
 class AttachModelSeeder extends ModelSeeder
@@ -70,7 +71,7 @@ class AttachModelSeeder extends ModelSeeder
      * Create and save new model in database
      *
      * @return void
-     * @throws \Exception
+     * @throws Exception
      */
     public function save(): void
     {
@@ -91,7 +92,7 @@ class AttachModelSeeder extends ModelSeeder
 
     /**
      * Save prepared containers
-     * @throws \Exception
+     * @throws Exception
      */
     private function saveContainers(): void
     {
@@ -101,7 +102,7 @@ class AttachModelSeeder extends ModelSeeder
     /**
      * Save models in sequential
      * Method should be used if models have nested models to save
-     * @throws \Exception
+     * @throws Exception
      */
     private function attachModels(): void
     {
@@ -136,7 +137,7 @@ class AttachModelSeeder extends ModelSeeder
      * @param string $relationName
      *
      * @return MorphToMany
-     * @throws \Exception
+     * @throws Exception
      */
     private function getRelation(string $relationName): MorphToMany
     {
@@ -144,6 +145,6 @@ class AttachModelSeeder extends ModelSeeder
             return $relation;
         }
 
-        throw new \Exception(sprintf("No relation %s found", $relation));
+        throw new Exception(sprintf("No relation %s found", $relation));
     }
 }

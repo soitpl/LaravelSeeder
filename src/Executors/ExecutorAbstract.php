@@ -6,27 +6,26 @@
  */
 namespace soIT\LaravelSeeder\Executors;
 
-use soIT\LaravelSeeders\Executors\ExecutorInterface;
-use soIT\LaravelSeeders\Seeders\SeederAbstract;
-use soIT\LaravelSeeders\Containers\DataContainer;
+use soIT\LaravelSeeder\Containers\DataContainer;
+use soIT\LaravelSeeder\Contracts\ExecutorInterface;
+use soIT\LaravelSeeder\Seeders\SeederAbstract;
 
 abstract class ExecutorAbstract implements ExecutorInterface
 {
     /**
      * @var DataContainer Data array
      */
-    protected $data;
+    protected DataContainer $data;
 
     /**
      * @var string Set if source file has only one col. This attribute contains column name
      */
-    protected $oneCol;
+    protected string $oneCol = '';
 
     /**
      * @var SeederAbstract Target object Model or Table
      */
-    protected $seeder;
-
+    protected SeederAbstract $seeder;
 
     /**
      * Execute data items
@@ -79,7 +78,7 @@ abstract class ExecutorAbstract implements ExecutorInterface
      *
      * @return ExecutorAbstract
      */
-    public function onDuplicate(int $duplicated, array $uniqueKeys): ExecutorAbstract
+    public function onDuplicate(int $duplicated, array $uniqueKeys): ExecutorInterface
     {
         $this->getSeeder()->onDuplicate($duplicated);
 
@@ -93,7 +92,7 @@ abstract class ExecutorAbstract implements ExecutorInterface
      *
      * @return ExecutorAbstract
      */
-    public function oneCol(string $columnName): ExecutorAbstract
+    public function oneCol(string $columnName): ExecutorInterface
     {
         $this->oneCol = $columnName;
 

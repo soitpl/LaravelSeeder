@@ -4,8 +4,9 @@
  * @copyright (c) soIT.pl (2018-2019)
  * @url http://www.soit.pl
  */
-namespace soIT\LaravelSeeders\Containers;
+namespace soIT\LaravelSeeder\Containers;
 
+use Exception;
 use Illuminate\Support\Collection;
 use soIT\LaravelSeeders\Exceptions\WrongAttributeException;
 
@@ -22,6 +23,7 @@ class DataContainer extends Collection
 
         $this->recursive();
     }
+
 
     /**
      * Recursive make of DataContainer
@@ -41,7 +43,7 @@ class DataContainer extends Collection
      * @param string $key Value key
      *
      * @return mixed
-     * @throws \Exception
+     * @throws Exception
      */
     public function __get($key)
     {

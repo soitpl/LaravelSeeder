@@ -5,12 +5,13 @@
  * @url http://www.soit.pl
  */
 
-namespace soIT\LaravelSeeders\Seeders;
+namespace soIT\LaravelSeeder\Seeders;
 
-use soIT\LaravelSeeders\Containers\DataContainer;
-use soIT\LaravelSeeders\Containers\TransformationsContainer;
+use soIT\LaravelSeeder\Contracts\SeederInterface;
+use soIT\LaravelSeeder\Containers\DataContainer;
+use soIT\LaravelSeeder\Containers\TransformationsContainer;
 
-abstract class SeederAbstract
+abstract class SeederAbstract implements SeederInterface
 {
     abstract public function setTransformations(TransformationsContainer $transformations);
     abstract public function save();

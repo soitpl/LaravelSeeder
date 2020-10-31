@@ -7,6 +7,8 @@
 
 namespace soIT\LaravelSeeders\Exceptions;
 
-class ColumnNotFoundException extends \Exception
+use Exception;
+
+class ColumnNotFoundException extends Exception
 {
 }

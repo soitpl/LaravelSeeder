@@ -7,6 +7,8 @@
 
 namespace soIT\LaravelSeeders\Exceptions;
 
-class ExecutorNotFoundException extends \Exception
+use Exception;
+
+class ExecutorNotFoundException extends Exception
 {
 }

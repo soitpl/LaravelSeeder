@@ -5,22 +5,27 @@
  * @url http://www.soit.pl
  */
 
-namespace soIT\LaravelSeeders\Seeders;
+namespace soIT\LaravelSeeder\Seeders;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Facades\DB;
+use soIT\LaravelSeeder\Seeders\Traits\SeederAdditionalPropertiesTrait;
+use soIT\LaravelSeeder\Seeders\Traits\SeederTranslationsTrait;
 use soIT\LaravelSeeders\Enums\Duplicated;
 use soIT\LaravelSeeders\Exceptions\ColumnNotFoundException;
 use soIT\LaravelSeeder\Exceptions\SeedTargetFoundException;
-use soIT\LaravelSeeders\Seeders\Features\SeederAdditionalPropertiesTrait;
-use soIT\LaravelSeeders\Seeders\Features\SeederTransformationsTrait;
-use soIT\LaravelSeeders\Seeders\Features\SeederTranslationsTrait;
+
+use soIT\LaravelSeeder\Seeders\Traits\HasTransformations;
+
 use soIT\LaravelSeeders\Traits\HasTableColumns;
 
 class TableSeeder extends SeederAbstract
 {
-    use HasTableColumns, SeederTransformationsTrait, SeederTranslationsTrait, SeederAdditionalPropertiesTrait;
+    use HasTableColumns;
+    use SeederAdditionalPropertiesTrait;
+    use HasTransformations;
+    use SeederTranslationsTrait;
 
     /**
      * @var array Unique columns in table
@@ -62,28 +67,11 @@ class TableSeeder extends SeederAbstract
     }
 
     /**
-     * Check is table exists in database
-     *
-     * @param string $table Table to check
-     *
-     * @return bool
-     */
-    protected function isTableExists(string $table): bool
-    {
-        return in_array(
-            $table,
-            DB::connection()
-                ->getDoctrineSchemaManager()
-                ->listTableNames()
-        );
-    }
-
-    /**
      * Get array with defined unique columns
      *
      * @return array Array with defined unique columns
      */
-    public function getUniqueColumns(): array
+    public function getUniqueColumns():array
     {
         return $this->uniqueColumns;
     }
@@ -96,7 +84,7 @@ class TableSeeder extends SeederAbstract
      * @return TableSeeder
      * @throws ColumnNotFoundException
      */
-    public function setUniqueKeys(array $keys): self
+    public function setUniqueKeys(array $keys):self
     {
         $this->uniqueColumns = [];
 
@@ -105,6 +93,54 @@ class TableSeeder extends SeederAbstract
         }
 
         return $this;
+    }
+
+    /**
+     * Get table name
+     *
+     * @return string Table name
+     */
+    public function getName():string
+    {
+        return $this->tableName;
+    }
+
+    /**
+     * Create and save new model in database
+     *
+     * @return bool
+     */
+    public function save()
+    {
+        $insertData = $this->getInsertData();
+
+        switch ($this->duplicated) {
+            case Duplicated::IGNORE:
+                return $this->saveAndIgnoreDuplicated($insertData);
+            break;
+            case Duplicated::UPDATE:
+                return $this->saveOrUpdateDuplicated($insertData);
+            break;
+            default:
+                return $this->create($insertData);
+        }
+    }
+
+    /**
+     * Check is table exists in database
+     *
+     * @param string $table Table to check
+     *
+     * @return bool
+     */
+    protected function isTableExists(string $table):bool
+    {
+        return in_array(
+            $table,
+            DB::connection()
+              ->getDoctrineSchemaManager()
+              ->listTableNames()
+        );
     }
 
     /**
@@ -122,42 +158,11 @@ class TableSeeder extends SeederAbstract
     }
 
     /**
-     * Get table name
-     *
-     * @return string Table name
-     */
-    public function getName(): string
-    {
-        return $this->tableName;
-    }
-
-    /**
-     * Create and save new model in database
-     *
-     * @return bool
-     */
-    public function save()
-    {
-        $insertData = $this->getInsertData();
-
-        switch ($this->duplicated) {
-            case Duplicated::IGNORE:
-                return $this->saveAndIgnoreDuplicated($insertData);
-                break;
-            case Duplicated::UPDATE:
-                return $this->saveOrUpdateDuplicated($insertData);
-                break;
-            default:
-                return $this->create($insertData);
-        }
-    }
-
-    /**
      * Make input data
      *
      * @return array
      */
-    private function getInsertData(): array
+    private function getInsertData():array
     {
         $inputData = [];
         foreach ($this->data as $property => $value) {
@@ -178,7 +183,7 @@ class TableSeeder extends SeederAbstract
      *
      * @return string
      */
-    private function getTargetProperty(string $property): string
+    private function getTargetProperty(string $property):string
     {
         return $this->isColumnExistInTable($property) ? $property : $this->getTranslations()->get($property);
     }
@@ -190,7 +195,7 @@ class TableSeeder extends SeederAbstract
      *
      * @return int|null
      */
-    private function saveAndIgnoreDuplicated(array $data): ?int
+    private function saveAndIgnoreDuplicated(array $data):?int
     {
         if ($record = $this->getRecord($data)) {
             return $record->id ?? null;
@@ -216,7 +221,7 @@ class TableSeeder extends SeederAbstract
      *
      * @return array
      */
-    private function getDataForSearch(array $data): array
+    private function getDataForSearch(array $data):array
     {
         $out = [];
         foreach ($this->uniqueColumns as $column) {
@@ -233,7 +238,7 @@ class TableSeeder extends SeederAbstract
      *
      * @return bool
      */
-    private function saveOrUpdateDuplicated(array $data): bool
+    private function saveOrUpdateDuplicated(array $data):bool
     {
         return $this->getRecord($data) ? $this->update($data) : $this->create($data);
     }
@@ -245,7 +250,7 @@ class TableSeeder extends SeederAbstract
      *
      * @return int Record ID
      */
-    private function create(array $data): int
+    private function create(array $data):int
     {
         return DB::table($this->tableName)->insertGetId($data);
     }
@@ -257,7 +262,7 @@ class TableSeeder extends SeederAbstract
      *
      * @return bool
      */
-    private function update(array $data): bool
+    private function update(array $data):bool
     {
         return $this->getQueryBuilder($data)->update($data);
     }
@@ -269,7 +274,7 @@ class TableSeeder extends SeederAbstract
      *
      * @return Builder
      */
-    private function getQueryBuilder(array $data): Builder
+    private function getQueryBuilder(array $data):Builder
     {
         return DB::table($this->tableName)->{$this->buildDynamicWhere()}(...$this->getDataForSearch($data));
     }
@@ -279,14 +284,17 @@ class TableSeeder extends SeederAbstract
      *
      * @return string
      */
-    private function buildDynamicWhere(): string
+    private function buildDynamicWhere():string
     {
-        return 'where' .
-            implode(
-                'And',
-                array_map(function ($item) {
-                    return ucfirst($item);
-                }, $this->uniqueColumns)
-            );
+        return 'where'.
+               implode(
+                   'And',
+                   array_map(
+                       function ($item) {
+                           return ucfirst($item);
+                       },
+                       $this->uniqueColumns
+                   )
+               );
     }
 }

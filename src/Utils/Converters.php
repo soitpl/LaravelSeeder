@@ -8,6 +8,7 @@
 namespace soIT\LaravelSeeders\Utils;
 
 use soIT\LaravelSeeders\Containers\DataContainer;
+use stdClass;
 
 class Converters
 {
@@ -18,9 +19,9 @@ class Converters
      *
      * @return DataContainer
      */
-    public static function arrayToObject(array $array): \stdClass
+    public static function arrayToObject(array $array): stdClass
     {
-        $object = new \stdClass();
+        $object = new stdClass();
 
         if (count($array) > 0) {
             foreach ($array as $key => $value) {

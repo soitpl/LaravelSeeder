@@ -4,27 +4,27 @@
  * @copyright soIT {2019}
  */
 
-namespace soIT\LaravelSeeders\Executors\Traits;
+namespace soIT\LaravelSeeder\Executors\Traits;
 
-use soIT\LaravelSeeders\Containers\DataContainer;
-use soIT\LaravelSeeders\Executors\ExecutorInterface;
-use soIT\LaravelSeeders\Sources\SourceInterface;
+use soIT\LaravelSeeder\Contracts\ExecutorInterface;
+use soIT\LaravelSeeder\Containers\DataContainer;
+use soIT\LaravelSeeder\Contracts\SourceInterface;
 
 trait HasSources
 {
     /**
      * @var SourceInterface[] Array of sources
      */
-    protected $sources = [];
+    protected array $sources = [];
 
     /**
      * Add data source for seeder
      *
      * @param SourceInterface $source Data source
      *
-     * @return ExecutorInterface
+     * @return ExecutorInterface|HasSources
      */
-    public function addSource(SourceInterface $source): self
+    public function addSource(SourceInterface $source):self
     {
         array_push($this->sources, $source);
 
@@ -36,7 +36,7 @@ trait HasSources
      *
      * @return SourceInterface[] Array with sources objects
      */
-    public function getSources(): array
+    public function getSources():array
     {
         return $this->sources;
     }
@@ -46,7 +46,7 @@ trait HasSources
      *
      * @return DataContainer
      */
-    public function proceedSources(): DataContainer
+    public function proceedSources():DataContainer
     {
         $sourceData = [];
 

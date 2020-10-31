@@ -7,6 +7,8 @@
 
 namespace soIT\LaravelSeeders\Exceptions;
 
-class WrongAttributeException extends \Exception
+use Exception;
+
+class WrongAttributeException extends Exception
 {
 }

@@ -4,22 +4,22 @@
  * @copyright (c) soIT.pl (2018-2019)
  * @url http://www.soit.pl
  */
-namespace soIT\LaravelSeeders\Seeders;
+
+namespace soIT\LaravelSeeder\Seeders;
 
 use Illuminate\Database\Eloquent\Model;
-use soIT\LaravelSeeders\Containers\ModelContainer;
-use soIT\LaravelSeeders\Seeders\Features\SeederAdditionalPropertiesTrait;
-use soIT\LaravelSeeders\Seeders\Features\SeederTransformationsTrait;
-use soIT\LaravelSeeders\Seeders\Features\SeederTranslationsTrait;
+use soIT\LaravelSeeder\Containers\ModelContainer;
+use soIT\LaravelSeeder\Seeders\Traits\HasTransformations;
+use soIT\LaravelSeeder\Seeders\Traits\SeederAdditionalPropertiesTrait;
+use soIT\LaravelSeeder\Seeders\Traits\SeederTranslationsTrait;
+use soIT\LaravelSeeders\Exceptions\NoPropertySetException;
 
 class ModelSeeder extends SeederAbstract
 {
-    use SeederTransformationsTrait, SeederTranslationsTrait, SeederAdditionalPropertiesTrait;
+    use SeederAdditionalPropertiesTrait;
+    use HasTransformations;
+    use SeederTranslationsTrait;
 
-    /**
-     * @var ModelContainer Instance of ModelMaker class
-     */
-    private $modelContainer;
     /**
      * @var string Target model name
      */
@@ -28,6 +28,10 @@ class ModelSeeder extends SeederAbstract
      * @var object Model object
      */
     protected $model;
+    /**
+     * @var ModelContainer Instance of ModelMaker class
+     */
+    private $modelContainer;
 
     /**
      * ModelDispatcher constructor.
@@ -44,7 +48,7 @@ class ModelSeeder extends SeederAbstract
      *
      * @return string
      */
-    public function getName(): string
+    public function getName():string
     {
         return $this->modelName;
     }
@@ -52,9 +56,9 @@ class ModelSeeder extends SeederAbstract
     /**
      * Create and save new model in database
      *
-     * @throws \soIT\LaravelSeeders\Exceptions\NoPropertySetException
+     * @throws NoPropertySetException
      */
-    public function save(): void
+    public function save():void
     {
         $container = $this->initModelContainer();
         $container->setData($this->getData());
@@ -70,11 +74,11 @@ class ModelSeeder extends SeederAbstract
     /**
      * Init instance of model maker
      */
-    protected function initModelContainer(): ModelContainer
+    protected function initModelContainer():ModelContainer
     {
         $this->modelContainer = new ModelContainer($this->modelName);
         $this->modelContainer->setTransformations($this->getTransformations());
-        $this->modelContainer->setTranslations($this->getTranslations());
+        $this->modelContainer->setNamingStrategy($this->getTranslations());
 
         return $this->modelContainer;
     }
@@ -83,7 +87,7 @@ class ModelSeeder extends SeederAbstract
      * @param Model $model
      * @param array $seeders
      */
-    protected function executeSeeders(Model $model, array $seeders): void
+    protected function executeSeeders(Model $model, array $seeders):void
     {
         if (count($seeders)) {
             foreach ($seeders as $seeder) {

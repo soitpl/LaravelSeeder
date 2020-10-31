@@ -7,6 +7,8 @@
 
 namespace soIT\LaravelSeeders\Exceptions;
 
-class DirectoryDontExistException extends \Exception
+use Exception;
+
+class DirectoryDontExistException extends Exception
 {
 }

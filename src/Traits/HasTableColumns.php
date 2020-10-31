@@ -8,17 +8,17 @@
 namespace soIT\LaravelSeeders\Traits;
 
 use Illuminate\Support\Facades\DB;
-use soIT\LaravelSeeders\Containers\ModelContainer;
 
 trait HasTableColumns
 {
     /**
-     * @var array Database table columns
+     * @var string[] Database table columns
      */
-    protected $columns;
+    protected array $columns = [];
 
     /**
      * Set table columns
+     * @codeCoverageIgnore
      */
     protected function getColumns(string $table)
     {
@@ -28,13 +28,13 @@ trait HasTableColumns
     /**
      * Set model available columns
      *
-     * @param array $columns
+     * @param string $table
      *
      * @return $this
      */
-    public function setColumns(string $table): self
+    public function setColumns(string $table):self
     {
-        $this->columns = $this->getColumns($table);
+        $this->columns = $this->getColumns($table) ?? [];
 
         return $this;
     }
@@ -46,7 +46,7 @@ trait HasTableColumns
      *
      * @return bool
      */
-    private function isColumnExistInTable(string $property): bool
+    protected function isColumnExistInTable(string $property):bool
     {
         return in_array($property, $this->columns);
     }

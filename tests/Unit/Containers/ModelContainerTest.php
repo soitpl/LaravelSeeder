@@ -5,42 +5,44 @@
  * @url http://www.soit.pl
  */
 
-namespace soIT\LaravelSeeders\Containers;
+namespace soIT\LaravelSeeder\Tests\Unit\Containers;
 
+use Faker\Provider\Lorem;
 use Illuminate\Database\Eloquent\Model;
-use Mockery\Mock;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use soIT\LaravelSeeders\Exceptions\NoPropertySetException;
-use soIT\LaravelSeeders\Seeders\SeederAbstract;
-use soIT\LaravelSeeders\Seeders\SeederInterface;
-
+use soIT\LaravelSeeder\Containers\DataContainer;
+use soIT\LaravelSeeder\Containers\ModelContainer;
+use soIT\LaravelSeeder\Containers\NamingStrategyContainer;
+use soIT\LaravelSeeder\Containers\TransformationsContainer;
+use soIT\LaravelSeeder\Exceptions\NoPropertySetException;
+use soIT\LaravelSeeder\Seeders\SeederAbstract;
+use soIT\LaravelSeeder\Seeders\SeederInterface;
 
 class ModelContainerTest extends TestCase
 {
-    private const MODEL_NAME = 'soIT\LaravelSeeders\Containers\TestModel';
-
     public function testSetGetSeeder()
     {
-        $container = new ModelContainer(self::MODEL_NAME);
+        $instance = new ModelContainer('');
 
-        for ($i=1; $i < 5; $i++) {
-            $seederMockName = \Mockery::mock(SeederAbstract::class);
-            $seederMockName->shouldReceive('testMethod')->andReturn($i);
+        for ($i = 1; $i < 5; $i++) {
+            /**
+             * @var MockObject|SeederAbstract $seederMock
+             */
+            $seederMock = $this->getMockBuilder(SeederInterface::class)
+                               ->onlyMethods(['onDuplicate', 'setData', 'setTransformations', 'save'])
+                               ->addMethods(['testMethod'])
+                               ->getMock();
 
-            $container->setSeeder($seederMockName);
-            $seeders = $container->getSeeders();
+            $seederMock->expects($this->any())->method('testMethod')->willReturn($i);
+
+            $instance->setSeeder($seederMock);
+            $seeders = $instance->getSeeders();
 
             $this->assertCount($i, $seeders);
-            $this->assertEquals($seederMockName, $seeders[$i-1]);
-            $this->assertEquals($i, $seeders[$i-1]->testMethod());
+            $this->assertEquals($seederMock, $seeders[$i - 1]);
+            $this->assertEquals($i, $seeders[$i - 1]->testMethod());
         }
-    }
-
-    public function testSetSeederWithNoSeeder()
-    {
-        $container = new ModelContainer(self::MODEL_NAME);
-        $this->expectException(\TypeError::class);
-        $container->setSeeder(new \stdClass());
     }
 
     /**
@@ -49,20 +51,24 @@ class ModelContainerTest extends TestCase
     public function testGetModel()
     {
         /**
-         * @var ModelContainer|Mock $modelContainerMock
+         * @var ModelContainer|MockObject $instance
          */
-        $modelContainerMock = \Mockery::mock(ModelContainer::class)
-            ->shouldAllowMockingProtectedMethods()
-            ->makePartial();
+        $instance = $this->getMockBuilder(ModelContainer::class)
+                         ->disableOriginalConstructor()
+                         ->onlyMethods(['createModel', 'proceedData', 'setColumns'])
+                         ->getMock();
 
-        $mockModel = \Mockery::mock(self::MODEL_NAME, Model::class);
-        $modelContainerMock->shouldReceive('initModel')->andReturn($mockModel);
-        $modelContainerMock->shouldReceive('proceedData')->once();
+        $mockModel = $this->createStub(Model::class);
+        $mockModel->expects($this->once())->method('getTable')->willReturn(Lorem::word());
 
-        $modelContainerMock->setData(new DataContainer([]));
-        $modelContainerMock->prepare();
+        $instance->expects($this->once())->method('createModel')->willReturn($mockModel);
+        $instance->expects($this->once())->method('setColumns');
+        $instance->expects($this->once())->method('proceedData');
 
-        $model = $modelContainerMock->getModel();
+        $instance->setData(new DataContainer([]));
+        $instance->prepare();
+
+        $model = $instance->getModel();
         $this->assertEquals($model, $mockModel);
         $this->assertInstanceOf(Model::class, $model);
     }
@@ -74,14 +80,28 @@ class ModelContainerTest extends TestCase
      */
     public function testPrepare()
     {
-        $data = new DataContainer(['prop_1'=>'value_1', 'prop_2'=> "value_2"]);
+        $data = new DataContainer(['prop_1' => 'value_1', 'prop_2' => "value_2"]);
 
-        $container = new ModelContainer(TestModel::class);
-        $container->setData($data);
+        $mockModel = $this->createStub(Model::class);
+        $mockModel->expects($this->once())->method('getTable')->willReturn(Lorem::word());
 
-        $container->prepare();
-        $this->assertInstanceOf(TestModel::class, $container->getModel());
-        $this->assertEquals($container->getData(), $data);
+        /**
+         * @var ModelContainer|MockObject $instance
+         */
+        $instance = $this->getMockBuilder(ModelContainer::class)
+                         ->disableOriginalConstructor()
+                         ->onlyMethods(['createModel', 'proceedData', 'setColumns'])
+                         ->getMock();
+
+        $instance->expects($this->once())->method('createModel')->willReturn($mockModel);
+        $instance->expects($this->once())->method('setColumns');
+
+        $instance->setData($data);
+
+        $instance->prepare();
+
+        $this->assertInstanceOf(Model::class, $instance->getModel());
+        $this->assertEquals($instance->getData(), $data);
     }
 
     /**
@@ -91,29 +111,38 @@ class ModelContainerTest extends TestCase
      */
     public function testPrepareWithoutData()
     {
+        $instance = new ModelContainer('');
 
-        $container = new ModelContainer(TestModel::class);
         $this->expectException(NoPropertySetException::class);
-
-        $container->prepare();
+        $instance->prepare();
     }
 
     /**
      * @runInSeparateProcess
      * @preserveGlobalState disabled
+     * @throws NoPropertySetException
      */
-    public function testPrepareWithTranslations()
+    public function testPrepareWithNamingStrategy()
     {
-        $translationsMock = \Mockery::mock(TranslationsContainer::class);
-        $translationsMock->shouldReceive('get')->with('prop_1')->andReturn('prop_1_t');
-        $translationsMock->shouldReceive('get')->with('prop_2')->andReturn(null);
+        $ns = new NamingStrategyContainer();
+        $ns->add('prop_1_t', 'prop_1');
 
-        $container = new ModelContainer(TestModel::class);
-        $container->setData(new DataContainer(['prop_1'=>'value_1', 'prop_2'=> "value_2"]));
-        $container->setTranslations($translationsMock);
+        /**
+         * @var MockObject|ModelContainer $container
+         */
+        $container = $this->getMockBuilder(ModelContainer::class)
+                          ->onlyMethods(['setColumns', 'isColumnExistInTable'])
+                          ->setConstructorArgs([TestModel::class])
+                          ->getMock();
+
+        $container->expects($this->once())->method('setColumns');
+        $container->expects($this->any())->method('isColumnExistInTable')->willReturn(true);
+
+        $container->setData(new DataContainer(['prop_1' => 'value_1', 'prop_2' => "value_2"]));
+        $container->setNamingStrategy($ns);
 
         $container->prepare();
-        $this->assertInstanceOf(TestModel::class, $container->getModel());
+
         $this->assertEquals("value_1", $container->getModel()->prop_1_t);
         $this->assertEquals("value_2", $container->getModel()->prop_2);
     }
@@ -125,12 +154,29 @@ class ModelContainerTest extends TestCase
      */
     public function testPrepareWithTransformations()
     {
-        $transformationsMock = \Mockery::mock(TransformationsContainer::class);
-        $transformationsMock->shouldReceive('getValue')->with('prop_1', 'value_1')->andReturn('value_1_t');
-        $transformationsMock->shouldReceive('getValue')->with('prop_2', 'value_2')->andReturn(\Mockery::mock(SeederInterface::class));
+        /**
+         * @var MockObject|TransformationsContainer $transformationsMock
+         */
+        $transformationsMock = $this->getMockBuilder(TransformationsContainer::class)
+                                    ->onlyMethods(['getValue'])
+                                    ->getMock();
 
-        $container = new ModelContainer(TestModel::class);
-        $container->setData(new DataContainer(['prop_1'=>'value_1', 'prop_2'=> "value_2"]));
+        $transformationsMock->expects($this->exactly(2))->method('getValue')
+                            ->withConsecutive(['prop_1'], ['prop_2'])
+                            ->willReturn('value_1_t', $this->createMock(SeederInterface::class));
+
+        /**
+         * @var MockObject|ModelContainer $container
+         */
+        $container = $this->getMockBuilder(ModelContainer::class)
+                          ->onlyMethods(['setColumns', 'isColumnExistInTable'])
+                          ->setConstructorArgs([TestModel::class])
+                          ->getMock();
+
+        $container->expects($this->once())->method('setColumns');
+        $container->expects($this->any())->method('isColumnExistInTable')->willReturn(true);
+
+        $container->setData(new DataContainer(['prop_1' => 'value_1', 'prop_2' => "value_2"]));
         $container->setTransformations($transformationsMock);
 
         $container->prepare();
@@ -140,15 +186,15 @@ class ModelContainerTest extends TestCase
         $seeders = $container->getSeeders();
         $this->assertCount(1, $seeders);
         $this->assertInstanceOf(SeederInterface::class, $seeders[0]);
-
     }
 
     public function testSetData()
     {
-        $container = new ModelContainer(self::MODEL_NAME);
+        $container = new ModelContainer('');
+
         $dataContainer = new DataContainer();
 
-        for ($i=1; $i < 5; $i++) {
+        for ($i = 1; $i < 5; $i++) {
             $dataContainer[] = $i;
 
             $container->setData($dataContainer);
@@ -156,13 +202,14 @@ class ModelContainerTest extends TestCase
 
             $this->assertCount($i, $data);
             $this->assertEquals($dataContainer, $data);
-            $this->assertEquals($i, $data[$i-1]);
+            $this->assertEquals($i, $data[$i - 1]);
         }
     }
 
     public function testGetDataWithNoiDataSet()
     {
-        $container = new ModelContainer(self::MODEL_NAME);
+        $container = new ModelContainer('');
+
         $data = $container->getData();
 
         $this->assertInstanceOf(DataContainer::class, $data);
@@ -171,38 +218,37 @@ class ModelContainerTest extends TestCase
 
     public function testSetTransformations()
     {
-        $transformationMock = \Mockery::mock(TransformationsContainer::class);
-        $container = new ModelContainer(self::MODEL_NAME);
+        $transformationMock = new TransformationsContainer();
+
+        $container = new ModelContainer('');
         $retContainer = $container->setTransformations($transformationMock);
 
         $this->assertEquals($retContainer, $container);
-
-        $this->expectException(\TypeError::class);
-        $container->setTransformations(new \stdClass());
     }
 
     public function testSetTranslations()
     {
-        $translationsMock = \Mockery::mock(TranslationsContainer::class);
-        $container = new ModelContainer(self::MODEL_NAME);
-        $retContainer = $container->setTranslations($translationsMock);
+        $translationsMock = new NamingStrategyContainer();
+
+        $container = new ModelContainer('');
+        $retContainer = $container->setNamingStrategy($translationsMock);
 
         $this->assertEquals($retContainer, $container);
-
-        $this->expectException(\TypeError::class);
-        $container->setTranslations(new \stdClass());
     }
 
     public function testConstructor()
     {
-        $instance = new ModelContainer(self::MODEL_NAME);
-        $this->assertEquals(self::MODEL_NAME, $instance->getModelName());
+        $name = Lorem::word();
 
-        $this->expectException(\TypeError::class);
-        new ModelContainer(new \StdClass());
+        $instance = new ModelContainer($name);
+        $this->assertEquals($name, $instance->getModelName());
     }
 }
 
-class TestModel extends Model{
-
+class TestModel extends Model
+{
+    public function getTable()
+    {
+        return Lorem::word();
+    }
 }

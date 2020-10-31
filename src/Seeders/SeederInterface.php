@@ -4,10 +4,10 @@
  * @copyright (c) soIT.pl (2018-2019)
  * @url http://www.soit.pl
  */
-namespace soIT\LaravelSeeders\Seeders;
+namespace soIT\LaravelSeeder\Seeders;
 
-use soIT\LaravelSeeders\Containers\DataContainer;
-use soIT\LaravelSeeders\Containers\TransformationsContainer;
+use soIT\LaravelSeeder\Containers\DataContainer;
+use soIT\LaravelSeeder\Containers\TransformationsContainer;
 
 interface SeederInterface
 {

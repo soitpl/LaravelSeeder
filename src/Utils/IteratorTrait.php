@@ -12,11 +12,6 @@ namespace soIT\LaravelSeeders\Utils;
 trait IteratorTrait
 {
     /**
-     * @var array Items array
-     */
-    private $items = [];
-
-    /**
      * Get all items
      *
      * @return array
@@ -31,7 +26,7 @@ trait IteratorTrait
      *
      * @param array $items Items to set
      */
-    function set(array $items)
+    public function set(array $items)
     {
         $this->items = $items;
     }
@@ -39,7 +34,7 @@ trait IteratorTrait
     /**
      * @inheritdoc
      */
-    function rewind()
+    public function rewind()
     {
         return reset($this->items);
     }
@@ -47,7 +42,7 @@ trait IteratorTrait
     /**
      * @inheritdoc
      */
-    function current()
+    public function current()
     {
         return current($this->items);
     }
@@ -55,7 +50,7 @@ trait IteratorTrait
     /**
      * @inheritdoc
      */
-    function key()
+    public function key()
     {
         return key($this->items);
     }
@@ -63,7 +58,7 @@ trait IteratorTrait
     /**
      * @inheritdoc
      */
-    function next()
+    public function next()
     {
         return next($this->items);
     }
@@ -71,7 +66,7 @@ trait IteratorTrait
     /**
      * @inheritdoc
      */
-    function valid()
+    public function valid()
     {
         return key($this->items) !== null;
     }

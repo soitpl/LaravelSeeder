@@ -13,7 +13,7 @@ namespace soIT\LaravelSeeder\Containers;
 use ArrayAccess;
 use Countable;
 use Iterator;
-use soIT\LaravelSeeders\Transformations\CallableTransformation;
+use soIT\LaravelSeeder\Transformations\CallableTransformation;
 use soIT\LaravelSeeders\Utils\ArrayAccessTrait;
 use soIT\LaravelSeeders\Utils\CountableTrait;
 use soIT\LaravelSeeders\Utils\IteratorTrait;

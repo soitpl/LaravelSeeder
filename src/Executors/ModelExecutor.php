@@ -7,14 +7,14 @@
 
 namespace soIT\LaravelSeeder\Executors;
 
-use soIT\LaravelSeeders\Containers\TransformationsContainer;
-use soIT\LaravelSeeders\Containers\DataContainer;
+use soIT\LaravelSeeder\Containers\DataContainer;
+use soIT\LaravelSeeder\Contracts\ExecutorInterface;
+use soIT\LaravelSeeder\Executors\Traits\HasPropertiesTransformation;
+use soIT\LaravelSeeder\Containers\TransformationsContainer;
 use soIT\LaravelSeeder\Executors\Traits\HasAdditionalProperties;
-use soIT\LaravelSeeders\Executors\ExecutorInterface;
-use soIT\LaravelSeeders\Executors\Traits\HasPropertiesTranslation;
-use soIT\LaravelSeeders\Executors\Traits\HasSources;
-use soIT\LaravelSeeders\Executors\Traits\HasPropertiesTransformation;
-use soIT\LaravelSeeders\Seeders\ModelSeeder;
+use soIT\LaravelSeeder\Executors\Traits\HasNamingStrategy;
+use soIT\LaravelSeeder\Executors\Traits\HasSources;
+use soIT\LaravelSeeder\Seeders\ModelSeeder;
 use soIT\LaravelSeeders\Transformations\ModelTransformation;
 use soIT\LaravelSeeder\Transformations\AttachModelTransformation;
 
@@ -23,23 +23,24 @@ use soIT\LaravelSeeder\Transformations\AttachModelTransformation;
  * @package soIT\LaravelSeeders\Executors
  *
  * @property ModelSeeder $seeder
+ * @codeCoverageIgnore
  */
 class ModelExecutor extends ExecutorAbstract implements ExecutorInterface
 {
     use HasAdditionalProperties;
     use HasPropertiesTransformation;
-    use HasPropertiesTranslation;
+    use HasNamingStrategy;
     use HasSources;
 
     /**
      * ModelExecutor constructor.
      *
-     * @param string $model Model assigned to executor
+     * @param ModelSeeder $model Model assigned to executor
      * @param TransformationsContainer $transformations Mapping container with columns mapping info.
      */
-    public function __construct(string $model, TransformationsContainer $transformations = null)
+    public function __construct(ModelSeeder $model, TransformationsContainer $transformations = null)
     {
-        $this->setSeeder(new ModelSeeder($model));
+        $this->setSeeder($model);
         $this->setTransformations($transformations);
     }
 
@@ -84,8 +85,9 @@ class ModelExecutor extends ExecutorAbstract implements ExecutorInterface
      */
     public function execute(DataContainer $data):bool
     {
-        $this->seeder->setTransformations($this->getTransformations());
-        $this->seeder->setTranslations($this->getTranslations());
+        $this->getSeeder()
+             ->setTransformations($this->getTransformations())
+             ->setTranslations($this->getNamingStrategy());
 
         return parent::execute($data);
     }

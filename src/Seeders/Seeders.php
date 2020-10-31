@@ -4,7 +4,7 @@
  * @copyright (c) soIT.pl (2018-2019)
  * @url http://www.soit.pl
  */
-namespace soIT\LaravelSeeders\Seeders;
+namespace soIT\LaravelSeeder\Seeders;
 
 use soIT\LaravelSeeders\Exceptions\ExecutorNotFoundException;
 use soIT\LaravelSeeders\Executors\ExecutorFactory;
@@ -14,10 +14,10 @@ use soIT\LaravelSeeder\Executors\TableExecutor;
 
 class Seeders
 {
-    const MODEL = 0;
-    const TABLE = 1;
+    public const MODEL = 0;
+    public const TABLE = 1;
 
-    const CLASSES = [ModelExecutor::class, TableExecutor::class];
+    public const CLASSES = [ModelExecutor::class, TableExecutor::class];
 
     /**
      * Set model as a target for seeder

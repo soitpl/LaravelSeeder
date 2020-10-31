@@ -16,7 +16,7 @@ class Parser
     /**
      * Parsers array
      */
-    const PARSERS = [
+    public const PARSERS = [
         'json' => JsonParser::class
     ];
 

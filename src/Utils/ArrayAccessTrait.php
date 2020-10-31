@@ -10,11 +10,6 @@ namespace soIT\LaravelSeeders\Utils;
 trait ArrayAccessTrait
 {
     /**
-     * @var array Items array
-     */
-    private $items = [];
-
-    /**
      * Assign items to trait
      *
      * @param array $items
