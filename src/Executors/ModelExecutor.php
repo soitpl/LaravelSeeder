@@ -15,8 +15,9 @@ use soIT\LaravelSeeder\Executors\Traits\HasAdditionalProperties;
 use soIT\LaravelSeeder\Executors\Traits\HasNamingStrategy;
 use soIT\LaravelSeeder\Executors\Traits\HasSources;
 use soIT\LaravelSeeder\Seeders\ModelSeeder;
-use soIT\LaravelSeeders\Transformations\ModelTransformation;
+
 use soIT\LaravelSeeder\Transformations\AttachModelTransformation;
+use soIT\LaravelSeeder\Transformations\ModelTransformation;
 
 /**
  * Class ModelExecutor
@@ -69,7 +70,7 @@ class ModelExecutor extends ExecutorAbstract implements ExecutorInterface
      *
      * @return ModelExecutor
      */
-    public function attachTo(string $propertyName, string $model):self
+    public function setPropertyRelationModel(string $propertyName, string $model):self
     {
         $this->getTransformations()->assign($propertyName, new AttachModelTransformation($model));
 

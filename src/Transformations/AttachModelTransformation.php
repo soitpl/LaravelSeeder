@@ -14,14 +14,7 @@ use soIT\LaravelSeeders\Exceptions\WrongAttributeException;
 
 class AttachModelTransformation implements TransformationsInterface
 {
-    /**
-     * @var string Model name
-     */
     private string $modelName;
-    /**
-     * @var string
-     */
-    private string $propertyName;
 
     /**
      * @var TransformationsContainer
@@ -38,13 +31,13 @@ class AttachModelTransformation implements TransformationsInterface
      *
      * @param mixed $propertyValue
      *
-     * @return mixed
+     * @return SeederInterface
      * @throws WrongAttributeException
      */
     public function transform($propertyValue):SeederInterface
     {
         return (new AttachModelSeeder($this->modelName))
-            ->setTransformations($this->transformationsContainer)
+            //->setTransformations($this->transformationsContainer)
             ->setData($propertyValue);
     }
 
@@ -67,7 +60,7 @@ class AttachModelTransformation implements TransformationsInterface
      */
     public function setPropertyName(string $property):TransformationsInterface
     {
-        $this->propertyName = $property;
+        $propertyName = $property;
 
         return $this;
     }

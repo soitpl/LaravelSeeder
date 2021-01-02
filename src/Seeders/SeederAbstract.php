@@ -19,12 +19,12 @@ abstract class SeederAbstract implements SeederInterface
     /**
      * @var DataContainer $data Data to seed
      */
-    protected $data;
+    protected DataContainer $data;
 
     /**
      * @var int Type of behavior on duplicated entry
      */
-    protected $duplicated = null;
+    protected ?int $duplicated = null;
 
     /**
      * Set behavior on duplicated entry

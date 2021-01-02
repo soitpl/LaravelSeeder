@@ -23,15 +23,11 @@ class ModelSeeder extends SeederAbstract
     /**
      * @var string Target model name
      */
-    protected $modelName;
+    protected string $modelName;
     /**
      * @var object Model object
      */
     protected $model;
-    /**
-     * @var ModelContainer Instance of ModelMaker class
-     */
-    private $modelContainer;
 
     /**
      * ModelDispatcher constructor.
@@ -56,7 +52,7 @@ class ModelSeeder extends SeederAbstract
     /**
      * Create and save new model in database
      *
-     * @throws NoPropertySetException
+     * @throws \soIT\LaravelSeeder\Exceptions\NoPropertySetException
      */
     public function save():void
     {
@@ -76,11 +72,9 @@ class ModelSeeder extends SeederAbstract
      */
     protected function initModelContainer():ModelContainer
     {
-        $this->modelContainer = new ModelContainer($this->modelName);
-        $this->modelContainer->setTransformations($this->getTransformations());
-        $this->modelContainer->setNamingStrategy($this->getTranslations());
-
-        return $this->modelContainer;
+        $modelContainer = new ModelContainer($this->modelName);
+        return $modelContainer->setTransformations($this->getTransformations())
+                              ->setNamingStrategy($this->getTranslations());
     }
 
     /**
