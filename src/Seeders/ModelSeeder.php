@@ -9,10 +9,10 @@ namespace soIT\LaravelSeeder\Seeders;
 
 use Illuminate\Database\Eloquent\Model;
 use soIT\LaravelSeeder\Containers\ModelContainer;
+use soIT\LaravelSeeder\Exceptions\NoPropertySetException;
 use soIT\LaravelSeeder\Seeders\Traits\HasTransformations;
 use soIT\LaravelSeeder\Seeders\Traits\SeederAdditionalPropertiesTrait;
 use soIT\LaravelSeeder\Seeders\Traits\SeederTranslationsTrait;
-use soIT\LaravelSeeders\Exceptions\NoPropertySetException;
 
 class ModelSeeder extends SeederAbstract
 {
@@ -27,7 +27,7 @@ class ModelSeeder extends SeederAbstract
     /**
      * @var object Model object
      */
-    protected $model;
+    protected object $model;
 
     /**
      * ModelDispatcher constructor.
@@ -52,15 +52,14 @@ class ModelSeeder extends SeederAbstract
     /**
      * Create and save new model in database
      *
-     * @throws \soIT\LaravelSeeder\Exceptions\NoPropertySetException
+     * @throws NoPropertySetException
      */
     public function save():void
     {
         $container = $this->initModelContainer();
-        $container->setData($this->getData());
-        $container->prepare();
-
-        $model = $container->getModel();
+        $model = $container->setData($this->getData())
+                           ->prepare()
+                           ->getModel();
 
         $model->save();
 
