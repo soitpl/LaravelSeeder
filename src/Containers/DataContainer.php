@@ -6,7 +6,6 @@
  */
 namespace soIT\LaravelSeeder\Containers;
 
-use Exception;
 use Illuminate\Support\Collection;
 use soIT\LaravelSeeders\Exceptions\WrongAttributeException;
 
@@ -43,7 +42,7 @@ class DataContainer extends Collection
      * @param string $key Value key
      *
      * @return mixed
-     * @throws Exception
+     * @throws \Exception
      */
     public function __get($key)
     {

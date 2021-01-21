@@ -116,7 +116,12 @@ class AttachModelSeeder extends ModelSeeder
             $relation = $this->getRelation($this->getRelationName($data->first()));
 
             foreach ($data as $model) {
-                $relation->attach($model, []);
+                if($relation instanceof MorphToMany) {
+                    $relation->attach($model, []);
+                }
+                else {
+                    $relation->associate($model);
+                }
             }
         }
     }
@@ -161,7 +166,7 @@ class AttachModelSeeder extends ModelSeeder
      * @return MorphToMany
      * @throws Exception
      */
-    private function getRelation(string $relationName):MorphToMany
+    private function getRelation(string $relationName):object
     {
         return $this->parentModel->$relationName();
     }

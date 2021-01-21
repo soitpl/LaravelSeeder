@@ -8,14 +8,12 @@
 namespace soIT\LaravelSeeder\Executors;
 
 use soIT\LaravelSeeder\Containers\DataContainer;
-use soIT\LaravelSeeder\Contracts\ExecutorInterface;
-use soIT\LaravelSeeder\Executors\Traits\HasPropertiesTransformation;
 use soIT\LaravelSeeder\Containers\TransformationsContainer;
-use soIT\LaravelSeeder\Executors\Traits\HasAdditionalProperties;
+use soIT\LaravelSeeder\Contracts\ExecutorInterface;
 use soIT\LaravelSeeder\Executors\Traits\HasNamingStrategy;
+use soIT\LaravelSeeder\Executors\Traits\HasPropertiesTransformation;
 use soIT\LaravelSeeder\Executors\Traits\HasSources;
 use soIT\LaravelSeeder\Seeders\ModelSeeder;
-use soIT\LaravelSeeder\Transformations\ModelTransformation;
 use soIT\LaravelSeeder\Transformations\AttachModelTransformation;
 
 /**
@@ -27,7 +25,6 @@ use soIT\LaravelSeeder\Transformations\AttachModelTransformation;
  */
 class ModelExecutor extends ExecutorAbstract implements ExecutorInterface
 {
-    use HasAdditionalProperties;
     use HasPropertiesTransformation;
     use HasNamingStrategy;
     use HasSources;
@@ -44,21 +41,21 @@ class ModelExecutor extends ExecutorAbstract implements ExecutorInterface
         $this->setTransformations($transformations);
     }
 
-    /**
-     * Assign model to property.
-     * If property will be find new model will be created and added to databse
-     *
-     * @param string $propertyName
-     * @param string $model
-     *
-     * @return ModelExecutor
-     */
-    public function assignModel(string $propertyName, string $model):self
-    {
-        $this->getTransformations()->assign($propertyName, new ModelTransformation($model));
+//    /**
+//     * Assign model to property.
+//     * If property will be find new model will be created and added to databse
+//     *
+//     * @param string $propertyName
+//     * @param string $model
+//     *
+//     * @return ModelExecutor
+//     */
+//    public function assignModel(string $propertyName, string $model):self
+//    {
+//        $this->getTransformations()->assign($propertyName, new ModelTransformation($model));
 
-        return $this;
-    }
+//        return $this;
+//    }
 
     /**
      * Assign model to property.

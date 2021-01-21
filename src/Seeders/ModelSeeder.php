@@ -14,7 +14,7 @@ use soIT\LaravelSeeder\Seeders\Traits\HasTransformations;
 use soIT\LaravelSeeder\Seeders\Traits\SeederAdditionalPropertiesTrait;
 use soIT\LaravelSeeder\Seeders\Traits\SeederTranslationsTrait;
 
-class ModelSeeder extends SeederAbstract
+class ModelSeeder extends SeederAbstract implements \soIT\LaravelSeeder\Contracts\SeederInterface
 {
     use SeederAdditionalPropertiesTrait;
     use HasTransformations;
@@ -56,10 +56,12 @@ class ModelSeeder extends SeederAbstract
      */
     public function save():void
     {
+
         $container = $this->initModelContainer();
-        $model = $container->setData($this->getData())
-                           ->prepare()
-                           ->getModel();
+        $container->setData($this->getData());
+        $container->prepare();
+
+        $model = $container->getModel();
 
         $model->save();
 

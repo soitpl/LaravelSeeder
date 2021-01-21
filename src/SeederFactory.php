@@ -18,18 +18,8 @@ use soIT\LaravelSeeder\Executors\ModelExecutor;
 use soIT\LaravelSeeder\Seeders\ModelSeeder;
 use soIT\LaravelSeeder\Seeders\TableSeeder;
 
-/**
- * Class SeederFactory
- * @codeCoverageIgnore
- */
 class SeederFactory
 {
-    /**
-     * @param string $modelName
-     * @param TransformationsContainer|null $transformations
-     *
-     * @return ModelExecutor
-     */
     public static function model(string $modelName, TransformationsContainer $transformations = null):ModelExecutor
     {
         return new ModelExecutor(new ModelSeeder($modelName), $transformations);
