@@ -18,7 +18,7 @@ class TArrayAccessTest extends TestCase
 
     public function setUp():void
     {
-        $this->testObject = \Mockery::mock('soIT\LaravelSeeders\Utils\ArrayAccessTrait')->makePartial();
+        $this->testObject = Mockery::mock('soIT\LaravelSeeders\Utils\ArrayAccessTrait')->makePartial();
         $this->testObject->setItems($this->testData);
         parent::setUp();
     }

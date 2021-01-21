@@ -9,8 +9,8 @@ namespace soIT\LaravelSeeders\Enums;
 
 class Duplicated
 {
-    const __default = self::IGNORE;
+    public const __default = self::IGNORE;
 
-    const IGNORE = 1;
-    const UPDATE = 2;
+    public const IGNORE = 1;
+    public const UPDATE = 2;
 }

@@ -8,7 +8,7 @@
 namespace soIT\LaravelSeeder\Containers;
 
 use Illuminate\Database\Eloquent\Model;
-use soIT\LaravelSeeder\Contracts\SeederInterface;
+use soIT\LaravelSeeder\Seeders\SeederInterface;
 use soIT\LaravelSeeder\Exceptions\NoPropertySetException;
 use soIT\LaravelSeeders\Traits\HasTableColumns;
 
@@ -179,7 +179,7 @@ class ModelContainer
             $propertyValue = $this->getTargetTransformation($property, $value);
             $propertyName = $this->getTargetProperty($property);
 
-            if ($propertyValue instanceof \soIT\LaravelSeeder\Contracts\SeederInterface) {
+            if ($propertyValue instanceof SeederInterface) {
                 $this->setSeeder($propertyValue);
             } elseif (is_string($propertyValue) && $this->isColumnExistInTable($propertyName)) {
                 $this->model->setAttribute($propertyName, $propertyValue);

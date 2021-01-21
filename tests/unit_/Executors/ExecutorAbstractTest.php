@@ -7,7 +7,10 @@
 
 namespace soIT\LaravelSeeders\Executors;
 
+use Mockery;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
+use ReflectionException;
 use soIT\LaravelSeeder\Executors\ExecutorAbstract;
 use soIT\LaravelSeeders\Containers\DataContainer;
 use soIT\LaravelSeeders\Seeders\SeederAbstract;
@@ -17,7 +20,7 @@ use soIT\LaravelSeeders\Sources\SourceInterface;
 class ExecutorAbstractTest extends TestCase
 {
     /**
-     * @throws \ReflectionException
+     * @throws ReflectionException
      */
     public function testProceedSources()
     {
@@ -50,7 +53,7 @@ class ExecutorAbstractTest extends TestCase
     }
 
     /**
-     * @throws \ReflectionException
+     * @throws ReflectionException
      */
     public function testAddGetSource()
     {
@@ -72,7 +75,7 @@ class ExecutorAbstractTest extends TestCase
     {
         $executorMock = $this->_getExecutorMock();
 
-        $seeder = \Mockery::mock(SeederAbstract::class);
+        $seeder = Mockery::mock(SeederAbstract::class);
         $seeder
             ->shouldReceive('onDuplicate')
             ->withArgs([1])
@@ -86,7 +89,7 @@ class ExecutorAbstractTest extends TestCase
     }
 
     /**
-     * @throws \ReflectionException
+     * @throws ReflectionException
      */
     public function testSeed()
     {
@@ -98,7 +101,7 @@ class ExecutorAbstractTest extends TestCase
 
     public function testSetGetSeeder()
     {
-        $seeder = \Mockery::mock(SeederAbstract::class);
+        $seeder = Mockery::mock(SeederAbstract::class);
 
         $executorMock = $this->_getExecutorMock();
         $ret = $executorMock->setSeeder($seeder);
@@ -108,8 +111,8 @@ class ExecutorAbstractTest extends TestCase
     }
 
     /**
-     * @return \PHPUnit\Framework\MockObject\MockObject
-     * @throws \ReflectionException
+     * @return MockObject
+     * @throws ReflectionException
      */
     private function _getExecutorMock()
     {

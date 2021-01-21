@@ -26,8 +26,8 @@ class ParserTest extends TestCase
     }
 
     /**
-     * @throws \soIT\LaravelSeeders\Exceptions\FileDontExistException
-     * @throws \soIT\LaravelSeeders\Exceptions\ParserNotFoundException
+     * @throws FileDontExistException
+     * @throws ParserNotFoundException
      */
     public function testParse()
     {
@@ -38,8 +38,8 @@ class ParserTest extends TestCase
     }
 
     /**
-     * @throws \soIT\LaravelSeeders\Exceptions\FileDontExistException
-     * @throws \soIT\LaravelSeeders\Exceptions\ParserNotFoundException
+     * @throws FileDontExistException
+     * @throws ParserNotFoundException
      */
     public function testParseFileDontExist()
     {
@@ -48,8 +48,8 @@ class ParserTest extends TestCase
     }
 
     /**
-     * @throws \soIT\LaravelSeeders\Exceptions\FileDontExistException
-     * @throws \soIT\LaravelSeeders\Exceptions\ParserNotFoundException
+     * @throws FileDontExistException
+     * @throws ParserNotFoundException
      */
     public function testParseParserDontExist()
     {

@@ -6,11 +6,14 @@
  */
 namespace soIT\LaravelSeeder\Containers;
 
+use ArrayAccess;
+use Countable;
+use Iterator;
 use soIT\LaravelSeeders\Utils\ArrayAccessTrait;
 use soIT\LaravelSeeders\Utils\CountableTrait;
 use soIT\LaravelSeeders\Utils\IteratorTrait;
 
-class NamingStrategyContainer implements \Iterator, \ArrayAccess, \Countable
+class NamingStrategyContainer implements Iterator, ArrayAccess, Countable
 {
     use ArrayAccessTrait;
     use CountableTrait;

@@ -14,10 +14,10 @@ use soIT\LaravelSeeder\Executors\TableExecutor;
 
 class Seeders
 {
-    const MODEL = 0;
-    const TABLE = 1;
+    public const MODEL = 0;
+    public const TABLE = 1;
 
-    const CLASSES = [ModelExecutor::class, TableExecutor::class];
+    public const CLASSES = [ModelExecutor::class, TableExecutor::class];
 
     /**
      * Set model as a target for seeder

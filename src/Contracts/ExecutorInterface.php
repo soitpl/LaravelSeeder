@@ -10,15 +10,12 @@
 
 namespace soIT\LaravelSeeder\Contracts;
 
+
 use soIT\LaravelSeeder\Containers\DataContainer;
 
 interface ExecutorInterface
 {
     public function addSource(SourceInterface $source);
-
     public function execute(DataContainer $data);
-
-    public function proceedSources();
-
     public function seed();
 }

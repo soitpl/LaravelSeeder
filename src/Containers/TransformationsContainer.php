@@ -38,16 +38,19 @@ class TransformationsContainer implements Iterator, ArrayAccess, Countable
      */
     public function assign(string $property, TransformationsInterface $value):void
     {
+        $array = Converters::stringToArray($property);
+
         $temp = &$this->items;
 
-        foreach (Converters::stringToArray($property) as $key) {
+        foreach ($array as $key) {
             if (!isset($temp[$key])) {
                 $temp[$key] = [];
             }
+
             $temp = &$temp[$key];
         }
 
-        $temp = $value;
+        $temp[] = $value;
     }
 
     /**
@@ -87,14 +90,21 @@ class TransformationsContainer implements Iterator, ArrayAccess, Countable
      */
     public function getValue(string $property, $value)
     {
-        $transform = $this->getByPropertyName($property);
+        $items = $this->getByPropertyName($property);
 
-        if (is_null($transform)) {
+        if (is_null($items) || !isset($items[0])) {
             return $value;
         }
 
-        $value = $transform->transform($value);
-        return $value;
+        /**
+         * @var TransformationsInterface $transform
+         */
+        $transform = array_shift($items);
+
+        return $transform
+            ->setPropertyName($property)
+            ->setTransformationsContainer((new self())->assignArray($items))
+            ->transform($value);
     }
 
     /**
@@ -128,7 +138,7 @@ class TransformationsContainer implements Iterator, ArrayAccess, Countable
      *
      * @return array
      */
-    private function getByPropertyName(string $property):?TransformationsInterface
+    private function getByPropertyName(string $property):?array
     {
         return $this->items[$property] ?? null;
     }

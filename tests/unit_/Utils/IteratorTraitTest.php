@@ -86,7 +86,7 @@ class IteratorTraitTest extends TestCase
 
     private function getTraitMock()
     {
-        $mock = \Mockery::mock(IteratorTrait::class);
+        $mock = Mockery::mock(IteratorTrait::class);
         $mock->set(self::TEST_ARRAY);
         return $mock;
     }

@@ -8,7 +8,9 @@
 namespace soIT\LaravelSeeders\Exceptions;
 
 
-class ParserNotFoundException extends \Exception
+use Exception;
+
+class ParserNotFoundException extends Exception
 {
 
 }

@@ -7,13 +7,14 @@
 
 namespace soIT\LaravelSeeders\Utils;
 
+use Mockery;
 use PHPUnit\Framework\TestCase;
 
 class CountableTraitTest extends TestCase
 {
     public function testCount()
     {
-        $mock = \Mockery::mock(CountableTrait::class);
+        $mock = Mockery::mock(CountableTrait::class);
 
         $this->assertEquals(0, $mock->count());
     }

@@ -8,6 +8,8 @@
 namespace soIT\LaravelSeeders\Exceptions;
 
 
-class ModelSeedFailedException extends \Exception
+use Exception;
+
+class ModelSeedFailedException extends Exception
 {
 }

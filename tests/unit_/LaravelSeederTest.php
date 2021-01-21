@@ -7,6 +7,7 @@
 
 namespace soIT\LaravelSeeders;
 
+use Mockery;
 use PHPUnit\Framework\TestCase;
 use ReflectionException;
 use soIT\LaravelSeeders\Exceptions\MethodNotFoundException;
@@ -53,7 +54,7 @@ class LaravelSeederTest extends TestCase
          */
         $mock = $this->getMockForAbstractClass(LaravelSeeder::class);
 
-        $executorFactoryMock = \Mockery::mock('overload:soIT\LaravelSeeders\Executors\ExecutorFactory');
+        $executorFactoryMock = Mockery::mock('overload:soIT\LaravelSeeders\Executors\ExecutorFactory');
         $executorFactoryMock->shouldReceive('factory')->andReturn($executorMock);
 
         $retExecutor = $mock->getExecutor(6);

@@ -7,6 +7,7 @@
 
 namespace soIT\LaravelSeeders\Seeders;
 
+use Mockery;
 use PHPUnit\Framework\TestCase;
 use soIT\LaravelSeeders\Containers\NamingStrategyContainer;
 
@@ -16,7 +17,7 @@ class SeederTranslationsTraitTest extends TestCase
     {
         $translations = new NamingStrategyContainer();
 
-        $seederMock = \Mockery::mock(SeederTranslationsTrait::class);
+        $seederMock = Mockery::mock(SeederTranslationsTrait::class);
         $ret = $seederMock->setTranslations($translations);
 
         $this->assertEquals($seederMock, $ret);

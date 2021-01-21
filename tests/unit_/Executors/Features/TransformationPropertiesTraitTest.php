@@ -8,6 +8,7 @@
 namespace soIT\LaravelSeeders\Executors\Features;
 
 use Illuminate\Support\Str;
+use Mockery;
 use PHPUnit\Framework\TestCase;
 use soIT\LaravelSeeders\Containers\TransformationContainer;
 use soIT\LaravelSeeders\Containers\TransformationsContainer;
@@ -58,7 +59,7 @@ class TransformationPropertiesTraitTest extends TestCase
          */
         $mock = $this->_createTraitMock();
 
-        $transformationContainerMock = \Mockery::mock(TransformationsContainer::class);
+        $transformationContainerMock = Mockery::mock(TransformationsContainer::class);
         $transformationContainerMock
             ->shouldReceive('assignCallback')
             ->withArgs([$property, $value])
@@ -72,6 +73,6 @@ class TransformationPropertiesTraitTest extends TestCase
 
     private function _createTraitMock()
     {
-        return \Mockery::mock(HasTransformationProperties::class, ExecutorAbstract::class);
+        return Mockery::mock(HasTransformationProperties::class, ExecutorAbstract::class);
     }
 }

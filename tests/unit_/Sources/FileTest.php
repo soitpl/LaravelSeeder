@@ -12,11 +12,12 @@ use Orchestra\Testbench\TestCase;
 use soIT\LaravelSeeder\Sources\File;
 use soIT\LaravelSeeders\Exceptions\DirectoryDontExistException;
 use soIT\LaravelSeeders\Exceptions\FileDontExistException;
+use soIT\LaravelSeeders\Exceptions\ParserNotFoundException;
 use Tests\Unit\LaravelSeeders\SeederTestFileMock;
 
 class FileStub
 {
-    const DEFAULT_DIRECTORY = 'test_directory';
+    public const DEFAULT_DIRECTORY = 'test_directory';
 }
 
 class FileTest extends TestCase
@@ -57,13 +58,13 @@ class FileTest extends TestCase
         $fileObj = new File($this->pathTestFile());
 
         $this->assertTrue(file_exists($this->pathTestFile()));
-        $this->assertEquals($this->testFileName, basename($fileObj->getFilePath()));;
+        $this->assertEquals($this->testFileName, basename($fileObj->getFilePath()));
     }
 
     /**
      * @throws DirectoryDontExistException
      * @throws FileDontExistException
-     * @throws \soIT\LaravelSeeders\Exceptions\ParserNotFoundException
+     * @throws ParserNotFoundException
      */
     public function testData()
     {

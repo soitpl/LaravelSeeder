@@ -7,6 +7,7 @@
 
 namespace soIT\LaravelSeeders\Executors;
 
+use Mockery;
 use PHPUnit\Framework\TestCase;
 use soIT\LaravelSeeder\Executors\ModelExecutor;
 use soIT\LaravelSeeders\Containers\DataContainer;
@@ -54,7 +55,7 @@ class ModelExecutorTest extends TestCase
         $data = new DataContainer([new DataContainer(['test' => '1']), new DataContainer(['test2' => '2'])]);
         $executor = new ModelExecutor(self::MODEL_NAME);
 
-        $seederMock = \Mockery::mock(SeederAbstract::class);
+        $seederMock = Mockery::mock(SeederAbstract::class);
         $seederMock
             ->shouldReceive('setData')
             ->withArgs([DataContainer::class])

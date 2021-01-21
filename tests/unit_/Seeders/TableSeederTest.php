@@ -35,7 +35,7 @@ class TableSeederTest extends TestCase
     }
 
     /**
-     * @throws \soIT\LaravelSeeder\Exceptions\SeedTargetFoundException
+     * @throws SeedTargetFoundException
      */
     public function testConstructorWithNoExistedTableName()
     {
@@ -45,7 +45,7 @@ class TableSeederTest extends TestCase
     }
 
     /**
-     * @throws \soIT\LaravelSeeder\Exceptions\SeedTargetFoundException
+     * @throws SeedTargetFoundException
      */
     public function testGetTableName()
     {
@@ -55,7 +55,7 @@ class TableSeederTest extends TestCase
     }
 
     /**
-     * @throws \soIT\LaravelSeeder\Exceptions\SeedTargetFoundException
+     * @throws SeedTargetFoundException
      */
     public function testSetGetUniqueColumns(){
         $columns = ['id', 'name'];
@@ -66,7 +66,7 @@ class TableSeederTest extends TestCase
     }
 
     /**
-     * @throws \soIT\LaravelSeeder\Exceptions\SeedTargetFoundException
+     * @throws SeedTargetFoundException
      */
     public function testSetGetUniqueColumnsWithFalseColumn(){
         $columns = ['id', 'name', 'test'];
@@ -78,7 +78,7 @@ class TableSeederTest extends TestCase
     }
 
     /**
-     * @throws \soIT\LaravelSeeder\Exceptions\SeedTargetFoundException
+     * @throws SeedTargetFoundException
      */
     public function testSave()
     {
@@ -109,7 +109,7 @@ class TableSeederTest extends TestCase
     }
 
     /**
-     * @throws \soIT\LaravelSeeder\Exceptions\SeedTargetFoundException
+     * @throws SeedTargetFoundException
      */
     public function testSaveWithIgnoreOnDuplicate()
     {

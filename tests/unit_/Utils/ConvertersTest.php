@@ -7,8 +7,10 @@
 
 namespace soIT\LaravelSeeders\Containers;
 
+use Exception;
 use PHPUnit\Framework\TestCase;
 use soIT\LaravelSeeders\Utils\Converters;
+use stdClass;
 
 class ConvertersTest extends TestCase
 {
@@ -18,12 +20,12 @@ class ConvertersTest extends TestCase
     {
         $object = Converters::arrayToObject($this->testArray);
         $this->assertIsObject($object);
-        $this->assertInstanceOf(\stdClass::class, $object);
+        $this->assertInstanceOf(stdClass::class, $object);
         $this->assertNotEmpty($object->y);
-        $this->assertInstanceOf(\stdClass::class, $object->y);
+        $this->assertInstanceOf(stdClass::class, $object->y);
         $this->assertNotEmpty($object->g);
         $this->assertEquals(23, $object->g);
-        $this->expectException(\Exception::class);
+        $this->expectException(Exception::class);
         $this->expectExceptionMessage('Property [h] does not exist on this collection instance.');
         $this->assertEmpty($object->h);
     }

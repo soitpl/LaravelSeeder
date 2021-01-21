@@ -7,6 +7,7 @@
 
 namespace soIT\LaravelSeeders\Seeders;
 
+use Mockery;
 use PHPUnit\Framework\TestCase;
 use soIT\LaravelSeeders\Containers\TransformationsContainer;
 
@@ -16,7 +17,7 @@ class SeederTransformationsTraitTest extends TestCase
     {
         $transformations = new TransformationsContainer();
 
-        $seederMock = \Mockery::mock(SeederTransformationsTrait::class);
+        $seederMock = Mockery::mock(SeederTransformationsTrait::class);
         $ret = $seederMock->setTransformations($transformations);
 
         $this->assertEquals($seederMock, $ret);

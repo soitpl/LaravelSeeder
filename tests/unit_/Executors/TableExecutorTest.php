@@ -9,7 +9,9 @@ namespace soIT\LaravelSeeders\Executors;
 
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 
+use Mockery;
 use Orchestra\Testbench\TestCase;
+use soIT\LaravelSeeder\Exceptions\SeedTargetFoundException;
 use soIT\LaravelSeeder\Executors\TableExecutor;
 use soIT\LaravelSeeders\Containers\DataContainer;
 use soIT\LaravelSeeders\Enums\Duplicated;
@@ -21,16 +23,16 @@ class TableExecutorTest extends TestCase
     use DatabaseMigrations;
 
     private const TABLE_NAME = 'TableTest';
-    const TEST_DATA = ['x' => 'y', 'a' => ['a' => 'b']];
+    public const TEST_DATA = ['x' => 'y', 'a' => ['a' => 'b']];
 
     /**
      * @runInSeparateProcess
      * @preserveGlobalState disabled
-     * @throws \soIT\LaravelSeeder\Exceptions\SeedTargetFoundException
+     * @throws SeedTargetFoundException
      */
     public function testConstructor()
     {
-        $factoryMock = \Mockery::mock(
+        $factoryMock = Mockery::mock(
             'overload:' . TableSeeder::class,
             SeederAbstract::class
         )->shouldAllowMockingProtectedMethods();
@@ -45,11 +47,11 @@ class TableExecutorTest extends TestCase
     /**
      * @runInSeparateProcess
      * @preserveGlobalState disabled
-     * @throws \soIT\LaravelSeeder\Exceptions\SeedTargetFoundException
+     * @throws SeedTargetFoundException
      */
     public function testGetTarget()
     {
-        $factoryMock = \Mockery::mock('overload:' . TableSeeder::class, SeederAbstract::class);
+        $factoryMock = Mockery::mock('overload:' . TableSeeder::class, SeederAbstract::class);
         $factoryMock->shouldReceive('getName')->andReturn(self::TABLE_NAME);
 
         $instance = new TableExecutor('users');
@@ -57,14 +59,14 @@ class TableExecutorTest extends TestCase
     }
 
     /**
-     * @throws \soIT\LaravelSeeder\Exceptions\SeedTargetFoundException
+     * @throws SeedTargetFoundException
      */
     public function testExecute()
     {
         $data = new DataContainer([new DataContainer(['test' => '1']), new DataContainer(['test2' => '2'])]);
         $executor = new TableExecutor('users');
 
-        $seederMock = \Mockery::mock(TableSeeder::class);
+        $seederMock = Mockery::mock(TableSeeder::class);
         $seederMock
             ->shouldReceive('setData')
             ->withArgs([DataContainer::class])
@@ -88,10 +90,10 @@ class TableExecutorTest extends TestCase
     /**
      * @runInSeparateProcess
      * @preserveGlobalState disabled
-     * @throws \soIT\LaravelSeeder\Exceptions\SeedTargetFoundException
+     * @throws SeedTargetFoundException
      */
     public function testOnDuplicate(){
-        $factoryMock = \Mockery::mock(
+        $factoryMock = Mockery::mock(
             'overload:' . TableSeeder::class,
             SeederAbstract::class
         )->shouldAllowMockingProtectedMethods();

@@ -8,6 +8,7 @@
 namespace soIT\LaravelSeeders\Executors\Features;
 
 
+use Mockery;
 use PHPUnit\Framework\TestCase;
 use soIT\LaravelSeeders\Containers\NamingStrategyContainer;
 use soIT\LaravelSeeder\Executors\ExecutorAbstract;
@@ -64,6 +65,6 @@ class TranslationPropertiesTraitTest extends TestCase
 
     private function _createTraitMock()
     {
-        return \Mockery::mock(HasPropertiesTranslation::class, ExecutorAbstract::class);
+        return Mockery::mock(HasPropertiesTranslation::class, ExecutorAbstract::class);
     }
 }

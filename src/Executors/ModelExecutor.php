@@ -15,9 +15,8 @@ use soIT\LaravelSeeder\Executors\Traits\HasAdditionalProperties;
 use soIT\LaravelSeeder\Executors\Traits\HasNamingStrategy;
 use soIT\LaravelSeeder\Executors\Traits\HasSources;
 use soIT\LaravelSeeder\Seeders\ModelSeeder;
-
-use soIT\LaravelSeeder\Transformations\AttachModelTransformation;
 use soIT\LaravelSeeder\Transformations\ModelTransformation;
+use soIT\LaravelSeeder\Transformations\AttachModelTransformation;
 
 /**
  * Class ModelExecutor

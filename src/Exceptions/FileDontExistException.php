@@ -6,6 +6,8 @@
  */
 namespace soIT\LaravelSeeders\Exceptions;
 
-class FileDontExistException extends \Exception
+use Exception;
+
+class FileDontExistException extends Exception
 {
 }

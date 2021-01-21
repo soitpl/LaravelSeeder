@@ -9,6 +9,7 @@ namespace soIT\LaravelSeeders\Seeders;
 
 
 use PHPUnit\Framework\TestCase;
+use ReflectionException;
 use soIT\LaravelSeeders\Containers\DataContainer;
 use soIT\LaravelSeeders\Enums\Duplicated;
 
@@ -23,7 +24,7 @@ class SeederAbstractTest extends TestCase
     }
 
     /**
-     * @throws \ReflectionException
+     * @throws ReflectionException
      */
     public function testGetSetData()
     {

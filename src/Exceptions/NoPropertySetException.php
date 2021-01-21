@@ -8,7 +8,9 @@
 namespace soIT\LaravelSeeder\Exceptions;
 
 
-class NoPropertySetException extends \Exception
+use Exception;
+
+class NoPropertySetException extends Exception
 {
 
 }

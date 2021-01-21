@@ -7,8 +7,10 @@
 
 namespace soIT\LaravelSeeders;
 
+use Mockery;
 use PHPUnit\Framework\TestCase;
 use soIT\LaravelSeeder\Executors\ModelExecutor;
+use soIT\LaravelSeeder\Executors\TableExecutor;
 
 class ExecutorsTest extends TestCase
 {
@@ -21,14 +23,14 @@ class ExecutorsTest extends TestCase
     public function testSetTable()
     {
         $instance = new Seeders();
-        $factoryMock = \Mockery::mock('overload:soIT\LaravelSeeders\Executors\ExecutorFactory');
-        $factoryMock->shouldReceive('factory')->andReturn($this->createMock(\soIT\LaravelSeeder\Executors\TableExecutor::class));
+        $factoryMock = Mockery::mock('overload:soIT\LaravelSeeders\Executors\ExecutorFactory');
+        $factoryMock->shouldReceive('factory')->andReturn($this->createMock(TableExecutor::class));
 
         /**
          * @var ModelExecutor $ex
          */
         $ex = $instance->setTable($this->testTarget);
-        $this->assertInstanceOf(\soIT\LaravelSeeder\Executors\TableExecutor::class, $ex);
+        $this->assertInstanceOf(TableExecutor::class, $ex);
     }
 
     /**
@@ -39,13 +41,13 @@ class ExecutorsTest extends TestCase
     public function testSetModel()
     {
         $instance = new Seeders();
-        $factoryMock = \Mockery::mock('overload:soIT\LaravelSeeders\Executors\ExecutorFactory');
-        $factoryMock->shouldReceive('factory')->andReturn($this->createMock(\soIT\LaravelSeeder\Executors\ModelExecutor::class));
+        $factoryMock = Mockery::mock('overload:soIT\LaravelSeeders\Executors\ExecutorFactory');
+        $factoryMock->shouldReceive('factory')->andReturn($this->createMock(ModelExecutor::class));
 
         /**
-         * @var \soIT\LaravelSeeder\Executors\TableExecutor $ex
+         * @var TableExecutor $ex
          */
         $ex = $instance->setModel($this->testTarget);
-        $this->assertInstanceOf(\soIT\LaravelSeeder\Executors\ModelExecutor::class, $ex);
+        $this->assertInstanceOf(ModelExecutor::class, $ex);
     }
 }

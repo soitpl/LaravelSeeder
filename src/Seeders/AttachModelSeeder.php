@@ -4,25 +4,27 @@
  * @copyright (c) soIT.pl (2018-2019)
  * @url http://www.soit.pl
  */
+
 namespace soIT\LaravelSeeder\Seeders;
 
+use Exception;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Illuminate\Support\Collection;
+use ReflectionClass;
 use soIT\LaravelSeeder\Containers\DataContainer;
 use soIT\LaravelSeeders\Exceptions\WrongAttributeException;
 
 class AttachModelSeeder extends ModelSeeder
 {
     /**
-     * @var Collection Collection with ModelContainer instances for models to save
-     */
-    private $containers;
-
-    /**
      * @var Model Parent model instance
      */
     protected $parentModel;
+    /**
+     * @var Collection Collection with ModelContainer instances for models to save
+     */
+    private $containers;
 
     public function __construct(string $modelName)
     {
@@ -37,7 +39,7 @@ class AttachModelSeeder extends ModelSeeder
      * @return SeederAbstract
      * @throws WrongAttributeException
      */
-    public function setData(DataContainer $data): SeederAbstract
+    public function setData(DataContainer $data):SeederAbstract
     {
         $items = new DataContainer();
 
@@ -57,6 +59,18 @@ class AttachModelSeeder extends ModelSeeder
     }
 
     /**
+     * Create and save new model in database
+     *
+     * @return void
+     * @throws Exception
+     */
+    public function save():void
+    {
+        $this->prepareContainers($this->data);
+        $this->saveContainers();
+    }
+
+    /**
      * Set parent module instance
      *
      * @param Model $model
@@ -67,33 +81,21 @@ class AttachModelSeeder extends ModelSeeder
     }
 
     /**
-     * Create and save new model in database
-     *
-     * @return void
-     * @throws \Exception
-     */
-    public function save(): void
-    {
-        $this->prepareContainers($this->data);
-        $this->saveContainers();
-    }
-
-    /**
      * Prepare all models containers for seed
      *
      * @param DataContainer $data
      *
      */
-    private function prepareContainers(DataContainer $data): void
+    private function prepareContainers(DataContainer $data):void
     {
         $this->containers->push($this->initModelContainer()->setData($data));
     }
 
     /**
      * Save prepared containers
-     * @throws \Exception
+     * @throws Exception
      */
-    private function saveContainers(): void
+    private function saveContainers():void
     {
         $this->attachModels();
     }
@@ -101,9 +103,9 @@ class AttachModelSeeder extends ModelSeeder
     /**
      * Save models in sequential
      * Method should be used if models have nested models to save
-     * @throws \Exception
+     * @throws Exception
      */
-    private function attachModels(): void
+    private function attachModels():void
     {
         foreach ($this->containers as $container) {
             /**
@@ -112,6 +114,7 @@ class AttachModelSeeder extends ModelSeeder
             $data = $container->getData();
 
             $relation = $this->getRelation($this->getRelationName($data->first()));
+
             foreach ($data as $model) {
                 $relation->attach($model, []);
             }
@@ -124,10 +127,30 @@ class AttachModelSeeder extends ModelSeeder
      * @param Model $model Model to search relation method
      *
      * @return string Method name
+     * @throws Exception
      */
-    private function getRelationName(Model $model): string
+    private function getRelationName(Model $model):string
     {
-        return strtolower(class_basename($model)) . 's';
+        $className = strtolower(class_basename($model));
+        $reflection = new ReflectionClass($this->parentModel);
+
+        if ($reflection->hasMethod($className)) {
+            return $className;
+        } else {
+            $className_ = str_replace('model', '', $className).'s';
+
+            if ($reflection->hasMethod($className_)) {
+                return $className_;
+            } else {
+                $className_ = $className.'s';
+
+                if ($reflection->hasMethod($className_)) {
+                    return $className_;
+                }
+            }
+        }
+
+        throw new Exception(sprintf("No relation %s found", $className));
     }
 
     /**
@@ -136,14 +159,11 @@ class AttachModelSeeder extends ModelSeeder
      * @param string $relationName
      *
      * @return MorphToMany
-     * @throws \Exception
+     * @throws Exception
      */
-    private function getRelation(string $relationName): MorphToMany
+    private function getRelation(string $relationName):MorphToMany
     {
-        if ($relation = $this->parentModel->$relationName()) {
-            return $relation;
-        }
-
-        throw new \Exception(sprintf("No relation %s found", $relation));
+        return $this->parentModel->$relationName();
     }
+
 }
