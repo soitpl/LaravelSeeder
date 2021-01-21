@@ -63,12 +63,13 @@ class ModelExecutor extends ExecutorAbstract implements ExecutorInterface
      *
      * @param string $propertyName
      * @param string $model
+     * @param string|null $relation
      *
      * @return ModelExecutor
      */
-    public function setPropertyRelationModel(string $propertyName, string $model):self
+    public function setPropertyRelationModel(string $propertyName, string $model, ?string $relation=null):self
     {
-        $this->getTransformations()->assign($propertyName, new AttachModelTransformation($model));
+        $this->getTransformations()->assign($propertyName, new AttachModelTransformation($model, $relation));
 
         return $this;
     }

@@ -9,7 +9,9 @@ namespace soIT\LaravelSeeder\Seeders;
 
 use Exception;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
+use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Support\Collection;
 use ReflectionClass;
 use soIT\LaravelSeeder\Containers\DataContainer;
@@ -17,20 +19,17 @@ use soIT\LaravelSeeders\Exceptions\WrongAttributeException;
 
 class AttachModelSeeder extends ModelSeeder
 {
-    /**
-     * @var Model Parent model instance
-     */
-    protected $parentModel;
-    /**
-     * @var Collection Collection with ModelContainer instances for models to save
-     */
-    private $containers;
+    protected Model $parentModel;
+    private Collection $containers;
+    private ?string $relation;
 
-    public function __construct(string $modelName)
+    public function __construct(string $modelName, ?string $relation = null)
     {
         $this->containers = new Collection();
 
         parent::__construct($modelName);
+
+        $this->setRelation($relation);
     }
 
     /**
@@ -50,7 +49,7 @@ class AttachModelSeeder extends ModelSeeder
                 );
             }
 
-            $items = $items->merge($this->modelName::where($ident, $value)->get());
+            $items = $items->merge($this->createModel()->newQuery()->where($ident, $value)->get());
         }
 
         $this->data = $items;
@@ -78,6 +77,18 @@ class AttachModelSeeder extends ModelSeeder
     public function setParentModel(Model $model)
     {
         $this->parentModel = $model;
+    }
+
+    /**
+     * @param string|null $relation
+     *
+     * @return AttachModelSeeder
+     */
+    public function setRelation(?string $relation):self
+    {
+        $this->relation = $relation;
+
+        return $this;
     }
 
     /**
@@ -113,15 +124,10 @@ class AttachModelSeeder extends ModelSeeder
              */
             $data = $container->getData();
 
-            $relation = $this->getRelation($this->getRelationName($data->first()));
+            $modelRelation = $this->getRelation($this->relation ?? $this->getRelationName($data->first()));
 
             foreach ($data as $model) {
-                if($relation instanceof MorphToMany) {
-                    $relation->attach($model, []);
-                }
-                else {
-                    $relation->associate($model);
-                }
+                $this->assignModel($modelRelation, $model);
             }
         }
     }
@@ -171,4 +177,19 @@ class AttachModelSeeder extends ModelSeeder
         return $this->parentModel->$relationName();
     }
 
+    private function assignModel(Relation $relation, Model $model):void
+    {
+        if ($relation instanceof MorphToMany) {
+            $relation->attach($model, []);
+        } else {
+            if ($relation instanceof BelongsTo) {
+                $relation->associate($model)->save();
+            }
+        }
+    }
+
+    private function createModel():Model
+    {
+        return new $this->modelName;
+    }
 }

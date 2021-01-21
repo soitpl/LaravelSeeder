@@ -15,15 +15,14 @@ use soIT\LaravelSeeders\Exceptions\WrongAttributeException;
 class AttachModelTransformation implements TransformationsInterface
 {
     private string $modelName;
-
-    /**
-     * @var TransformationsContainer
-     */
+    
     private TransformationsContainer $transformationsContainer;
+    private ?string $relation;
 
-    public function __construct(string $modelName)
+    public function __construct(string $modelName, ?string $relation = null)
     {
         $this->modelName = $modelName;
+        $this->relation = $relation;
     }
 
     /**
@@ -34,10 +33,9 @@ class AttachModelTransformation implements TransformationsInterface
      * @return SeederInterface
      * @throws WrongAttributeException
      */
-    public function transform($propertyValue):SeederInterface
+    public function transform(mixed $propertyValue):SeederInterface
     {
-        return (new AttachModelSeeder($this->modelName))
-       //     ->setTransformations($this->transformationsContainer)
+        return (new AttachModelSeeder($this->modelName, $this->relation))
             ->setData($propertyValue);
     }
 
