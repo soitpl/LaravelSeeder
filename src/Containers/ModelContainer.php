@@ -8,7 +8,7 @@
 namespace soIT\LaravelSeeder\Containers;
 
 use Illuminate\Database\Eloquent\Model;
-use soIT\LaravelSeeder\Seeders\SeederInterface;
+use soIT\LaravelSeeder\Contracts\SeederInterface;
 use soIT\LaravelSeeder\Exceptions\NoPropertySetException;
 use soIT\LaravelSeeders\Traits\HasTableColumns;
 
@@ -24,13 +24,7 @@ class ModelContainer
      * @var DataContainer|null
      */
     private ?DataContainer $data = null;
-    /**
-     * @var TransformationsContainer
-     */
     private ?TransformationsContainer $transformations = null;
-    /**
-     * @var NamingStrategyContainer
-     */
     private ?NamingStrategyContainer $namingStrategy = null;
     /**
      * @var Model
@@ -148,13 +142,6 @@ class ModelContainer
         return $this;
     }
 
-    /**
-     * Set property translations container
-     *
-     * @param NamingStrategyContainer $namingStrategy
-     *
-     * @return ModelContainer
-     */
     public function setNamingStrategy(?NamingStrategyContainer $namingStrategy):self
     {
         $this->namingStrategy = $namingStrategy ?? new NamingStrategyContainer();
@@ -187,13 +174,6 @@ class ModelContainer
         }
     }
 
-    /**
-     * Get real target property name
-     *
-     * @param string $property
-     *
-     * @return string
-     */
     private function getTargetProperty(string $property):string
     {
         if (is_null($this->namingStrategy)) {
@@ -203,15 +183,6 @@ class ModelContainer
         return $this->namingStrategy->get($property) ?? $property;
     }
 
-    /**
-     * Get real target property name
-     *
-     * @param string $property
-     *
-     * @param $value
-     *
-     * @return string
-     */
     private function getTargetTransformation(string $property, $value)
     {
         if (is_null($this->transformations)) {

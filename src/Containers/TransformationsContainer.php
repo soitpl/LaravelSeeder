@@ -102,7 +102,6 @@ class TransformationsContainer implements Iterator, ArrayAccess, Countable
         $transform = array_shift($items);
 
         return $transform
-            ->setPropertyName($property)
             ->setTransformationsContainer((new self())->assignArray($items))
             ->transform($value);
     }

@@ -12,6 +12,11 @@ use soIT\LaravelSeeders\Executors\ExecutorInterface;
 use soIT\LaravelSeeder\Executors\ModelExecutor;
 use soIT\LaravelSeeder\Executors\TableExecutor;
 
+/**
+ * Class Seeders
+ * @package soIT\LaravelSeeder\Seeders
+ * @deprecated 
+ */
 class Seeders
 {
     public const MODEL = 0;

@@ -8,15 +8,14 @@
 namespace soIT\LaravelSeeder\Executors;
 
 use soIT\LaravelSeeder\Containers\DataContainer;
-use soIT\LaravelSeeder\Contracts\ExecutorInterface;
-use soIT\LaravelSeeder\Executors\Traits\HasPropertiesTransformation;
 use soIT\LaravelSeeder\Containers\TransformationsContainer;
-use soIT\LaravelSeeder\Executors\Traits\HasAdditionalProperties;
+use soIT\LaravelSeeder\Contracts\ExecutorInterface;
 use soIT\LaravelSeeder\Executors\Traits\HasNamingStrategy;
+use soIT\LaravelSeeder\Executors\Traits\HasPropertiesTransformation;
 use soIT\LaravelSeeder\Executors\Traits\HasSources;
 use soIT\LaravelSeeder\Seeders\ModelSeeder;
-use soIT\LaravelSeeders\Transformations\ModelTransformation;
 use soIT\LaravelSeeder\Transformations\AttachModelTransformation;
+use soIT\LaravelSeeder\Transformations\ModelTransformation;
 
 /**
  * Class ModelExecutor
@@ -27,7 +26,6 @@ use soIT\LaravelSeeder\Transformations\AttachModelTransformation;
  */
 class ModelExecutor extends ExecutorAbstract implements ExecutorInterface
 {
-    use HasAdditionalProperties;
     use HasPropertiesTransformation;
     use HasNamingStrategy;
     use HasSources;
@@ -66,12 +64,13 @@ class ModelExecutor extends ExecutorAbstract implements ExecutorInterface
      *
      * @param string $propertyName
      * @param string $model
+     * @param string|null $relation
      *
      * @return ModelExecutor
      */
-    public function attachTo(string $propertyName, string $model):self
+    public function setPropertyRelationModel(string $propertyName, string $model, ?string $relation=null):self
     {
-        $this->getTransformations()->assign($propertyName, new AttachModelTransformation($model));
+        $this->getTransformations()->assign($propertyName, new AttachModelTransformation($model, $relation));
 
         return $this;
     }

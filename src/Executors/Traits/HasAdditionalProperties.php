@@ -8,7 +8,6 @@
 namespace soIT\LaravelSeeder\Executors\Traits;
 
 use soIT\LaravelSeeder\Containers\AdditionalPropertiesContainer;
-use soIT\LaravelSeeder\Contracts\ExecutorInterface;
 
 trait HasAdditionalProperties
 {
@@ -27,44 +26,31 @@ trait HasAdditionalProperties
         return $this->properties ?? ($this->properties = $this->createAdditionalPropertiesContainer());
     }
 
-    /**
-     * Assign callback action to property
-     *
-     * @param string $property
-     * @param $value
-     *
-     * @return self|ExecutorInterface
-     * @codeCoverageIgnore
-     */
-    public function addPropertyWithValue(string $property, $value):ExecutorInterface
+    public function addPropertyWithValue(string $property, $value):self
     {
         $this->getAdditionalProperties()->assignValue($property, $value);
 
         return $this;
     }
 
-    /**
-     * Assign callback action to property
-     *
-     * @param string  Property name
-     * @param callable $callback Callback function
-     *
-     * @return self|ExecutorInterface
-     * @codeCoverageIgnore
-     */
-    public function addPropertyWithCallback(string $property, callable $callback):ExecutorInterface
+    public function addPropertyWithCallback(string $property, callable $callback):self
     {
         $this->getAdditionalProperties()->assignCallback($property, $callback);
 
         return $this;
     }
 
-    /**
-     * @return AdditionalPropertiesContainer
-     * @codeCoverageIgnore
-     */
     protected function createAdditionalPropertiesContainer():AdditionalPropertiesContainer
     {
         return new AdditionalPropertiesContainer();
+    }
+
+    private function addPropertiesToItem(mixed $item):mixed
+    {
+        if ($this->getAdditionalProperties()->hasAdditionalProperties()) {
+            return $this->getAdditionalProperties()->addPropertiesToItem($item);
+        }
+
+        return $item;
     }
 }

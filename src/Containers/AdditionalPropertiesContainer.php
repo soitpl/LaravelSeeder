@@ -45,4 +45,23 @@ class AdditionalPropertiesContainer implements Iterator, ArrayAccess, Countable
     {
         $this->assignValue($property, new CallableTransformation($callback));
     }
+
+    public function hasAdditionalProperties():bool
+    {
+        return (bool)count($this->items);
+    }
+
+    public function addPropertiesToItem(DataContainer $item):DataContainer
+    {
+        foreach ($this->items as $key => $value) {
+            return $item->put($key, $this->getValue($value));
+        }
+
+        return $item;
+    }
+
+    private function getValue(mixed $value):mixed
+    {
+        return $value instanceof CallableTransformation ? $value->transform() : $value;
+    }
 }

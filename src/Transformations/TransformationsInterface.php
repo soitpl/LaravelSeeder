@@ -11,7 +11,6 @@ use soIT\LaravelSeeder\Containers\TransformationsContainer;
 
 interface TransformationsInterface
 {
-    public function setPropertyName(string $property): TransformationsInterface;
     public function setTransformationsContainer(TransformationsContainer $container);
     public function transform($propertyValue);
 }

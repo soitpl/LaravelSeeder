@@ -11,7 +11,6 @@ use soIT\LaravelSeeder\Containers\TransformationsContainer;
 use soIT\LaravelSeeder\Contracts\ExecutorInterface;
 use soIT\LaravelSeeder\Executors\ExecutorAbstract;
 
-
 trait HasPropertiesTransformation
 {
     /**

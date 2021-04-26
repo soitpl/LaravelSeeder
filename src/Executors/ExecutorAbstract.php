@@ -4,14 +4,18 @@
  * @copyright (c) soIT.pl (2018-2019)
  * @url http://www.soit.pl
  */
+
 namespace soIT\LaravelSeeder\Executors;
 
 use soIT\LaravelSeeder\Containers\DataContainer;
 use soIT\LaravelSeeder\Contracts\ExecutorInterface;
+use soIT\LaravelSeeder\Executors\Traits\HasAdditionalProperties;
 use soIT\LaravelSeeder\Seeders\SeederAbstract;
 
 abstract class ExecutorAbstract implements ExecutorInterface
 {
+    use HasAdditionalProperties;
+
     /**
      * @var DataContainer Data array
      */
@@ -34,25 +38,32 @@ abstract class ExecutorAbstract implements ExecutorInterface
      *
      * @return bool
      */
-    public function execute(DataContainer $data): bool
+    public function execute(DataContainer $data):bool
     {
         if ($this->oneCol) {
             $data = $this->packStringToDataContainer($data);
         }
 
         foreach ($data as $item) {
-            $this->executeTarget($item);
+            $this->executeTarget($this->addPropertiesToItem($item));
         }
         return true;
     }
 
+    /**
+     * Make data seed
+     */
+    public function seed():bool
+    {
+        return $this->execute($this->proceedSources());
+    }
 
     /**
      * Get seeder
      *
      * @return SeederAbstract|null
      */
-    public function getSeeder(): ?SeederAbstract
+    public function getSeeder():?SeederAbstract
     {
         return $this->seeder;
     }
@@ -64,7 +75,7 @@ abstract class ExecutorAbstract implements ExecutorInterface
      *
      * @return ExecutorAbstract
      */
-    public function setSeeder(SeederAbstract $seeder): self
+    public function setSeeder(SeederAbstract $seeder):self
     {
         $this->seeder = $seeder;
         return $this;
@@ -78,7 +89,7 @@ abstract class ExecutorAbstract implements ExecutorInterface
      *
      * @return ExecutorAbstract
      */
-    public function onDuplicate(int $duplicated, array $uniqueKeys): ExecutorInterface
+    public function onDuplicate(int $duplicated, array $uniqueKeys):ExecutorInterface
     {
         $this->getSeeder()->onDuplicate($duplicated);
 
@@ -92,7 +103,7 @@ abstract class ExecutorAbstract implements ExecutorInterface
      *
      * @return ExecutorAbstract
      */
-    public function oneCol(string $columnName): ExecutorInterface
+    public function oneCol(string $columnName):ExecutorInterface
     {
         $this->oneCol = $columnName;
 
@@ -100,22 +111,14 @@ abstract class ExecutorAbstract implements ExecutorInterface
     }
 
     /**
-     * Make data seed
-     */
-    public function seed(): bool
-    {
-        return $this->execute($this->proceedSources());
-    }
-
-
-    /**
      * @param DataContainer $item
      *
      * @return mixed
      */
-    protected function executeTarget(DataContainer $item)
+    protected function executeTarget(DataContainer $item):void
     {
-        return $this->seeder->setData($item)->save();
+
+        $this->seeder->setData($item)->save();
     }
 
     /**
@@ -125,7 +128,7 @@ abstract class ExecutorAbstract implements ExecutorInterface
      *
      * @return DataContainer
      */
-    protected function packStringToDataContainer(DataContainer $data): DataContainer
+    protected function packStringToDataContainer(DataContainer $data):DataContainer
     {
         foreach ($data as $k => $item) {
             $data[$k] = new DataContainer([$this->oneCol => $item]);

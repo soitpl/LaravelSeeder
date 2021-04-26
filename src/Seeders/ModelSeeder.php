@@ -9,12 +9,12 @@ namespace soIT\LaravelSeeder\Seeders;
 
 use Illuminate\Database\Eloquent\Model;
 use soIT\LaravelSeeder\Containers\ModelContainer;
+use soIT\LaravelSeeder\Exceptions\NoPropertySetException;
 use soIT\LaravelSeeder\Seeders\Traits\HasTransformations;
 use soIT\LaravelSeeder\Seeders\Traits\SeederAdditionalPropertiesTrait;
 use soIT\LaravelSeeder\Seeders\Traits\SeederTranslationsTrait;
-use soIT\LaravelSeeders\Exceptions\NoPropertySetException;
 
-class ModelSeeder extends SeederAbstract
+class ModelSeeder extends SeederAbstract implements \soIT\LaravelSeeder\Contracts\SeederInterface
 {
     use SeederAdditionalPropertiesTrait;
     use HasTransformations;
@@ -23,15 +23,11 @@ class ModelSeeder extends SeederAbstract
     /**
      * @var string Target model name
      */
-    protected $modelName;
+    protected string $modelName;
     /**
      * @var object Model object
      */
-    protected $model;
-    /**
-     * @var ModelContainer Instance of ModelMaker class
-     */
-    private $modelContainer;
+    protected object $model;
 
     /**
      * ModelDispatcher constructor.
@@ -60,6 +56,7 @@ class ModelSeeder extends SeederAbstract
      */
     public function save():void
     {
+
         $container = $this->initModelContainer();
         $container->setData($this->getData());
         $container->prepare();
@@ -76,11 +73,9 @@ class ModelSeeder extends SeederAbstract
      */
     protected function initModelContainer():ModelContainer
     {
-        $this->modelContainer = new ModelContainer($this->modelName);
-        $this->modelContainer->setTransformations($this->getTransformations());
-        $this->modelContainer->setNamingStrategy($this->getTranslations());
-
-        return $this->modelContainer;
+        $modelContainer = new ModelContainer($this->modelName);
+        return $modelContainer->setTransformations($this->getTransformations())
+                              ->setNamingStrategy($this->getTranslations());
     }
 
     /**
